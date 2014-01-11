@@ -85,9 +85,46 @@ res.render('index.ejs');
 <image src="https://f.cloud.github.com/assets/6375258/1893658/4d28d370-7aaa-11e3-9fb0-1cb6e0893bd6.PNG"/>
 
 <p>Run the mongocrud.js and access the 'http://localhost:3000/', you will see the below page.  With this, we have learned how to use the templating engine to 
-control the page display</p>		
+control the page display.</p>		
 
 <image src="https://f.cloud.github.com/assets/6375258/1893640/78d50cac-7aa8-11e3-8622-4469301353ab.PNG"/>
+	
+<h3><a name="L1" class="anchor" href="#L1"><span class="octicon octicon-link"></span></a>Accessing MongoDB from Node.js</h3>
+<p>Second step in our lesson is 'Accessing MongoDB from Node'.  For accessing MongoDB & the collections the node module 'Mongoose' will be used.  Install the 
+Mongoose and import it to our script 'mongocrud.js'.
+</p>
+
+<pre><code>
+npm install mongoose
+</code></pre>
+
+<pre><code>
+mongoose = require('mongoose');
+</code></pre>
+
+<p>Mongoose module provides the easy access to MongoDB.  Opening the connection to the MongoDB is straight forward.  For installing MongoDB visit www.mongodb.org. By default Mongo deamon 
+will be running in the port 27017.  MongoDB comes with a default database 'test'.  Collections in MongoDB are similar to Tables in RDBMS and Mongo DB uses flexi schema approach. 
+</p>
+
+<pre><code>
+mongoose.connect('mongodb://localhost/test');
+</code></pre>
+
+<p>A MongoDB schema can be created like below using the Schema() from mongoose module. Create a collection containing the product details (id, name & price). 
+Use the code below to create a reference to the 'product' object which uniquely represent a record in the collection. When this code executes, MongoDB creates a 
+collection "Products'.  Note: It adds 's' to the model name given. </p>
+
+<pre><code>
+var productSchema = new mongoose.Schema({
+	prdId: String,
+	name: { type: String }, 
+	price: Number
+})
+
+var Product = mongoose.model('Product', productSchema);
+</code></pre>
+
+
 	
 </section>
 </div>
