@@ -73,8 +73,10 @@ app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 </code></pre>
 
-<p>Now, let's see how to display html elements using EJS. In the mongocrud.js add the below code fragment.  So when the request comes the contents in the index.js 
-will be rendered in the browser.  Post this create a file index.ejs and include the below html fragments. </p>
+<p>Now, let's see how to display html elements using EJS. In the mongocrud.js add the below code fragment.  So when the request comes the contents in the index.ejs 
+will be rendered in the browser.  Post this create a file index.ejs and include the below html fragments.  Note: All .ejs files has to be stored in the "views" folder as per 
+the above configuration.
+code </p>
 
 <pre><code>
 app.get('/', function(req,res) {
@@ -116,14 +118,15 @@ collection "Products'.  Note: It adds 's' to the model name given. </p>
 var Product = mongoose.model('Product', productSchema);
 </code></pre>
 
+<!-- Insert -->
 <h3><a name="insert" class="anchor" href="#insert"><span class="octicon octicon-link"></span></a>Inserting a record</h3>
-<p>First a '<form>' has to be defined to capture the product details and then submitted to MongoDB through Node script.  Let's create a simple html form. EJS will be used to 
-define the html form elements. Save this file as 'addProducts.ejs'.  Note: The submit button invokes a 'post' call. </p>
+<p>First a html 'form' has to be created to capture the product details.  Let's create a simple html form. EJS will be used to define the html form elements. Save this file as 'addProducts.ejs'.  
+Note: The submit button invokes a 'post' call. Save the 'addProducts.ejs' under 'views' folder. </p>
 
 <image src="https://f.cloud.github.com/assets/6375258/1893763/ed1318f6-7ab3-11e3-8459-8945e6462aa1.PNG"/>
 
 <p>In the mongocrud.js include the below code snippet.  When the url comes with operation as "add", the 'addProduct.ejs' gets invoked and rendered with text fields to enter the 
-product details. When the submit button is invoked the "/new" post block is invoked.  Using save() method in Mongoose module, the product details are persisted in MongoDB. /p>
+product details. When the submit button is invoked the "/new" post block is invoked.  Using save() method in Mongoose module, the product details are persisted in MongoDB. </p>
 
 <pre><code>app.get('/add', function(req,res) {
     res.render('addProduct.ejs');
@@ -141,9 +144,46 @@ app.post('/new', function(req, res){
 });
 </code></pre>
 
-<pre><code> Product Successfully Added ! </code></pre>
+<p> Invoke the URL http://localhost:3000/add and submit the form.  Congratulations !!! You have now learnt how to insert a record into MongoDB collection. </p>
 
+<!-- View All -->
+<h3><a name="insert" class="anchor" href="#insert"><span class="octicon octicon-link"></span></a>Viewing all the record</h3>
+<p>JSON is used to send & receive data to MongoDB.  Now, create a 'display.ejs' in the "view" folder with the following html code.</p>
+
+<image src="https://f.cloud.github.com/assets/6375258/1893792/afb2c6c0-7ab6-11e3-9047-0f1cccc2749d.PNG"/>
 	
+<p>Add the below script to the mongocrud.js.  Function 'renderResult' is a helper function created to re-use the page rendering code.</p>
+	
+<pre><code>app.get('/viewall', function(req,res) {
+    Product.find({}, function(err, prds) {
+		console.log("\nProducts !");
+		console.log(prds); 
+		renderResult(res, prds, "Product List from MongoDB :");
+	});	
+	
+});
+
+function renderResult(res, prds, msg) {
+	res.render('display.ejs', {message:msg, products:prds}, 
+		function(err, result) {
+			if (!err) {
+				res.end(result);
+			}
+			else {
+				res.end('Oops ! An error occurred.');
+				console.log(err);
+			}		
+	});
+}	
+
+<p>Invoke the URL http://localhost:3000/viewall.  All the records in the "Products" collection in MongoDB will be displayed in this page. </p>
+
+<image src="https://f.cloud.github.com/assets/6375258/1893807/03518766-7ab8-11e3-9020-4b6266a04b7b.PNG"/>
+
+<p> Try yourself : How to retrieve a record from MongoDB using a condition and display.  e.g. find a product with id 'prd5555'. </p>
+
+<pre><code> Happy Coding ! </code></pre>
+
 </section>
 </div>
 
