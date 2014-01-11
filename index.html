@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
-
   <head>
     <meta charset='utf-8' />
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
     <meta name="description" content="Tech-noon : Technical Noons" />
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-    <title>Tech-noon</title>
+    <title>TechNoon Lessons</title>
   </head>
 
   <body>
@@ -26,14 +25,11 @@
 <section id="main_content" class="inner">
 <h3><a name="welcome-to-tech-noons" class="anchor" href="#welcome-to-tech-noons"><span class="octicon octicon-link"></span></a>Welcome to Tech-noons</h3>
 
-<p>Technical Lessons from Technoon. Lets go Technical ! </p>
-
+<p>Technical Lessons from Technoon. Lets go Technical !</p>
 <h3><a name="intro" class="anchor" href="#intro"><span class="octicon octicon-link"></span></a>Lesson -1 : Node.js, Express, EJS & MongoDB</h3>
-
 <p>In this lesson, let see how to do the CRUD operations on MongoDB using Node.js, Express & EJS.  I am assuming you are familiar with Node.js & MongoDB. 
 Express is a web application framework for Node.js, which provides the easy way to build web applications with multi pages.  Express comes with 'Jade', a templating engine.
-EJS is also a popular templating engine for Node.js.  
-</p>
+EJS is also a popular templating engine for Node.js.</p>
 
 <h3><a name="L1" class="anchor" href="#L1"><span class="octicon octicon-link"></span></a>How to use Express & EJS</h3>
 <p> Install the 'express' & 'ejs' to the node_modules using the below command.</p>
@@ -44,8 +40,7 @@ npm install ejs
 
 <p>Let's how to use the express for handling the http requests.  use the require method to import the express library to the node script.  From the below code the express object 'app' 
 is passed as an argument to the 'createServer' method, after this all the incoming http get calls will be handled by the express framework.  Save the below script as 'mongocrud.js' and 
-run the script as 'node mongocrud.js'.  Access the localhost:3000 in the browser window, Bingo !  Welcome to Technoons ! 
-</p>
+run the script as 'node mongocrud.js'.  Access the 'localhost:3000' in the browser, Bingo !  Welcome to Technoons ! </p>
 
 <pre><code>
 var express = require('express'),
@@ -60,12 +55,10 @@ res.send('Welcome to Technoons!');
 http.createServer(app).listen(3000, function() {
 console.log("Server is listening on port 3000"); 
 });
-
 </code></pre>
 
-<p>Configure the express by setting the essential parameters. Take a note that 'ejs' is mentioned as the view engine</p>
-<pre><code>
-app.set('views', __dirname + '/views');
+<p>Configure the express by setting the essential parameters. Take a note that 'ejs' is the view engine for this lesson. </p>
+<pre><code>app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(express.bodyParser());
 app.use(express.methodOverride());
@@ -73,10 +66,9 @@ app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 </code></pre>
 
-<p>Now, let's see how to display html elements using EJS. In the mongocrud.js add the below code fragment.  So when the request comes the contents in the index.ejs 
+<p>Let's see how to display html elements using EJS. In the 'mongocrud.js' add the below code fragment.  So when the request comes the contents in the 'index.ejs'  
 will be rendered in the browser.  Post this create a file index.ejs and include the below html fragments.  Note: All .ejs files has to be stored in the "views" folder as per 
-the above configuration.
-code </p>
+the above configuration.</p>
 
 <pre><code>
 app.get('/', function(req,res) {
@@ -86,7 +78,7 @@ res.render('index.ejs');
 
 <image src="https://f.cloud.github.com/assets/6375258/1893658/4d28d370-7aaa-11e3-9fb0-1cb6e0893bd6.PNG"/>
 
-<p>Run the mongocrud.js and access the 'http://localhost:3000/', you will see the below page.  With this, we have learned how to use the templating engine to 
+<p>Run the 'mongocrud.js' and access the 'http://localhost:3000/', you will see the below page.  With this, we have learned how to use the templating engine to 
 control the page display.</p>		
 
 <image src="https://f.cloud.github.com/assets/6375258/1893640/78d50cac-7aa8-11e3-8622-4469301353ab.PNG"/>
@@ -99,15 +91,13 @@ Mongoose and import it to the script 'mongocrud.js'.
 <pre><code>npm install mongoose</code></pre>
 <pre><code>mongoose = require('mongoose');</code></pre>
 
-<p>Mongoose module provides the easy access to MongoDB.  Opening the connection to the MongoDB is straight forward.  For installing MongoDB visit www.mongodb.org. By default Mongo deamon 
-will be running in the port 27017.  MongoDB comes with a default database 'test'.  Collections in MongoDB are similar to Tables in RDBMS and Mongo DB uses flexi schema approach. 
-</p>
+<p>Mongoose module provides the easy access to MongoDB.  Opening the connection to the MongoDB is straight forward.  MongoDB comes with a default database 'test'.  
+Collections in MongoDB are similar to Tables in RDBMS and Mongo DB uses flexi schema approach.</p>
 
 <pre><code>mongoose.connect('mongodb://localhost/test');</code></pre>
 
-<p>A MongoDB schema can be created like below using the Schema() from mongoose module. Create a collection containing the product details (id, name & price). 
-Use the code below to create a reference to the 'product' object which uniquely represent a record in the collection. When this code executes, MongoDB creates a 
-collection "Products'.  Note: It adds 's' to the model name given. </p>
+<p>Create a MongoDB schema, collection using the below script. create a reference to the 'product' object which uniquely represents a record in the collection. When this code gets executed, MongoDB creates a 
+collection named "Products'.  Note: It adds 's' to the model name given.</p>
 
 <pre><code>var productSchema = new mongoose.Schema({
 	prdId: String,
@@ -120,13 +110,13 @@ var Product = mongoose.model('Product', productSchema);
 
 <!-- Insert -->
 <h3><a name="insert" class="anchor" href="#insert"><span class="octicon octicon-link"></span></a>Inserting a record</h3>
-<p>First a html 'form' has to be created to capture the product details.  Let's create a simple html form. EJS will be used to define the html form elements. Save this file as 'addProducts.ejs'.  
-Note: The submit button invokes a 'post' call. Save the 'addProducts.ejs' under 'views' folder. </p>
+<p>First a html 'form' has to be created to capture the product details.  Let's create a simple html form. EJS will be used to define the html form elements. Save this file as 
+'addProducts.ejs' and under the 'views' folder.  Note: The submit button invokes a 'post' call. </p>
 
 <image src="https://f.cloud.github.com/assets/6375258/1893763/ed1318f6-7ab3-11e3-8459-8945e6462aa1.PNG"/>
 
-<p>In the mongocrud.js include the below code snippet.  When the url comes with operation as "add", the 'addProduct.ejs' gets invoked and rendered with text fields to enter the 
-product details. When the submit button is invoked the "/new" post block is invoked.  Using save() method in Mongoose module, the product details are persisted in MongoDB. </p>
+<p>In the mongocrud.js include the below code snippet.  When the url comes with operation as 'add', then the view 'addProduct.ejs' gets invoked. The submit button click invokes the '/new' post.  
+Using save() method in Mongoose module, the product details are persisted in MongoDB.</p>
 
 <pre><code>app.get('/add', function(req,res) {
     res.render('addProduct.ejs');
@@ -181,9 +171,9 @@ function renderResult(res, prds, msg) {
 
 <image src="https://f.cloud.github.com/assets/6375258/1893807/03518766-7ab8-11e3-9020-4b6266a04b7b.PNG"/>
 
-<p>Try yourself : How to retrieve a record from MongoDB using a condition and display.  e.g. find a product with id 'prd5555'. </p>
+<p>Try yourself : Retrieve a record from MongoDB with a condition and display.  e.g. find a product with id 'prd5555'. </p>
 
-<pre><code> Happy Coding ! </code></pre>
+<pre><code>Happy Coding !</code></pre>
 
 </section>
 </div>
