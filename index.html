@@ -147,8 +147,8 @@ app.post('/new', function(req, res){
 <p> Invoke the URL http://localhost:3000/add and submit the form.  Congratulations !!! You have now learnt how to insert a record into MongoDB collection. </p>
 
 <!-- View All -->
-<h3><a name="insert" class="anchor" href="#insert"><span class="octicon octicon-link"></span></a>Viewing all the record</h3>
-<p>JSON is used to send & receive data to MongoDB.  Now, create a 'display.ejs' in the "view" folder with the following html code.</p>
+<h3><a name="viewall" class="anchor" href="#viewall"><span class="octicon octicon-link"></span></a>Viewing all the records</h3>
+<p>JSON is used to send & receive data to MongoDB.  Now, create a 'display.ejs' in the "views" folder with the following html code.</p>
 
 <image src="https://f.cloud.github.com/assets/6375258/1893792/afb2c6c0-7ab6-11e3-9047-0f1cccc2749d.PNG"/>
 	
@@ -175,12 +175,13 @@ function renderResult(res, prds, msg) {
 			}		
 	});
 }	
+</code></pre>
 
-<p>Invoke the URL http://localhost:3000/viewall.  All the records in the "Products" collection in MongoDB will be displayed in this page. </p>
+<p>Invoke the URL http://localhost:3000/viewall.  All the records in the "Products" collection in MongoDB will be displayed in this page.</p>
 
 <image src="https://f.cloud.github.com/assets/6375258/1893807/03518766-7ab8-11e3-9020-4b6266a04b7b.PNG"/>
 
-<p> Try yourself : How to retrieve a record from MongoDB using a condition and display.  e.g. find a product with id 'prd5555'. </p>
+<p>Try yourself : How to retrieve a record from MongoDB using a condition and display.  e.g. find a product with id 'prd5555'. </p>
 
 <pre><code> Happy Coding ! </code></pre>
 
