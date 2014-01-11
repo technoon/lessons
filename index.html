@@ -42,10 +42,8 @@ npm install ejs
 is passed as an argument to the 'createServer' method, after this all the incoming http get calls will be handled by the express framework.  Save the below script as 'mongocrud.js' and 
 run the script as 'node mongocrud.js'.  Access the 'localhost:3000' in the browser, Bingo !  Welcome to Technoons ! </p>
 
-<pre><code>
-var express = require('express'),
+<pre><code>var express = require('express'),
 http = require('http');
-
 var app = express();
 
 app.get('/', function(req, res) {
@@ -67,19 +65,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 </code></pre>
 
 <p>Let's see how to display html elements using EJS. In the 'mongocrud.js' add the below code fragment.  So when the request comes the contents in the 'index.ejs'  
-will be rendered in the browser.  Post this create a file index.ejs and include the below html fragments.  Note: All .ejs files has to be stored in the "views" folder as per 
+will be rendered in the browser.  After this, create a file 'index.ejs' and include the below html fragments.  Note: All .ejs files has to be stored in the "views" folder as per 
 the above configuration.</p>
 
-<pre><code>
-app.get('/', function(req,res) {
+<pre><code>app.get('/', function(req,res) {
 res.render('index.ejs');
 });
 </code></pre>
 
 <image src="https://f.cloud.github.com/assets/6375258/1893658/4d28d370-7aaa-11e3-9fb0-1cb6e0893bd6.PNG"/>
 
-<p>Run the 'mongocrud.js' and access the 'http://localhost:3000/', you will see the below page.  With this, we have learned how to use the templating engine to 
-control the page display.</p>		
+<p>Run the 'mongocrud.js' and access the 'http://localhost:3000/', you will see the below page.  You have learned to use the templating engine.</p>		
 
 <image src="https://f.cloud.github.com/assets/6375258/1893640/78d50cac-7aa8-11e3-8622-4469301353ab.PNG"/>
 	
@@ -168,11 +164,8 @@ function renderResult(res, prds, msg) {
 </code></pre>
 
 <p>Invoke the URL http://localhost:3000/viewall.  All the records in the "Products" collection in MongoDB will be displayed in this page.</p>
-
 <image src="https://f.cloud.github.com/assets/6375258/1893807/03518766-7ab8-11e3-9020-4b6266a04b7b.PNG"/>
-
 <p>Try yourself : Retrieve a record from MongoDB with a condition and display.  e.g. find a product with id 'prd5555'. </p>
-
 <pre><code>Happy Coding !</code></pre>
 
 </section>
