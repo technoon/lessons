@@ -21,99 +21,83 @@
         </header>
     </div>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3><a name="welcome-to-tech-noons" class="anchor" href="#welcome-to-tech-noons"><span class="octicon octicon-link"></span></a>Welcome to Tech-noons</h3>
+<!-- MAIN CONTENT -->
+<div id="main_content_wrap" class="outer">
+<section id="main_content" class="inner">
+<h3><a name="welcome-to-tech-noons" class="anchor" href="#welcome-to-tech-noons"><span class="octicon octicon-link"></span></a>Welcome to Tech-noons</h3>
 
-		<p>Lets go Technical ! </p>
+<p>Lets go Technical ! </p>
 
-		<h3><a name="intro" class="anchor" href="#intro"><span class="octicon octicon-link"></span></a>Lession -1 : Node.js, Express, EJS & MongoDB</h3>
+<h3><a name="intro" class="anchor" href="#intro"><span class="octicon octicon-link"></span></a>Lession -1 : Node.js, Express, EJS & MongoDB</h3>
 
-		<p>In this lesson, let see how to do the CRUD operations on MongoDB using Node.js, Express & EJS.  I am assuming you are familiar with Node.js & MongoDB. 
-		Express is a web application framework for Node.js, which provides the easy way to build web applications with multi pages.  Express comes with 'Jade', a templating engine.
-		EJS is also a popular templating engine for Node.js.  
-		</p>
-		
-		<h3><a name="L1" class="anchor" href="#L1"><span class="octicon octicon-link"></span></a>How to use Express & EJS</h3>
-		<p> Install the 'express' & 'ejs' to the node_modules using the below command.</p>
-		
-		<pre><code>npm install express
-		npm install ejs
-		</code></pre>
+<p>In this lesson, let see how to do the CRUD operations on MongoDB using Node.js, Express & EJS.  I am assuming you are familiar with Node.js & MongoDB. 
+Express is a web application framework for Node.js, which provides the easy way to build web applications with multi pages.  Express comes with 'Jade', a templating engine.
+EJS is also a popular templating engine for Node.js.  
+</p>
 
-		<p>Let's how to use the express for handling the http requests.  use the require method to import the express library to the node script.  From the below code the express object 'app' 
-		is passed as an argument to the 'createServer' method, after this all the incoming http get calls will be handled by the express framework.  Save the below script as 'mongocrud.js' and 
-		run the script as 'node mongocrud.js'.  Access the localhost:3000 in the browser window, Bingo !  Welcome to Technoons ! 
-		</p>
+<h3><a name="L1" class="anchor" href="#L1"><span class="octicon octicon-link"></span></a>How to use Express & EJS</h3>
+<p> Install the 'express' & 'ejs' to the node_modules using the below command.</p>
 
-		<pre><code>
-		var express = require('express'),
-			http = require('http');
-			
-		var app = express();
+<pre><code>npm install express
+npm install ejs
+</code></pre>
 
-		app.get('/', function(req, res) {
-			res.send('Welcome to Technoons!');
-		});
+<p>Let's how to use the express for handling the http requests.  use the require method to import the express library to the node script.  From the below code the express object 'app' 
+is passed as an argument to the 'createServer' method, after this all the incoming http get calls will be handled by the express framework.  Save the below script as 'mongocrud.js' and 
+run the script as 'node mongocrud.js'.  Access the localhost:3000 in the browser window, Bingo !  Welcome to Technoons ! 
+</p>
 
-		http.createServer(app).listen(3000, function() {
-			console.log("Server is listening on port 3000"); 
-		});
+<pre><code>
+var express = require('express'),
+http = require('http');
 
-		</code></pre>
-		
-		<p>Configure the express by setting the essential parameters. Take a note that 'ejs' is mentioned as the view engine</p>
-		<pre><code>
-			app.set('views', __dirname + '/views');
-			app.set('view engine', 'ejs');
-			app.use(express.bodyParser());
-			app.use(express.methodOverride());
-			app.use(app.router);
-			app.use(express.static(path.join(__dirname, 'public')));
-		</code></pre>
-		
-		<p>Now, let's see how to display html elements using EJS. In the mongocrud.js add the below code fragment.  So when the request comes the contents in the index.js 
-		will be rendered in the browser.  Post this create a file index.ejs and include the below html fragments. </p>
-		
-		<pre><code>
-		app.get('/', function(req,res) {
-			res.render('index.ejs');
-		});
-		</code></pre>
-		
-		<pre><code>
-			<!--
-			<!DOCTYPE html>
-			<html>
-			<head>
-			<title>Mongo DB CRUD Operations </title>
-			</head>
-			<body>
-			<h2>CRUD operations using Node & Mongo DB </h2>
+var app = express();
 
-			<a href="/add">Add a Product</ahref> <br>
-			<a href="/view/:id">View a Product</ahref> <br> 
-			<a href="/viewall">View All Products</ahref> <br>
-			</body>
-			</html>
-			-->
-		</code></pre>
-		
-	<p>Run the mongocrud.js and access the 'http://localhost:3000/', you will see the below page.  With this, we have learned how to use the templating engine to 
-	control the page display</p>		
+app.get('/', function(req, res) {
+res.send('Welcome to Technoons!');
+});
+
+http.createServer(app).listen(3000, function() {
+console.log("Server is listening on port 3000"); 
+});
+
+</code></pre>
+
+<p>Configure the express by setting the essential parameters. Take a note that 'ejs' is mentioned as the view engine</p>
+<pre><code>
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+app.use(express.bodyParser());
+app.use(express.methodOverride());
+app.use(app.router);
+app.use(express.static(path.join(__dirname, 'public')));
+</code></pre>
+
+<p>Now, let's see how to display html elements using EJS. In the mongocrud.js add the below code fragment.  So when the request comes the contents in the index.js 
+will be rendered in the browser.  Post this create a file index.ejs and include the below html fragments. </p>
+
+<pre><code>
+app.get('/', function(req,res) {
+res.render('index.ejs');
+});
+</code></pre>
+
+<image src="https://f.cloud.github.com/assets/6375258/1893658/4d28d370-7aaa-11e3-9fb0-1cb6e0893bd6.PNG"/>
+
+<p>Run the mongocrud.js and access the 'http://localhost:3000/', you will see the below page.  With this, we have learned how to use the templating engine to 
+control the page display</p>		
+
+<image src="https://f.cloud.github.com/assets/6375258/1893640/78d50cac-7aa8-11e3-8622-4469301353ab.PNG"/>
 	
-	<image src="https://f.cloud.github.com/assets/6375258/1893640/78d50cac-7aa8-11e3-8622-4469301353ab.PNG"/>
-	
-	</section>
-	</div>
+</section>
+</div>
 
-	<!-- FOOTER  -->
-	<div id="footer_wrap" class="outer">
-	<footer class="inner">
-		<p class="copyright">Technoon maintained by Rajeshkumar Venkatesan</a></p>
-	</footer>
-	</div>
+<!-- FOOTER  -->
+<div id="footer_wrap" class="outer">
+<footer class="inner">
+	<p class="copyright">Technoon maintained by Rajeshkumar Venkatesan</a></p>
+</footer>
+</div>
 
 </body>
 </html>
