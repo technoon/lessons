@@ -51,14 +51,34 @@ EJS is also a popular templating engine for Node.js.
 </p>
 <br>
 
-<h3><a name="L1" class="anchor" href="#L1"><span class="octicon octicon-link"></span></a>How to use Express & EJS/h3>
-
-<p>
-are familiar with Node.js & MongoDB. 
-Express is a web application framework for Node.js, which provides the easy way to build web applications with multi pages.  Express comes with 'Jade', a templating engine.
-EJS is also a popular templating engine for Node.js.  
-</p>
+<h3><a name="L1" class="anchor" href="#L1"><span class="octicon octicon-link"></span></a>How to use Express & EJS</h3>
+<p> Install the 'express' & 'ejs' to the node_modules using the below command.</p>
 <br>
+
+<pre><code>npm install express
+npm install ejs
+</code></pre>
+
+<p>Let's how to use the express for handling the http requests.  use the require method to import the express library to the node script.  From the below code the express object 'app' 
+is passed as an argument to the 'createServer' method, after this all the incoming http get calls will be handled by the express framework.  Save the below script as 'mongocrud.js' and 
+run the script as 'node mongocrud.js'.  Access the localhost:3000 in the browser window, welcome to Technoons ! 
+</p>
+
+<pre><code>
+var express = require('express'),
+	http = require('http');
+	
+var app = express();
+
+app.get('/', function(req, res) {
+	res.send('Welcome to Technoons!');
+});
+
+http.createServer(app).listen(3000, function() {
+	console.log("Server is listening on port 3000"); 
+});
+
+</code></pre>
 
 
 </section>
