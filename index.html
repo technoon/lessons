@@ -91,31 +91,23 @@ control the page display.</p>
 	
 <h3><a name="L1" class="anchor" href="#L1"><span class="octicon octicon-link"></span></a>Accessing MongoDB from Node.js</h3>
 <p>Second step in our lesson is 'Accessing MongoDB from Node'.  For accessing MongoDB & the collections the node module 'Mongoose' will be used.  Install the 
-Mongoose and import it to our script 'mongocrud.js'.
+Mongoose and import it to the script 'mongocrud.js'.
 </p>
 
-<pre><code>
-npm install mongoose
-</code></pre>
-
-<pre><code>
-mongoose = require('mongoose');
-</code></pre>
+<pre><code>npm install mongoose</code></pre>
+<pre><code>mongoose = require('mongoose');</code></pre>
 
 <p>Mongoose module provides the easy access to MongoDB.  Opening the connection to the MongoDB is straight forward.  For installing MongoDB visit www.mongodb.org. By default Mongo deamon 
 will be running in the port 27017.  MongoDB comes with a default database 'test'.  Collections in MongoDB are similar to Tables in RDBMS and Mongo DB uses flexi schema approach. 
 </p>
 
-<pre><code>
-mongoose.connect('mongodb://localhost/test');
-</code></pre>
+<pre><code>mongoose.connect('mongodb://localhost/test');</code></pre>
 
 <p>A MongoDB schema can be created like below using the Schema() from mongoose module. Create a collection containing the product details (id, name & price). 
 Use the code below to create a reference to the 'product' object which uniquely represent a record in the collection. When this code executes, MongoDB creates a 
 collection "Products'.  Note: It adds 's' to the model name given. </p>
 
-<pre><code>
-var productSchema = new mongoose.Schema({
+<pre><code>var productSchema = new mongoose.Schema({
 	prdId: String,
 	name: { type: String }, 
 	price: Number
@@ -124,6 +116,32 @@ var productSchema = new mongoose.Schema({
 var Product = mongoose.model('Product', productSchema);
 </code></pre>
 
+<h3><a name="insert" class="anchor" href="#insert"><span class="octicon octicon-link"></span></a>Inserting a record</h3>
+<p>First a '<form>' has to be defined to capture the product details and then submitted to MongoDB through Node script.  Let's create a simple html form. EJS will be used to 
+define the html form elements. Save this file as 'addProducts.ejs'.  Note: The submit button invokes a 'post' call. </p>
+
+<image src="https://f.cloud.github.com/assets/6375258/1893763/ed1318f6-7ab3-11e3-8459-8945e6462aa1.PNG"/>
+
+<p>In the mongocrud.js include the below code snippet.  When the url comes with operation as "add", the 'addProduct.ejs' gets invoked and rendered with text fields to enter the 
+product details. When the submit button is invoked the "/new" post block is invoked.  Using save() method in Mongoose module, the product details are persisted in MongoDB. /p>
+
+<pre><code>app.get('/add', function(req,res) {
+    res.render('addProduct.ejs');
+});
+
+app.post('/new', function(req, res){
+	new Product({
+		prdId	: req.body.ProductId,
+		name	: req.body.ProductName,
+		price   : req.body.ProductPrice
+	}).save(function(err, prd){
+		if(err) res.json(err);
+		else    res.send("Product Successfully Added !");
+	});
+});
+</code></pre>
+
+<pre><code> Product Successfully Added ! </code></pre>
 
 	
 </section>
