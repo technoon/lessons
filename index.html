@@ -117,7 +117,6 @@ Using save() method in Mongoose module, the product details are persisted in Mon
 <pre><code>app.get('/add', function(req,res) {
     res.render('addProduct.ejs');
 });
-
 app.post('/new', function(req, res){
 	new Product({
 		prdId	: req.body.ProductId,
@@ -145,22 +144,14 @@ app.post('/new', function(req, res){
 		console.log("\nProducts !");
 		console.log(prds); 
 		renderResult(res, prds, "Product List from MongoDB :");
-	});	
-	
-});
-
+});});
 function renderResult(res, prds, msg) {
 	res.render('display.ejs', {message:msg, products:prds}, 
 		function(err, result) {
-			if (!err) {
-				res.end(result);
-			}
-			else {
-				res.end('Oops ! An error occurred.');
-				console.log(err);
-			}		
-	});
-}	
+			if (!err) {res.end(result);}
+			else {res.end('Oops ! An error occurred.');
+				console.log(err);}		
+});}
 </code></pre>
 
 <p>Invoke the URL http://localhost:3000/viewall.  All the records in the "Products" collection in MongoDB will be displayed in this page.</p>
@@ -178,5 +169,16 @@ function renderResult(res, prds, msg) {
 </footer>
 </div>
 
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-47069620-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
 </body>
 </html>
