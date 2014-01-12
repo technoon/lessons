@@ -27,9 +27,9 @@
 
 <p>Technical Lessons from Technoon. Lets go Technical !</p>
 <h3><a name="intro" class="anchor" href="#intro"><span class="octicon octicon-link"></span></a>Node.js, Express, EJS, Mongoose & MongoDB</h3>
-<p>In this lesson, let see how to do the CRUD operations on MongoDB using Node.js, Express & EJS.  I am assuming you are familiar with Node.js & MongoDB. 
-Express is a web application framework for Node.js, which provides the easy way to build web applications with multi pages.  Express comes with 'Jade', a templating engine.
-EJS is also a popular templating engine for Node.js.</p>
+<p>This tutorial requires basic knowledge in Node.js & MongoDB.  The 'mongoose' node module can be used to access the MongoDB from Node.js.  Express is a 
+web application framework for Node.js, which provides the easy way to build web applications with multi pages.  Express comes with 'Jade', a templating engine.
+EJS is also a popular templating engine for Node.js. In this tutorial 'EJS' will be used as a templating engine.</p>
 
 <h3><a name="L1" class="anchor" href="#L1"><span class="octicon octicon-link"></span></a>How to use Express & EJS</h3>
 <p>Install the 'express' & 'ejs' node modules using the below commands.</p>
@@ -38,9 +38,9 @@ EJS is also a popular templating engine for Node.js.</p>
 npm install ejs</font>
 </code></pre>
 
-<p>Let's how to use the express for handling the http requests.  use the require method to import the express library to the node script.  From the below code the express object 'app' 
-is passed as an argument to the 'createServer' method, after this all the incoming http get calls will be handled by the express framework.  Save the below script as 'mongocrud.js' and 
-run the script as 'node mongocrud.js'.  Access the 'localhost:3000' in the browser, Bingo !  Welcome to Technoons ! </p>
+<p>Let's how to use the 'express' for handling the http requests.  Use the 'require' method to import the express library to the node script.  By passing the express object 'app' 
+as an argument to the 'createServer' method,  all the incoming http requests can be handled by the express framework.  Save the below script as 'accessmongo.js' and 
+run the script as 'node accessmongo.js'.  Access the url 'http://localhost:3000' in the browser, Bingo !  Welcome to Technoons ! </p>
 
 <pre><code>var express = require('express'),
 http = require('http');
@@ -55,7 +55,7 @@ console.log("Server is listening on port 3000");
 });
 </code></pre>
 
-<p>Configure the express by setting the essential parameters. Take a note that 'ejs' is the view engine for this lesson. </p>
+<p>Configure the 'express' by setting the essential parameters. Take a note that 'ejs' is the view engine here.</p>
 <pre><code><font color="red">app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');</font>
 app.use(express.bodyParser());
@@ -64,9 +64,8 @@ app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 </code></pre>
 
-<p>Let's see how to display html elements using EJS. In the 'mongocrud.js' add the below code fragment.  So when the request comes the contents in the 'index.ejs'  
-will be rendered in the browser.  After this, create a file 'index.ejs' and include the below html fragments.  Note: All .ejs files has to be stored in the "views" folder as per 
-the above configuration.</p>
+<p>Let's see how to display html elements using EJS. In the 'accessmongo.js' add the below code fragment. After this, create a file 'index.ejs' and include the below html fragments.  
+The ejs file 'index.ejs' gets invoked when the request comes for the '/'.  Note: All '.ejs' files has to be stored in the "views" folder as per the application configuration.</p>
 
 <pre><code>app.get('/', function(req,res) {
 res.render('index.ejs');
@@ -74,12 +73,12 @@ res.render('index.ejs');
 
 <image src="https://f.cloud.github.com/assets/6375258/1893658/4d28d370-7aaa-11e3-9fb0-1cb6e0893bd6.PNG"/>
 
-<p>Run the 'mongocrud.js' and access the <font color="blue">http://localhost:3000/</font>, you will see the below page.  You have learned to use the templating engine.</p>		
+<p>Run the 'accessmongo.js' and access the <font color="blue">http://localhost:3000/</font>, you will see the below page.  You have learned to use the templating engine.</p>		
 
 <image src="https://f.cloud.github.com/assets/6375258/1893640/78d50cac-7aa8-11e3-8622-4469301353ab.PNG"/>
 	
 <h3><a name="L1" class="anchor" href="#L1"><span class="octicon octicon-link"></span></a>Accessing MongoDB from Node.js</h3>
-<p>For accessing the collections in the MongoDB the node module 'Mongoose' can be used.  Install the Mongoose and include it in the 'mongocrud.js' as a required module.
+<p>For accessing the collections in the MongoDB the node module 'Mongoose' can be used.  Install the Mongoose and include it in the 'accessmongo.js' as a required module.
 </p>
 
 <pre><code>npm install mongoose</code></pre>
@@ -109,7 +108,7 @@ var Product = mongoose.model('Product', productSchema);
 
 <image src="https://f.cloud.github.com/assets/6375258/1893763/ed1318f6-7ab3-11e3-8459-8945e6462aa1.PNG"/>
 
-<p>In the mongocrud.js include the below code snippet.  When the url comes with operation as 'add', then the view 'addProduct.ejs' gets invoked. The submit button click invokes the '/new' post.  
+<p>In the accessmongo.js include the below code snippet.  When the url comes with operation as 'add', then the view 'addProduct.ejs' gets invoked. The submit button click invokes the '/new' post.  
 Using save() method in Mongoose module, the product details are persisted in MongoDB.</p>
 
 <pre><code>app.get('/add', function(req,res) {
@@ -134,7 +133,7 @@ app.post('/new', function(req, res){
 
 <image src="https://f.cloud.github.com/assets/6375258/1893792/afb2c6c0-7ab6-11e3-9047-0f1cccc2749d.PNG"/>
 	
-<p>Add the below script to the mongocrud.js.  Function 'renderResult' is a helper function created to re-use the page rendering code.</p>
+<p>Add the below script to the accessmongo.js.  Function 'renderResult' is a helper function created to re-use the page rendering code.</p>
 	
 <pre><code>app.get('/viewall', function(req,res) {
     Product.find({}, function(err, prds) {
