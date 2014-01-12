@@ -16,7 +16,7 @@
           <!-- <h2 id="project_tagline">Technical Lessons</h2> -->
 		</header>
 		<footer class="inner">
-			<p class="copyright">by Rajeshkumar Venkatesan</p>
+			<p class="copyright"><font color="yellow">by Rajeshkumar Venkatesan</font></p>
 		</footer>
     </div>
 
@@ -26,7 +26,7 @@
 <h3><a name="welcome-to-tech-noons" class="anchor" href="#welcome-to-tech-noons"><span class="octicon octicon-link"></span></a>Welcome to Tech-noons</h3>
 
 <p>Technical Lessons from Technoon. Lets go Technical !</p>
-<h3><a name="intro" class="anchor" href="#intro"><span class="octicon octicon-link"></span></a>Lesson -1 : Node.js, Express, EJS & MongoDB</h3>
+<h3><a name="intro" class="anchor" href="#intro"><span class="octicon octicon-link"></span></a>Node.js, Express, EJS, Mongoose & MongoDB</h3>
 <p>In this lesson, let see how to do the CRUD operations on MongoDB using Node.js, Express & EJS.  I am assuming you are familiar with Node.js & MongoDB. 
 Express is a web application framework for Node.js, which provides the easy way to build web applications with multi pages.  Express comes with 'Jade', a templating engine.
 EJS is also a popular templating engine for Node.js.</p>
@@ -56,8 +56,8 @@ console.log("Server is listening on port 3000");
 </code></pre>
 
 <p>Configure the express by setting the essential parameters. Take a note that 'ejs' is the view engine for this lesson. </p>
-<pre><code>app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
+<pre><code><font color="red">app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');</font>
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
@@ -74,7 +74,7 @@ res.render('index.ejs');
 
 <image src="https://f.cloud.github.com/assets/6375258/1893658/4d28d370-7aaa-11e3-9fb0-1cb6e0893bd6.PNG"/>
 
-<p>Run the 'mongocrud.js' and access the 'http://localhost:3000/', you will see the below page.  You have learned to use the templating engine.</p>		
+<p>Run the 'mongocrud.js' and access the <font color="blue">http://localhost:3000/</font>, you will see the below page.  You have learned to use the templating engine.</p>		
 
 <image src="https://f.cloud.github.com/assets/6375258/1893640/78d50cac-7aa8-11e3-8622-4469301353ab.PNG"/>
 	
@@ -126,7 +126,7 @@ app.post('/new', function(req, res){
 	});
 });</code></pre>
 
-<p> Invoke the URL http://localhost:3000/add and submit the form.  Congratulations !!! You have now learnt how to insert a record into MongoDB collection. </p>
+<p> Invoke the URL <font color="blue">http://localhost:3000/add</font> and submit the form.  Congratulations !!! You have now learnt how to insert a record into MongoDB collection. </p>
 
 <!-- View All -->
 <h3><a name="viewall" class="anchor" href="#viewall"><span class="octicon octicon-link"></span></a>Viewing all the records</h3>
@@ -151,10 +151,10 @@ function renderResult(res, prds, msg) {
 });}
 </code></pre>
 
-<p>Invoke the URL http://localhost:3000/viewall.  All the records in the "Products" collection in MongoDB will be displayed in this page.</p>
+<p>Invoke the URL <font color="blue">http://localhost:3000/viewall</font>. All the records in the "Products" collection in MongoDB will be displayed in this page.</p>
 <image src="https://f.cloud.github.com/assets/6375258/1893807/03518766-7ab8-11e3-9020-4b6266a04b7b.PNG"/>
 <p>Try yourself : Retrieve a record from MongoDB with a condition and display.  e.g. find a product with id 'prd5555'. </p>
-<pre><code>Happy Coding !</code></pre>
+<pre><code><font color="blue">Happy Coding !</font></code></pre>
 
 </section>
 </div>
