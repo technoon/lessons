@@ -32,7 +32,7 @@ Express is a web application framework for Node.js, which provides the easy way 
 EJS is also a popular templating engine for Node.js.</p>
 
 <h3><a name="L1" class="anchor" href="#L1"><span class="octicon octicon-link"></span></a>How to use Express & EJS</h3>
-<p> Install the 'express' & 'ejs' to the node_modules using the below command.</p>
+<p>Install the 'express' & 'ejs' node modules using the below commands.</p>
 
 <pre><code>npm install express
 npm install ejs
@@ -45,11 +45,11 @@ run the script as 'node mongocrud.js'.  Access the 'localhost:3000' in the brows
 <pre><code>var express = require('express'),
 http = require('http');
 var app = express();
-
+...
 app.get('/', function(req, res) {
 res.send('Welcome to Technoons!');
 });
-
+...
 http.createServer(app).listen(3000, function() {
 console.log("Server is listening on port 3000"); 
 });
@@ -70,8 +70,7 @@ the above configuration.</p>
 
 <pre><code>app.get('/', function(req,res) {
 res.render('index.ejs');
-});
-</code></pre>
+});</code></pre>
 
 <image src="https://f.cloud.github.com/assets/6375258/1893658/4d28d370-7aaa-11e3-9fb0-1cb6e0893bd6.PNG"/>
 
@@ -80,20 +79,19 @@ res.render('index.ejs');
 <image src="https://f.cloud.github.com/assets/6375258/1893640/78d50cac-7aa8-11e3-8622-4469301353ab.PNG"/>
 	
 <h3><a name="L1" class="anchor" href="#L1"><span class="octicon octicon-link"></span></a>Accessing MongoDB from Node.js</h3>
-<p>Second step in our lesson is 'Accessing MongoDB from Node'.  For accessing MongoDB & the collections the node module 'Mongoose' will be used.  Install the 
-Mongoose and import it to the script 'mongocrud.js'.
+<p>For accessing the collections in the MongoDB the node module 'Mongoose' can be used.  Install the Mongoose and include it in the 'mongocrud.js' as a required module.
 </p>
 
 <pre><code>npm install mongoose</code></pre>
 <pre><code>mongoose = require('mongoose');</code></pre>
 
-<p>Mongoose module provides the easy access to MongoDB.  Opening the connection to the MongoDB is straight forward.  MongoDB comes with a default database 'test'.  
-Collections in MongoDB are similar to Tables in RDBMS and Mongo DB uses flexi schema approach.</p>
+<p>Mongoose module provides the easy access to MongoDB.  MongoDB comes with a default database called 'test', for this example this 'test' database will be used. 
+'Collections' in MongoDB are similar to 'Tables' in RDBMS and Mongo DB uses flexi schema approach.  Connect to MongoDB 'test' database using the below script.</p>
 
 <pre><code>mongoose.connect('mongodb://localhost/test');</code></pre>
 
-<p>Create a MongoDB schema, collection using the below script. create a reference to the 'product' object which uniquely represents a record in the collection. When this code gets executed, MongoDB creates a 
-collection named "Products'.  Note: It adds 's' to the model name given.</p>
+<p>Create a MongoDB schema & a collection to store the product details using the below script. Create a reference to the 'product' object which uniquely represents a record in the collection. 
+When this code gets executed, MongoDB creates a collection named "Products'.  Note: It adds 's' to the model name given.</p>
 
 <pre><code>var productSchema = new mongoose.Schema({
 	prdId: String,
@@ -126,8 +124,7 @@ app.post('/new', function(req, res){
 		if(err) res.json(err);
 		else    res.send("Product Successfully Added !");
 	});
-});
-</code></pre>
+});</code></pre>
 
 <p> Invoke the URL http://localhost:3000/add and submit the form.  Congratulations !!! You have now learnt how to insert a record into MongoDB collection. </p>
 
