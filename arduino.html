@@ -66,44 +66,44 @@ Required Accessories :  Arduino Uno / Leonardo, 10K POT, Bread board, 220 ohm re
 
 <font color="blue">Step 1:</font> Connect the Arduino board to the computer thru USB.<br>
 <font color="blue">Step 2:</font> Connect the potentiometer to the bread board.  Pot has 3 pins, ground, power & output.  Connect the ground pin to Arduino's ground pin, 
-power pin to 5V pin using 220 ohm resistor and output pin to the analog pin 2. The wiring diagram is given below. <br>
+power pin to 5V pin using 220 ohm resistor and output pin to the <pre><code>analog pin 2</code></pre>. The wiring diagram is given below.<br>
 <font color="blue">Step 3:</font> Write a program sketch as below and upload it to Arduino board through USB<br>
 <font color="blue">Step 4:</font> Open the serial monitor from the menu and you will see the output values coming in from the POT.  Turn the pot knob to get different readings.<br>
 <br>
-<code><font color="blue">Note: Using this incoming value from the POT, you can control the brightness of an LED or reduce the rotation 
-speed of a DC motor or control the direction of a SERVO motor. Options are plenty.</font></code>
+
+<code>
+Note: Using this incoming value from the POT, you can control the brightness of an LED or reduce the rotation 
+speed of a DC motor or control the direction of a SERVO motor. Options are plenty.
+</code>
 </p>
 
-<image src="/images/Arduino_Wiring.PNG"/>
+<image src="http://technoon.github.io/lessons/images/Arduino_Wiring.PNG"/>
 
 <h3><a name="section5" class="anchor" href="#section5"><span class="octicon octicon-link"></span></a>Example code</h3>
 <p>
-
 <pre>
 <code>
 /*
   Reads an analog input on pin 2, prints the result to the serial monitor.
 */
-<br>
-// the setup routine runs once when you press reset:<br>
-<font color="orange">void setup() </font><br>{ <br>
-  // initialize serial communication at 9600 bits per second:<br>
-  Serial.begin(9600);<br>
-}<br>
-<br>
-// the loop routine runs over and over again forever:<br>
-<font color="orange">void loop() </font>{<br>
-  // read the input on analog pin 2:<br>
-  int sensorValue = analogRead(A2);<br>
-  // print out the value you read:<br>
-  Serial.println(sensorValue);<br>
-  delay(1);<br>
-}<br>
+// the setup routine runs once when you press reset:
+<font color="orange">void setup() </font>{ 
+  // initialize serial communication at 9600 bits per second:
+  Serial.begin(9600);
+}
+
+// the loop routine runs over and over again forever:
+<font color="orange">void loop() </font>{
+  // read the input on analog pin 2:
+  int sensorValue = analogRead(A2);
+  // print out the value you read:
+  Serial.println(sensorValue);
+  delay(1);
+}
 </code>
 </pre>
 <br>
 See you soon ! 
-
 </p>
 
 </section>
