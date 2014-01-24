@@ -22,14 +22,16 @@
 <!-- MAIN CONTENT -->
 <div id="main_content_wrap" class="outer">
 <section id="main_content" class="inner">
-<h3><a name="welcome-to-tech-noons" class="anchor" href="#welcome-to-tech-noons"><span class="octicon octicon-link"></span></a>Welcome to Tech-noons</h3>
+
+<h3><a name="section1" class="anchor" href="#section1"><span class="octicon octicon-link"></span></a>Welcome to Tech-noons</h3>
 <p>Arduino is an open-source electronics platform that can acknowledge and interact with its environment through a variety of sensor types.  
 It’s great for hardware prototyping and one-off projects. Arduino is a tool for making computers that can sense and control more of the physical world than your desktop computer.
 There are many other microcontrollers and microcontroller platforms available for physical computing. Arduino stands top of those platforms. 
 More details can be found in ardunino.cc.
 </p>
 
-<h3><a name="welcome-to-tech-noons" class="anchor" href="#welcome-to-tech-noons"><span class="octicon octicon-link"></span></a>PIN configuration in Ardunio Leonardo</h3>
+<h3><a name="section2" class="anchor" href="#section2"><span class="octicon octicon-link"></span></a>PIN configuration in Ardunio Leonardo</h3>
+<image src="https://f.cloud.github.com/assets/6375258/1993275/746c8bf8-84d6-11e3-823d-b3298a2af375.PNG"/>
 <p>
 <table border=0>
 <tr><td>Microcontroller</td><td>ATmega32u4</td></tr>
@@ -48,6 +50,30 @@ More details can be found in ardunino.cc.
 </table>
 </p>
 
+
+<h3><a name="section3" class="anchor" href="#section3"><span class="octicon octicon-link"></span></a>How to program an Arduino ?</h3>
+<p>
+Arduino provides an software to write a sketch (software program using wiring language) and burn into the flash memory of the microcontroller board. There are quite few examples
+prepackaged in the sketch editor under the examples menu.  
+
+<image src="https://f.cloud.github.com/assets/6375258/1992705/a72ed29e-84c7-11e3-9780-3289e8f2fdf4.PNG"/>
+
+Using these program sketches, variety of sensors can be controlled and the output from these sensors can also be read.  
+</p>
+
+<h3><a name="section3" class="anchor" href="#section3"><span class="octicon octicon-link"></span></a>Reading a value from the Potentiometer</h3>
+<p>
+Let's see how can the output value from a potentiometer can be read and logged into serial monitor. <br>
+Required Accessories :  Arduino Uno / Leonardo, Bread board, 220 ohm resistors, Jumper wires <br><br>
+
+Step1 :  Connect the potentiometer to the bread board.  Pot has 3 pins, ground, power & ouput.  Connect the ground pin to Arduino's ground pin, power pin to 5V pin using 220 ohm resistor 
+and output pin to the digital pin 2. <br>
+Step 2:  Write a sketch as below and upload it to Ard board<br>
+Step 3:  Open the serial monitor and you will see the output values coming in from the pot.  Turn the pot knob to get different readings.<br>
+<br>
+<pre><code><font color="orange">Note:  Now, using this incoming value from the POT, you can control the brightness of an LED or reduce the rotation speed of a DC motor or control the direction of a SERVO motor. Options are 
+plenty.</font></code></pre>
+<p>
 
 </section>
 </div>
