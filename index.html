@@ -1,47 +1,66 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html class="no-js" lang="en">
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Tech-noon : Technical Noons" />
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-    <title>TechNoon Lessons</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foundation | Technoon</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <script src="js/vendor/modernizr.js"></script>
   </head>
-
   <body>
-    <!-- HEADER -->
-<div id="header_wrap" class="outer">
-    <header class="inner">
-      <h1 id="project_title">Technoon Tutorial</h1>
-      <h2 id="project_tagline">Node & MongoDB</h2>
-	</header>
 
-	<table align="left">
-		<tr><td style="font-family:comicsansms;font-size:15px;"><b><br>Tutorials : <br></b></td></tr>
-		<tr><td style="font-family:comicsansms;font-size:15px;"><a href="http://technoon.github.io/lessons/arduino.html"> Arduino MicroController</a></td></tr>
-		<tr><td style="font-family:comicsansms;font-size:15px;"><a href="http://technoon.github.io/lessons/index.html"> Node & MongoDB</a></td></tr>
-	</table>
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="nav-bar right">
+       <ul class="button-group">
+         <li><a href="#" class="button">Home</a></li>
+         <li><a href="#" class="button">About me</a></li>
+         <li><a href="#" class="button">Contact Us</a></li>
+        </ul>
+      </div>
+      <h1>Technoon <small>Tutorials <br>Node & MongoDB using Mongoose </small></h1>
+      <hr />
+    </div>
+  </div>
+ 
+  <!-- End Nav -->
+  <!-- Main Page Content and Sidebar -->
+ 
+  <div class="row">
+    <!-- Main Blog Content -->
+    <div class="large-9 columns" role="content">
+ 
+<article>
+ 
+<h6>Written by <a href="#">Rajeshkumar Venkatesan</a> on Jan, 2014.</h6>
+
+<br>
+
+<div class="row">
+<div class="large-6 columns">
+<h4><a href="#">Node.js, Express, EJS, Mongoose & MongoDB</a></h4>
+<p>This tutorial requires basic knowledge in Node.js & MongoDB.  The 'mongoose' node module can be used to access the MongoDB from Node.js.  Express is a web application framework for Node.js, which provides the easy way to build web applications with multi pages.  Express comes with 'Jade', a templating engine. EJS is also a popular templating engine for Node.js. In this tutorial 'EJS' will be used as a templating engine.</p>
 </div>
 
-<!-- MAIN CONTENT -->
-<div id="main_content_wrap" class="outer">
-<section id="main_content" class="inner">
-<h3><a name="welcome-to-tech-noons" class="anchor" href="#welcome-to-tech-noons"><span class="octicon octicon-link"></span></a>Welcome to Technoon Tutorial</h3>
+<div class="large-6 columns">
+<img src="https://f.cloud.github.com/assets/6375258/2006535/271c92ae-871e-11e3-9577-1836f9609f35.PNG"/>
+</div>
+</div>
 
-<p>Technical Tutorials from Technoon. Lets go Technical !</p>
-<h3><a name="intro" class="anchor" href="#intro"><span class="octicon octicon-link"></span></a>Node.js, Express, EJS, Mongoose & MongoDB</h3>
-<p>This tutorial requires basic knowledge in Node.js & MongoDB.  The 'mongoose' node module can be used to access the MongoDB from Node.js.  Express is a web application framework for Node.js, which provides the easy way to build web applications with multi pages.  Express comes with 'Jade', a templating engine. EJS is also a popular templating engine for Node.js. In this tutorial 'EJS' will be used as a templating engine.</p>
-
-<h3><a name="L1" class="anchor" href="#L1"><span class="octicon octicon-link"></span></a>How to use Express & EJS</h3>
+<h4><a href="#">Express & EJS</a></h4>
 <p>Install the 'express' & 'ejs' node modules using the below commands.</p>
 
-<pre><code><font color="red">npm install express
-npm install ejs</font>
-</code></pre>
+<div class="panel">
+<pre style="font-family:comicsansms;font-size:15px;">npm install express
+npm install ejs
+</pre>
+</div>
+<br>
 
-<p>Let's see how to use the 'express' for handling the http requests.  Use the 'require' method to import the express library to the node script.  By passing the express object 'app' as an argument to the 'createServer' method,  all the incoming http requests can be handled by the express framework.  Save the below script as 'accessmongo.js' and run the script as 'node accessmongo.js'.  Access the url 'http://localhost:3000' in the browser, Bingo !  <font color="blue">Welcome to Technoons!</font> </p>
+<p>Let's see how to use the 'express' for handling the http requests.  Use the 'require' method to import the express library to the node script.  By passing the express object 'app' as an argument to the 'createServer' method,  all the incoming http requests can be handled by the express framework.  Save the below script as 'accessmongo.js' and run the script as 'node accessmongo.js'.  Access the url 'http://localhost:3000' in the browser, Bingo ! Welcome to Technoons!</p>
 
-<pre><code>var express = require('express'),
+<div class="panel">
+<pre style="font-family:comicsansms;font-size:15px;">var express = require('express'),
 http = require('http');
 var app = express();
 
@@ -52,128 +71,190 @@ res.send('Welcome to Technoons!');
 http.createServer(app).listen(3000, function() {
 console.log("Server is listening on port 3000"); 
 });
-</code></pre>
+</pre>
+</div>
+
+<br>
 
 <p>Configure the 'express' by setting the essential parameters. Take a note that 'ejs' is the view engine here.</p>
-<pre><code><font color="red">app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');</font>
+
+<div class="panel">
+<pre style="font-family:comicsansms;font-size:15px;">app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
-</code></pre>
+</pre>
+</div>
 
+<br>
 <p>Let's see how to display html elements using EJS. In the 'accessmongo.js' add the below code fragment. After this, create a file 'index.ejs' and include the below html fragments.  
 The ejs file 'index.ejs' gets invoked when the request comes for the '/'.  Note: All '.ejs' files has to be stored in the "views" folder as per the application configuration.</p>
 
-<pre><code>app.get('/', function(req,res) {
+<div class="panel">
+<pre style="font-family:comicsansms;font-size:15px;">app.get('/', function(req,res) {
 res.render('index.ejs');
-});</code></pre>
+});</pre>
+</div>
+
+<br>
 
 <image src="https://f.cloud.github.com/assets/6375258/1893658/4d28d370-7aaa-11e3-9fb0-1cb6e0893bd6.PNG"/>
 
-<p>Run the 'accessmongo.js' and access the <font color="blue">http://localhost:3000/</font>, you will see the below page.  You have learned to use the templating engine.</p>		
+<br>
+
+<p>Run the 'accessmongo.js' and access the <font color="blue">http://localhost:3000/</font>, you will see the below page.  You have learned to use the templating engine.</p>   
 
 <image src="https://f.cloud.github.com/assets/6375258/1893640/78d50cac-7aa8-11e3-8622-4469301353ab.PNG"/>
-	
-<h3><a name="L1" class="anchor" href="#L1"><span class="octicon octicon-link"></span></a>Accessing MongoDB from Node.js</h3>
-<p>For accessing the collections in the MongoDB the node module 'Mongoose' can be used.  Install the Mongoose and include it in the 'accessmongo.js' as a required module.
-</p>
+  
+<h4><a href="#">Accessing MongoDB from Node.js</a></h4>
+<p>For accessing the collections in the MongoDB the node module 'Mongoose' can be used.  Install the Mongoose and include it in the 'accessmongo.js' as a required module.</p>
 
-<pre><code><font color="red">npm install mongoose</font></code></pre>
-<pre><code>mongoose = require('mongoose');</code></pre>
+<div class="panel">
+<pre style="font-family:comicsansms;font-size:15px;">npm install mongoose</pre>
+<pre style="font-family:comicsansms;font-size:15px;">mongoose = require('mongoose');</pre>
+</div>
 
-<p>Mongoose module provides the easy access to MongoDB.  MongoDB comes with a default database called 'test', for this example this 'test' database will be used. 
-'Collections' in MongoDB are similar to 'Tables' in RDBMS and Mongo DB uses flexi schema approach.  Connect to MongoDB 'test' database using the below script.</p>
+<br>
 
-<pre><code>mongoose.connect('mongodb://localhost/test');</code></pre>
+<p>Mongoose module provides the easy access to MongoDB.  MongoDB comes with a default database called 'test', for this example this 'test' database will be used. Collections in MongoDB are similar to 'Tables' in RDBMS and Mongo DB uses flexi schema approach.  Connect to MongoDB 'test' database using the below script.</p>
 
-<p>Create a MongoDB schema & a collection to store the product details using the below script. Create a reference to the 'product' object which uniquely represents a record in the collection. 
-When this code gets executed, MongoDB creates a collection named "Products'.</p>
+<pre style="font-family:comicsansms;font-size:15px;">mongoose.connect('mongodb://localhost/test');</pre>
+<br>
 
-<pre><code>var productSchema = new mongoose.Schema({
-	prdId: String,
-	name: { type: String }, 
-	price: Number
+<p>Create a MongoDB schema & a collection to store the product details using the below script. Create a reference to the 'product' object which uniquely represents a record in the collection. When this code gets executed, MongoDB creates a collection named "Products'.</p>
+
+<div class="panel">
+<pre style="font-family:comicsansms;font-size:15px;">var productSchema = new mongoose.Schema({
+  prdId: String,
+  name: { type: String }, 
+  price: Number
 })
 
 var Product = mongoose.model('Product', productSchema);
-</code></pre>
+</pre>
+</div>
 
-<!-- Insert -->
-<h3><a name="insert" class="anchor" href="#insert"><span class="octicon octicon-link"></span></a>Inserting a record</h3>
-<p>First a html 'form' has to be created to capture the product details.  Let's create a simple html form. EJS will be used to define the html form elements. Save this file as 
-'addProducts.ejs' and under the 'views' folder.  Note: The submit button invokes a 'post' call. </p>
+<br>
+
+<!-- Inserting records  -->
+
+<h4><a href="#">Inserting a record</a></h4>
+<p>First a html 'form' has to be created to capture the product details.  Let's create a simple html form. EJS will be used to define the html form elements. Save this file as 'addProducts.ejs' and under the 'views' folder.  Note: The submit button invokes a 'post' call.</p>
 
 <image src="https://f.cloud.github.com/assets/6375258/1893763/ed1318f6-7ab3-11e3-8459-8945e6462aa1.PNG"/>
 
-<p>In the accessmongo.js include the below code snippet.  When the url comes with operation as 'add', then the view 'addProduct.ejs' gets invoked. The submit button click invokes the '/new' post.  
-Using save() method in Mongoose module, the product details are persisted in MongoDB.</p>
+<br><br>
 
-<pre><code>app.get('/add', function(req,res) {
+<p>In the accessmongo.js include the below code snippet.  When the url comes with operation as 'add' then the view 'addProduct.ejs' gets invoked. The submit button click invokes the '/new' post. Using save() method in Mongoose module, the product details are persisted in MongoDB.</p>
+
+<div class="panel"> 
+<pre style="font-family:comicsansms;font-size:15px;">app.get('/add', function(req,res) {
     res.render('addProduct.ejs');
 });
-app.post('/new', function(req, res){
-	new Product({
-		prdId	: req.body.ProductId,
-		name	: req.body.ProductName,
-		price   : req.body.ProductPrice
-	}).save(function(err, prd){
-		if(err) res.json(err);
-		else    res.send("Product Successfully Added !");
-	});
-});</code></pre>
 
-<p> Invoke the URL <font color="blue">'http://localhost:3000/add'</font> and submit the form.  Congratulations !!! You have now learnt how to insert a record into MongoDB collection. </p>
+app.post('/new', function(req, res){
+  new Product({
+    prdId : req.body.ProductId,
+    name  : req.body.ProductName,
+    price   : req.body.ProductPrice
+  }).save(function(err, prd){
+    if(err) res.json(err);
+    else    res.send("Product Successfully Added !");
+  });
+});</pre>
+</div>
+
+<br>
+
+<p>Invoke the URL <font color="blue">'http://localhost:3000/add'</font> and submit the form.  Congratulations !!! You have now learnt how to insert a record into MongoDB collection. </p>
+
 
 <!-- View All -->
-<h3><a name="viewall" class="anchor" href="#viewall"><span class="octicon octicon-link"></span></a>Viewing all the records</h3>
+<br>
+<h4><a href="#">Viewing all the records</a></h4>
 <p>JSON is used to send & receive data to MongoDB.  Now, create a 'display.ejs' in the "views" folder with the following html code.</p>
 
 <image src="https://f.cloud.github.com/assets/6375258/1893792/afb2c6c0-7ab6-11e3-9047-0f1cccc2749d.PNG"/>
-	
+<br>  
 <p>Add the below script to the accessmongo.js.  Function 'renderResult' is a helper function created to re-use the page rendering code.</p>
-	
-<pre><code>app.get('/viewall', function(req,res) {
+<br>
+<div class="panel">
+<pre style="font-family:comicsansms;font-size:15px;">
+app.get('/viewall', function(req,res) {
     Product.find({}, function(err, prds) {
-		console.log("\nProducts !");
-		console.log(prds); 
-		renderResult(res, prds, "Product List from MongoDB :");
+    console.log("\nProducts !");
+    console.log(prds); 
+    renderResult(res, prds, "Product List from MongoDB :");
 });});
+
 function renderResult(res, prds, msg) {
-	res.render('display.ejs', {message:msg, products:prds}, 
-		function(err, result) {
-			if (!err) {res.end(result);}
-			else {res.end('Oops ! An error occurred.');
-				console.log(err);}		
+  res.render('display.ejs', {message:msg, products:prds},
+    function(err, result) {
+      if (!err) {res.end(result);}
+      else {res.end('Oops ! An error occurred.');
+        console.log(err);}
 });}
-</code></pre>
+</pre>
+</div>
 
+<br>
 <p>Invoke the URL <font color="blue">http://localhost:3000/viewall</font>. All the records in the "Products" collection in MongoDB will be displayed in this page.</p>
+
 <image src="https://f.cloud.github.com/assets/6375258/1893807/03518766-7ab8-11e3-9020-4b6266a04b7b.PNG"/>
+<br>
+
 <p>Try yourself : Retrieve a record from MongoDB with a condition and display.  e.g. find a product with id 'prd5555'. </p>
-<p><font color="blue">Happy Coding !</font></p>
+<p style="font-family:comicsansms;font-size:15px;">Happy Coding !</p>
 
-</section>
+</article>
 </div>
-
-<!-- FOOTER  -->
-<div id="footer_wrap" class="outer">
-<footer class="inner">
-	<p class="copyright"><font color="yellow">by Rajeshkumar Venkatesan</font></p>
-</footer>
-</div>
-
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-47069620-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-</body>
+ 
+<!-- End Main Content -->
+ 
+<!-- Sidebar -->
+    <aside class="large-3 columns">
+ 
+      <h5>Rajesh Writings : </h5>
+      <ul class="side-nav">
+        <li><a href="http://technoon.github.io/lessons/index.html">Node & MongoDB</a></li>
+        <li><a href="http://technoon.github.io/lessons/arduino.html">Arduino Microcontroller</a></li>
+        <li><a href="#">Foundation Response Web Design</a></li>
+        <li><a href="#">Knockout JS</a></li>
+        <li><a href="#">Rasberry Pi</a></li>
+      </ul>
+ 
+      <div class="panel">
+        <h5>Featured</h5>
+        <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow.</p>
+        <a href="#">Read More →</a>
+      </div>
+ 
+    </aside>
+ 
+    <!-- End Sidebar -->
+  </div>
+ 
+  <!-- End Main Content and Sidebar -->
+  <!-- Footer -->
+  <footer class="row">
+    <div class="large-12 columns">
+      <hr />
+      <div class="row">
+        <div class="large-6 columns">
+          <p>© Rajeshkumar Venkatesan</p>
+        </div>
+        <div class="large-6 columns">
+          <ul class="inline-list right">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About me</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+    
+ 
+  </body>
 </html>
