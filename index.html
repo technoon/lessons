@@ -51,7 +51,7 @@
 <p>Install the 'express' & 'ejs' node modules using the below commands.</p>
 
 <div class="panel">
-<pre style="font-family:comicsansms;font-size:15px;">npm install express
+<pre>npm install express
 npm install ejs
 </pre>
 </div>
@@ -60,7 +60,7 @@ npm install ejs
 <p>Let's see how to use the 'express' for handling the http requests.  Use the 'require' method to import the express library to the node script.  By passing the express object 'app' as an argument to the 'createServer' method,  all the incoming http requests can be handled by the express framework.  Save the below script as 'accessmongo.js' and run the script as 'node accessmongo.js'.  Access the url 'http://localhost:3000' in the browser, Bingo ! Welcome to Technoons!</p>
 
 <div class="panel">
-<pre style="font-family:comicsansms;font-size:15px;">var express = require('express'),
+<pre>var express = require('express'),
 http = require('http');
 var app = express();
 
@@ -79,7 +79,7 @@ console.log("Server is listening on port 3000");
 <p>Configure the 'express' by setting the essential parameters. Take a note that 'ejs' is the view engine here.</p>
 
 <div class="panel">
-<pre style="font-family:comicsansms;font-size:15px;">app.set('views', __dirname + '/views');
+<pre >app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(express.bodyParser());
 app.use(express.methodOverride());
@@ -93,7 +93,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 The ejs file 'index.ejs' gets invoked when the request comes for the '/'.  Note: All '.ejs' files has to be stored in the "views" folder as per the application configuration.</p>
 
 <div class="panel">
-<pre style="font-family:comicsansms;font-size:15px;">app.get('/', function(req,res) {
+<pre>app.get('/', function(req,res) {
 res.render('index.ejs');
 });</pre>
 </div>
@@ -102,7 +102,7 @@ res.render('index.ejs');
 
 <!-- INDEX.EJS CODE -->
 <div class="panel">
-<pre style="font-family:comicsansms;font-size:15px;">
+<pre>
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -129,22 +129,22 @@ res.render('index.ejs');
 <p>For accessing the collections in the MongoDB the node module 'Mongoose' can be used.  Install the Mongoose and include it in the 'accessmongo.js' as a required module.</p>
 
 <div class="panel">
-<pre style="font-family:comicsansms;font-size:15px;">npm install mongoose</pre>
-<pre style="font-family:comicsansms;font-size:15px;">mongoose = require('mongoose');</pre>
+<pre>npm install mongoose</pre>
+<pre>mongoose = require('mongoose');</pre>
 </div>
 <br>
 
 <p>Mongoose module provides the easy access to MongoDB.  MongoDB comes with a default database called 'test', for this example this 'test' database will be used. Collections in MongoDB are similar to 'Tables' in RDBMS and Mongo DB uses flexi schema approach.  Connect to MongoDB 'test' database using the below script.</p>
 
 <div class="panel">
-<pre style="font-family:comicsansms;font-size:15px;">mongoose.connect('mongodb://localhost/test');</pre>
+<pre>mongoose.connect('mongodb://localhost/test');</pre>
 </div>
 <br>
 
 <p>Create a MongoDB schema & a collection to store the product details using the below script. Create a reference to the 'product' object which uniquely represents a record in the collection. When this code gets executed, MongoDB creates a collection named "Products'.</p>
 
 <div class="panel">
-<pre style="font-family:comicsansms;font-size:15px;">var productSchema = new mongoose.Schema({
+<pre>var productSchema = new mongoose.Schema({
   prdId: String,
   name: { type: String }, 
   price: Number
@@ -172,9 +172,12 @@ Save this file as 'addProducts.ejs' and under the 'views' folder.  Note: The sub
 &lt;h2&gt;Enter Product Details &lt;/h2&gt;
 &lt;form action="/new" method="POST"&gt;
 	&lt;p&gt;
-	&lt;label for="ProductId"&gt;Product Id 		: &lt;/label&gt;&lt;input type="text" name="ProductId"/&gt; &lt;br&gt;
-	&lt;label for="ProductName"&gt;Product Name 	: &lt;/label&gt;&lt;input type="text" name="ProductName"/&gt; &lt;br&gt;
-	&lt;label for="ProductPrice"&gt;Product Price : &lt;/label&gt;&lt;input type="number" name="ProductPrice"/&gt; &lt;br&gt;
+	&lt;label for="ProductId"&gt;Product Id 		: 
+		&lt;/label&gt;&lt;input type="text" name="ProductId"/&gt; &lt;br&gt;
+	&lt;label for="ProductName"&gt;Product Name 	: 
+		&lt;/label&gt;&lt;input type="text" name="ProductName"/&gt; &lt;br&gt;
+	&lt;label for="ProductPrice"&gt;Product Price : 
+		&lt;/label&gt;&lt;input type="number" name="ProductPrice"/&gt; &lt;br&gt;
 	&lt;input type="submit"/&gt;
 	&lt;/p&gt;
 &lt;/form&gt;
@@ -187,7 +190,7 @@ Save this file as 'addProducts.ejs' and under the 'views' folder.  Note: The sub
 <p>In the accessmongo.js include the below code snippet.  When the url comes with operation as 'add' then the view 'addProduct.ejs' gets invoked. The submit button click invokes the '/new' post. Using save() method in Mongoose module, the product details are persisted in MongoDB.</p>
 
 <div class="panel"> 
-<pre style="font-family:comicsansms;font-size:15px;">app.get('/add', function(req,res) {
+<pre>app.get('/add', function(req,res) {
     res.render('addProduct.ejs');
 });
 
@@ -222,14 +225,14 @@ app.post('/new', function(req, res){
 &lt;% if( Array.isArray(products) ) { %&gt;
 &lt;ul&gt;
 &lt;%products.forEach( function( prd ){ %&gt;
-  &lt;b&gt;
-  &lt;li&gt; &lt;%= prd.prdId %&gt; ; &lt;%= prd.name %&gt; ; $&lt;%= prd.price %&gt;&lt;/li&gt;
-  &lt;/b&gt;
+&lt;b&gt;
+&lt;li&gt; &lt;%= prd.prdId %&gt; ; &lt;%= prd.name %&gt; ; $&lt;%= prd.price %&gt;&lt;/li&gt;
+&lt;/b&gt;
 &lt;% })} else { %&gt;
 &lt;b&gt;
- Id 	: &lt;%= products.prdId %&gt;
- Name 	: &lt;%= products.name %&gt;
- Price 	: $&lt;%= products.price %&gt;
+Id: &lt;%= products.prdId %&gt;
+Name: &lt;%= products.name %&gt;
+Price: $&lt;%= products.price %&gt;
 &lt;/b&gt;
 &lt;% }; %&gt;
 &lt;/html&gt;
@@ -241,7 +244,7 @@ app.post('/new', function(req, res){
 <p>Add the below script to the accessmongo.js.  Function 'renderResult' is a helper function created to re-use the page rendering code.</p>
 <br>
 <div class="panel">
-<pre style="font-family:comicsansms;font-size:15px;">
+<pre>
 app.get('/viewall', function(req,res) {
     Product.find({}, function(err, prds) {
     console.log("\nProducts !");
@@ -264,7 +267,7 @@ function renderResult(res, prds, msg) {
 <image src="https://f.cloud.github.com/assets/6375258/1893807/03518766-7ab8-11e3-9020-4b6266a04b7b.PNG"/>
 <br>
 <p>Try yourself : Retrieve a record from MongoDB with a condition and display.  e.g. find a product with id 'prd5555'. </p>
-<p style="font-family:comicsansms;font-size:15px;">Happy Coding !</p>
+<p>Happy Coding !</p>
 </article>
 </div>
 <!-- End Main Content -->
