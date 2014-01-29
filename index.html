@@ -100,9 +100,9 @@ res.render('index.ejs');
 
 <br>
 
-<!-- index.ejs -->
+<!-- INDEX.EJS CODE -->
 <div class="panel">
-<pre style="font-family:Tahoma;font-size:15px;">
+<pre style="font-family:comicsansms;font-size:15px;">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -110,7 +110,6 @@ res.render('index.ejs');
 &lt;/head&gt;
 &lt;body&gt;
 &lt;h2&gt;CRUD operations using Node & Mongo DB &lt;/h2&gt;
-
 &lt;a href="/add"&gt;Add a Product&lt;/ahref&gt; &lt;br&gt;
 &lt;a href="/view/:id"&gt;View a Product&lt;/ahref&gt; &lt;br&gt;
 &lt;a href="/viewall"&gt;View All Products&lt;/ahref&gt; &lt;br&gt;
@@ -118,14 +117,14 @@ res.render('index.ejs');
 &lt;/html&gt;
 </pre>
 </div>
-
-
 <br>
-<p>Run the 'accessmongo.js' and access the <font color="blue">http://localhost:3000/</font>, you will see the below page.  You have learned to use the templating engine.</p>   
 
-<!-- Browser Display -->
+<p>Run the 'accessmongo.js' and access the <font color="blue">http://localhost:3000/</font>, you will see the below page.  You have learned to use the templating engine.</p>  
+<br> 
+<!-- BROWSER DISPLAY OF INDEX.EJS -->
 <image src="https://f.cloud.github.com/assets/6375258/1893640/78d50cac-7aa8-11e3-8622-4469301353ab.PNG"/>
-  
+ 
+<br> 
 <h4><a href="#">Accessing MongoDB from Node.js</a></h4>
 <p>For accessing the collections in the MongoDB the node module 'Mongoose' can be used.  Install the Mongoose and include it in the 'accessmongo.js' as a required module.</p>
 
@@ -133,12 +132,13 @@ res.render('index.ejs');
 <pre style="font-family:comicsansms;font-size:15px;">npm install mongoose</pre>
 <pre style="font-family:comicsansms;font-size:15px;">mongoose = require('mongoose');</pre>
 </div>
-
 <br>
 
 <p>Mongoose module provides the easy access to MongoDB.  MongoDB comes with a default database called 'test', for this example this 'test' database will be used. Collections in MongoDB are similar to 'Tables' in RDBMS and Mongo DB uses flexi schema approach.  Connect to MongoDB 'test' database using the below script.</p>
 
+<div class="panel">
 <pre style="font-family:comicsansms;font-size:15px;">mongoose.connect('mongodb://localhost/test');</pre>
+</div>
 <br>
 
 <p>Create a MongoDB schema & a collection to store the product details using the below script. Create a reference to the 'product' object which uniquely represents a record in the collection. When this code gets executed, MongoDB creates a collection named "Products'.</p>
@@ -156,12 +156,31 @@ var Product = mongoose.model('Product', productSchema);
 
 <br>
 
-<!-- Inserting records  -->
+<!-- INSERT RECORDS  -->
 
-<h4><a href="#">Inserting a record</a></h4>
-<p>First a html 'form' has to be created to capture the product details.  Let's create a simple html form. EJS will be used to define the html form elements. Save this file as 'addProducts.ejs' and under the 'views' folder.  Note: The submit button invokes a 'post' call.</p>
+<h4><a href="#">Inserting records</a></h4>
+<p>First a html 'form' has to be created to capture the product details.  Let's create a simple html form. EJS will be used to define the html form elements. 
+Save this file as 'addProducts.ejs' and under the 'views' folder.  Note: The submit button invokes a 'post' call.</p>
 
-<image src="https://f.cloud.github.com/assets/6375258/1893763/ed1318f6-7ab3-11e3-8459-8945e6462aa1.PNG"/>
+<div class="panel">
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Add Product&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h2&gt;Enter Product Details &lt;/h2&gt;
+&lt;form action="/new" method="POST"&gt;
+	&lt;p&gt;
+	&lt;label for="ProductId"&gt;Product Id 		: &lt;/label&gt;&lt;input type="text" name="ProductId"/&gt; &lt;br&gt;
+	&lt;label for="ProductName"&gt;Product Name 	: &lt;/label&gt;&lt;input type="text" name="ProductName"/&gt; &lt;br&gt;
+	&lt;label for="ProductPrice"&gt;Product Price : &lt;/label&gt;&lt;input type="number" name="ProductPrice"/&gt; &lt;br&gt;
+	&lt;input type="submit"/&gt;
+	&lt;/p&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+</pre>
+</div>
 
 <br><br>
 
@@ -185,16 +204,39 @@ app.post('/new', function(req, res){
 </div>
 
 <br>
-
 <p>Invoke the URL <font color="blue">'http://localhost:3000/add'</font> and submit the form.  Congratulations !!! You have now learnt how to insert a record into MongoDB collection. </p>
 
-
-<!-- View All -->
+<!-- VIEW ALL -->
 <br>
 <h4><a href="#">Viewing all the records</a></h4>
 <p>JSON is used to send & receive data to MongoDB.  Now, create a 'display.ejs' in the "views" folder with the following html code.</p>
 
-<image src="https://f.cloud.github.com/assets/6375258/1893792/afb2c6c0-7ab6-11e3-9047-0f1cccc2749d.PNG"/>
+<div class="panel">
+<pre>&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Data from Mongo DB&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h2&gt;&lt;%=message%&gt;&lt;/h2&gt;
+
+&lt;% if( Array.isArray(products) ) { %&gt;
+&lt;ul&gt;
+&lt;%products.forEach( function( prd ){ %&gt;
+  &lt;b&gt;
+  &lt;li&gt; &lt;%= prd.prdId %&gt; ; &lt;%= prd.name %&gt; ; $&lt;%= prd.price %&gt;&lt;/li&gt;
+  &lt;/b&gt;
+&lt;% })} else { %&gt;
+&lt;b&gt;
+ Id 	: &lt;%= products.prdId %&gt;
+ Name 	: &lt;%= products.name %&gt;
+ Price 	: $&lt;%= products.price %&gt;
+&lt;/b&gt;
+&lt;% }; %&gt;
+&lt;/html&gt;
+&lt;/body&gt;
+</pre>
+</div>
+
 <br>  
 <p>Add the below script to the accessmongo.js.  Function 'renderResult' is a helper function created to re-use the page rendering code.</p>
 <br>
@@ -219,16 +261,12 @@ function renderResult(res, prds, msg) {
 
 <br>
 <p>Invoke the URL <font color="blue">http://localhost:3000/viewall</font>. All the records in the "Products" collection in MongoDB will be displayed in this page.</p>
-
 <image src="https://f.cloud.github.com/assets/6375258/1893807/03518766-7ab8-11e3-9020-4b6266a04b7b.PNG"/>
 <br>
-
 <p>Try yourself : Retrieve a record from MongoDB with a condition and display.  e.g. find a product with id 'prd5555'. </p>
 <p style="font-family:comicsansms;font-size:15px;">Happy Coding !</p>
-
 </article>
 </div>
- 
 <!-- End Main Content -->
  
 <!-- Sidebar -->
@@ -266,7 +304,7 @@ function renderResult(res, prds, msg) {
         <div class="large-6 columns">
           <ul class="inline-list right">
             <li><a href="#">Home</a></li>
-            <li><a href="#">About me</a></li>
+            <li><a href="in.linkedin.com/in/vrkrajesh/">About me</a></li>
           </ul>
         </div>
       </div>
