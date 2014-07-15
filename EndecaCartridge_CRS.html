@@ -17,27 +17,11 @@
          <li><a href="in.linkedin.com/in/vrkrajesh/" class="small button">About me</a></li>
         </ul>
       </div>
-<<<<<<< HEAD
-      <h1>Technoon <small>Tutorials <br>Node & MongoDB using Mongoose </small></h1>
-=======
       <h1>Technoon <small>Tutorials <br> Creating Endeca Catridge - ATG CRS</small></h1>
->>>>>>> cd46c41325047ead150a6697d24f4d67dec98eee
       <hr />
     </div>
   </div>
  
-<<<<<<< HEAD
-  <!-- End Nav     -->
-  <!-- Main Page Content and Sidebar -->
- 
-  <div class="row">
-    <!-- Main Blog Content -->
-    <div class="large-9 columns" role="content">
- 
-<article>
- 
-<h6>Written by <a href="#">Rajeshkumar Venkatesan</a> on Jan, 2014.</h6>
-=======
   <!-- End Nav -->
   <!-- Main Page Content and Sidebar -->
  
@@ -48,47 +32,11 @@
  
 <article>
 <h6>Written by <a href="#">Rajeshkumar Venkatesan</a> on July, 2014.</h6>
->>>>>>> cd46c41325047ead150a6697d24f4d67dec98eee
 
 <br>
 
 <div class="row">
 <div class="large-6 columns">
-<<<<<<< HEAD
-<h4><a href="#">Node.js, Express, EJS, Mongoose & MongoDB</a></h4>
-<p>This tutorial requires basic knowledge in Node.js & MongoDB.  The 'mongoose' node module can be used to access the MongoDB from Node.js.  Express is a web application framework for Node.js, which provides the easy way to build web applications with multi pages.  Express comes with 'Jade', a templating engine. EJS is also a popular templating engine for Node.js. In this tutorial 'EJS' will be used as a templating engine.</p>
-</div>
-
-<div class="large-6 columns">
-<img src="https://f.cloud.github.com/assets/6375258/2006535/271c92ae-871e-11e3-9577-1836f9609f35.PNG"/>
-</div>
-</div>
-
-<h4><a href="#">Express & EJS</a></h4>
-<p>Install the 'express' & 'ejs' node modules using the below commands.</p>
-
-<div class="panel">
-<pre>npm install express
-npm install ejs
-</pre>
-</div>
-<br>
-
-<p>Let's see how to use the 'express' for handling the http requests.  Use the 'require' method to import the express library to the node script.  By passing the express object 'app' as an argument to the 'createServer' method,  all the incoming http requests can be handled by the express framework.  Save the below script as 'accessmongo.js' and run the script as 'node accessmongo.js'.  Access the url 'http://localhost:3000' in the browser, Bingo ! Welcome to Technoons!</p>
-
-<div class="panel">
-<pre>var express = require('express'),
-http = require('http');
-var app = express();
-
-app.get('/', function(req, res) {
-res.send('Welcome to Technoons!');
-});
-
-http.createServer(app).listen(3000, function() {
-console.log("Server is listening on port 3000"); 
-});
-=======
 <h4><a href="#">Preface</a></h4>
 <p>In this tutorial, we will see how to create a new endeca cartridge and use it in ATG CRS module.  This tutorial assumes the ATG & ATG CRS, Endeca MDEX, Endeca Platform services are installed and working good. </p>
 </div>
@@ -103,7 +51,7 @@ console.log("Server is listening on port 3000");
 
 <div class="panel">
 <pre>
-<!--  
+
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentTemplate xmlns="http://endeca.com/schema/content-template/2008" type="HeaderContent">
   <Description>${template.description}</Description>
@@ -118,7 +66,7 @@ console.log("Server is listening on port 3000");
     <BasicContentItemEditor/>
   </EditorPanel>
 </ContentTemplate>
--->
+
 </pre>
 </div>
 
@@ -131,208 +79,11 @@ console.log("Server is listening on port 3000");
 <pre>
 C:\Endeca\APPS\CRS\control\set_template.bat  
 (Assuming the default Endeca Apps install location)
->>>>>>> cd46c41325047ead150a6697d24f4d67dec98eee
 </pre>
 </div>
 
 <br>
 
-<<<<<<< HEAD
-<p>Configure the 'express' by setting the essential parameters. Take a note that 'ejs' is the view engine here.</p>
-
-<div class="panel">
-<pre >app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
-</pre>
-</div>
-
-<br>
-<p>Let's see how to display html elements using EJS. In the 'accessmongo.js' add the below code fragment. After this, create a file 'index.ejs' and include the below html fragments.  
-The ejs file 'index.ejs' gets invoked when the request comes for the '/'.  Note: All '.ejs' files has to be stored in the "views" folder as per the application configuration.</p>
-
-<div class="panel">
-<pre>app.get('/', function(req,res) {
-res.render('index.ejs');
-});</pre>
-</div>
-
-<br>
-
-<!-- INDEX.EJS CODE -->
-<div class="panel">
-<pre>
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;title&gt;Mongo DB CRUD Operations &lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;h2&gt;CRUD operations using Node & Mongo DB &lt;/h2&gt;
-&lt;a href="/add"&gt;Add a Product&lt;/ahref&gt; &lt;br&gt;
-&lt;a href="/view/:id"&gt;View a Product&lt;/ahref&gt; &lt;br&gt;
-&lt;a href="/viewall"&gt;View All Products&lt;/ahref&gt; &lt;br&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</pre>
-</div>
-<br>
-
-<p>Run the 'accessmongo.js' and access the <font color="blue">http://localhost:3000/</font>, you will see the below page.  You have learned to use the templating engine.</p>  
-<br> 
-<!-- BROWSER DISPLAY OF INDEX.EJS -->
-<image src="https://f.cloud.github.com/assets/6375258/1893640/78d50cac-7aa8-11e3-8622-4469301353ab.PNG"/>
- 
-<br> 
-<h4><a href="#">Accessing MongoDB from Node.js</a></h4>
-<p>For accessing the collections in the MongoDB the node module 'Mongoose' can be used.  Install the Mongoose and include it in the 'accessmongo.js' as a required module.</p>
-
-<div class="panel">
-<pre>npm install mongoose</pre>
-<pre>mongoose = require('mongoose');</pre>
-</div>
-<br>
-
-<p>Mongoose module provides the easy access to MongoDB.  MongoDB comes with a default database called 'test', for this example this 'test' database will be used. Collections in MongoDB are similar to 'Tables' in RDBMS and Mongo DB uses flexi schema approach.  Connect to MongoDB 'test' database using the below script.</p>
-
-<div class="panel">
-<pre>mongoose.connect('mongodb://localhost/test');</pre>
-</div>
-<br>
-
-<p>Create a MongoDB schema & a collection to store the product details using the below script. Create a reference to the 'product' object which uniquely represents a record in the collection. When this code gets executed, MongoDB creates a collection named "Products'.</p>
-
-<div class="panel">
-<pre>var productSchema = new mongoose.Schema({
-  prdId: String,
-  name: { type: String }, 
-  price: Number
-})
-
-var Product = mongoose.model('Product', productSchema);
-</pre>
-</div>
-
-<br>
-
-<!-- INSERT RECORDS  -->
-
-<h4><a href="#">Inserting records</a></h4>
-<p>First a html 'form' has to be created to capture the product details.  Let's create a simple html form. EJS will be used to define the html form elements. 
-Save this file as 'addProducts.ejs' and under the 'views' folder.  Note: The submit button invokes a 'post' call.</p>
-
-<div class="panel">
-<pre>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;title&gt;Add Product&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;h2&gt;Enter Product Details &lt;/h2&gt;
-&lt;form action="/new" method="POST"&gt;
-	&lt;p&gt;
-	&lt;label for="ProductId"&gt;Product Id 		: 
-		&lt;/label&gt;&lt;input type="text" name="ProductId"/&gt; &lt;br&gt;
-	&lt;label for="ProductName"&gt;Product Name 	: 
-		&lt;/label&gt;&lt;input type="text" name="ProductName"/&gt; &lt;br&gt;
-	&lt;label for="ProductPrice"&gt;Product Price : 
-		&lt;/label&gt;&lt;input type="number" name="ProductPrice"/&gt; &lt;br&gt;
-	&lt;input type="submit"/&gt;
-	&lt;/p&gt;
-&lt;/form&gt;
-&lt;/body&gt;
-</pre>
-</div>
-
-<br><br>
-
-<p>In the accessmongo.js include the below code snippet.  When the url comes with operation as 'add' then the view 'addProduct.ejs' gets invoked. The submit button click invokes the '/new' post. Using save() method in Mongoose module, the product details are persisted in MongoDB.</p>
-
-<div class="panel"> 
-<pre>app.get('/add', function(req,res) {
-    res.render('addProduct.ejs');
-});
-
-app.post('/new', function(req, res){
-  new Product({
-    prdId : req.body.ProductId,
-    name  : req.body.ProductName,
-    price   : req.body.ProductPrice
-  }).save(function(err, prd){
-    if(err) res.json(err);
-    else    res.send("Product Successfully Added !");
-  });
-});</pre>
-</div>
-
-<br>
-<p>Invoke the URL <font color="blue">'http://localhost:3000/add'</font> and submit the form.  Congratulations !!! You have now learnt how to insert a record into MongoDB collection. </p>
-
-<!-- VIEW ALL -->
-<br>
-<h4><a href="#">Viewing all the records</a></h4>
-<p>JSON is used to send & receive data to MongoDB.  Now, create a 'display.ejs' in the "views" folder with the following html code.</p>
-
-<div class="panel">
-<pre>&lt;html&gt;
-&lt;head&gt;
-&lt;title&gt;Data from Mongo DB&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;h2&gt;&lt;%=message%&gt;&lt;/h2&gt;
-
-&lt;% if( Array.isArray(products) ) { %&gt;
-&lt;ul&gt;
-&lt;%products.forEach( function( prd ){ %&gt;
-&lt;b&gt;
-&lt;li&gt; &lt;%= prd.prdId %&gt; ; &lt;%= prd.name %&gt; ; $&lt;%= prd.price %&gt;&lt;/li&gt;
-&lt;/b&gt;
-&lt;% })} else { %&gt;
-&lt;b&gt;
-Id: &lt;%= products.prdId %&gt;
-Name: &lt;%= products.name %&gt;
-Price: $&lt;%= products.price %&gt;
-&lt;/b&gt;
-&lt;% }; %&gt;
-&lt;/html&gt;
-&lt;/body&gt;
-</pre>
-</div>
-
-<br>  
-<p>Add the below script to the accessmongo.js.  Function 'renderResult' is a helper function created to re-use the page rendering code.</p>
-<br>
-<div class="panel">
-<pre>
-app.get('/viewall', function(req,res) {
-    Product.find({}, function(err, prds) {
-    console.log("\nProducts !");
-    console.log(prds); 
-    renderResult(res, prds, "Product List from MongoDB :");
-});});
-
-function renderResult(res, prds, msg) {
-  res.render('display.ejs', {message:msg, products:prds},
-    function(err, result) {
-      if (!err) {res.end(result);}
-      else {res.end('Oops ! An error occurred.');
-        console.log(err);}
-});}
-</pre>
-</div>
-
-<br>
-<p>Invoke the URL <font color="blue">http://localhost:3000/viewall</font>. All the records in the "Products" collection in MongoDB will be displayed in this page.</p>
-<image src="https://f.cloud.github.com/assets/6375258/1893807/03518766-7ab8-11e3-9020-4b6266a04b7b.PNG"/>
-<br>
-<p>Try yourself : Retrieve a record from MongoDB with a condition and display.  e.g. find a product with id 'prd5555'. </p>
-<p>Happy Coding !</p>
-</article>
-</div>
-=======
 <h4><a href="#">3. Validate the successful creation of Cartridge</a></h4>
 <p>Login into Endeca workbench (http://localhost:8006/) and navigate to "content -> Web -> Home Pages -> Default Home Pages" and try adding the "HeaderContent" as "Hello-World" cartridge.  If you can see the "Hello-World" header content cartridge then it means the Step-1 & Step-2 above went well. </p>
 
@@ -345,18 +96,22 @@ C:\ATG\ATG11.0\CommerceReferenceStore\Store\Endeca\Assembler folder as default. 
 
 <div class="panel">
 <pre>
-C:\Endeca\APPS\CRS\control\set_template.bat  
+C:\Endeca\APPS\CRS\control\set_template.bat
+
 (Assuming the default Endeca Apps install location)
 </pre>
 </div>
 
 <p>
 i) Cartridge Handler & ConentItem returned by the handler should be kept under the package atg.endeca.assembler.cartridge.handler. 
+</p>
+
+<p>
 ii) Create the HelloWorldContentItem.java with the below code 
 </p>
 
 <div class="panel">
-<pre style="font-family:comicsansms;font-size:15px;">
+<pre>
 package atg.projects.store.assembler.cartridge;
 
 import atg.repository.RepositoryItem;
@@ -386,7 +141,7 @@ iii) Create the HelloWorldCartridgeHandler.java with the below code.  Also creat
 </p>
 
 <div class="panel">
-<pre style="font-family:comicsansms;font-size:15px;">
+<pre>
 package atg.projects.store.assembler.cartridge.handler;
 
 import atg.core.util.StringUtils;
@@ -399,9 +154,11 @@ import com.endeca.infront.assembler.AbstractCartridgeHandler;
 
 public class HelloWorldCartridgeHandler extends AbstractCartridgeHandler {
  
-  public HelloWorldContentItem process(ContentItem pCartridgeConfig) throws CartridgeHandlerException {
+  public HelloWorldContentItem process(ContentItem pCartridgeConfig) 
+            throws CartridgeHandlerException {
 
-    HelloWorldContentItem helloWorldItem = new HelloWorldContentItem(pCartridgeConfig);
+    HelloWorldContentItem helloWorldItem = 
+                new HelloWorldContentItem(pCartridgeConfig);
     helloWorldItem.setWelcomeMessage("Hello World !");
     return categoryItem;
 
@@ -415,10 +172,12 @@ Also, create a Hello World Handlder component using the below properties file.
 </P>
 
 <div class="panel">
-<pre style="font-family:comicsansms;font-size:15px;">
-C:\ATG\ATG11.0\CommerceReferenceStore\Store\Endeca\Assembler\src\config\atg\endeca\assembler\cartridge\handler\HelloWorld.properties
+<pre>
+C:\ATG\ATG11.0\CommerceReferenceStore\Store\Endeca\Assembler\src\
+        config\atg\endeca\assembler\cartridge\handler\HelloWorld.properties
 
-$class=atg.projects.store.assembler.cartridge.handler.GymboreeCategoryHandler
+
+$class=atg.projects.store.assembler.cartridge.handler.HelloWorldCartridgeHandler
 $scope=prototype
 </pre>
 </div>
@@ -435,9 +194,10 @@ v) Finally map Cartridge to CatridgeHandler component.
 </p>
 
 <div class="panel">
-<pre style="font-family:comicsansms;font-size:15px;">
+<pre>
 
-"CommerceReferenceStore\Store\Endeca\Assembler\src\config\atg\endeca\assembler\NucleusAssemblerFactory.properties"
+CommerceReferenceStore\Store\Endeca\Assembler\src\config\atg\
+                endeca\assembler\NucleusAssemblerFactory.properties
 
 Hello-World=/atg/endeca/assembler/cartridge/handler/HelloWorld
 </pre>
@@ -449,7 +209,6 @@ Hello-World=/atg/endeca/assembler/cartridge/handler/HelloWorld
 </article>
 </div>
 
->>>>>>> cd46c41325047ead150a6697d24f4d67dec98eee
 <!-- End Main Content -->
  
 <!-- Sidebar -->
@@ -459,15 +218,13 @@ Hello-World=/atg/endeca/assembler/cartridge/handler/HelloWorld
       <ul class="side-nav">
         <li><a href="http://technoon.github.io/lessons/index.html">Node & MongoDB</a></li>
         <li><a href="http://technoon.github.io/lessons/arduino.html">Arduino Microcontroller</a></li>
-        <li><a href="#">Foundation Response Web Design</a></li>
-        <li><a href="#">Knockout JS</a></li>
-        <li><a href="#">Rasberry Pi</a></li>
+        <li><a href="http://technoon.github.io/lessons/arduino.html">Endeca Cartridge & ATG CRS</a></li>
       </ul>
  
       <div class="panel">
-        <h5>Featured</h5>
-        <p>Arduino is an open-source electronics platform that can acknowledge and interact with its environment through a variety of sensor types.</p>
-        <a href="http://technoon.github.io/lessons/arduino.html">Read More →</a>
+        <h5>Check MongoDB Tutorials</h5>
+        <p></p>
+        <a href="http://technoon.github.io/lessons/index.html">Read More →</a>
       </div>
  
     </aside>
