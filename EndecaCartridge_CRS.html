@@ -51,6 +51,7 @@
 
 <div class="panel">
 <pre>
+<!--  
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentTemplate xmlns="http://endeca.com/schema/content-template/2008" type="HeaderContent">
   <Description>${template.description}</Description>
@@ -65,6 +66,7 @@
     <BasicContentItemEditor/>
   </EditorPanel>
 </ContentTemplate>
+-->
 </pre>
 </div>
 
@@ -75,32 +77,123 @@
 
 <div class="panel">
 <pre>
-C:\Endeca\APPS\CRS\control\set_template.bat  (Assuming the default Endeca Apps install location)
+C:\Endeca\APPS\CRS\control\set_template.bat  
+(Assuming the default Endeca Apps install location)
 </pre>
 </div>
+
 <br>
 
-
-=============================
-
-
-
-=============================
+<h4><a href="#">3. Validate the successful creation of Cartridge</a></h4>
+<p>Login into Endeca workbench (http://localhost:8006/) and navigate to "content -> Web -> Home Pages -> Default Home Pages" and try adding the "HeaderContent" as "Hello-World" cartridge.  If you can see the "Hello-World" header content cartridge then it means the Step-1 & Step-2 above went well. </p>
 
 
+<br>
 
+<h4><a href="#">4. Creating the ATG Cartridge Components</a></h4>
+<p>Now the cartridge ATG components has to be created.  Follow the below steps.  The Endeca assembler source & config files are kept in the 
+C:\ATG\ATG11.0\CommerceReferenceStore\Store\Endeca\Assembler folder as default. </p>
 
+<div class="panel">
+<pre>
+C:\Endeca\APPS\CRS\control\set_template.bat  
+(Assuming the default Endeca Apps install location)
+</pre>
+</div>
 
-=============================
+<p>
+i) Cartridge Handler & ConentItem returned by the handler should be kept under the package atg.endeca.assembler.cartridge.handler. 
+ii) Create the HelloWorldContentItem.java with the below code 
+</p>
 
+<div class="panel">
+<pre style="font-family:comicsansms;font-size:15px;">
+package atg.projects.store.assembler.cartridge;
 
+import atg.repository.RepositoryItem;
+import com.endeca.infront.assembler.BasicContentItem;
+import com.endeca.infront.assembler.ContentItem;
 
-=============================
+public class HelloWorldContentItem extends BasicContentItem {
+  public static final String MSG_KEY = "welcomeMessage";
 
+  public HelloWorldContentItem(ContentItem pConfig) {
+    super(pConfig);
+  }
 
+  public String getWelcomeMessage() {
+    return getTypedProperty(MSG_KEY);
+  }
 
+  public void setWelcomeMessage(String pWelMsg) {
+    put(MSG_KEY, pWelMsg);
+  }
+}
+</pre>
+</div>
 
-=============================
+<p>
+iii) Create the HelloWorldCartridgeHandler.java with the below code.  Also create the HelloWorldCartridgeHandler.properties (component) which refers the handler source.
+</p>
+
+<div class="panel">
+<pre style="font-family:comicsansms;font-size:15px;">
+package atg.projects.store.assembler.cartridge.handler;
+
+import atg.core.util.StringUtils;
+import atg.endeca.assembler.AssemblerTools;
+import atg.projects.store.assembler.cartridge.HelloWorldContentItem;
+import com.endeca.infront.assembler.BasicContentItem;
+import com.endeca.infront.assembler.CartridgeHandlerException;
+import com.endeca.infront.assembler.ContentItem;
+import com.endeca.infront.assembler.AbstractCartridgeHandler;
+
+public class HelloWorldCartridgeHandler extends AbstractCartridgeHandler {
+ 
+  public HelloWorldContentItem process(ContentItem pCartridgeConfig) throws CartridgeHandlerException {
+
+    HelloWorldContentItem helloWorldItem = new HelloWorldContentItem(pCartridgeConfig);
+    helloWorldItem.setWelcomeMessage("Hello World !");
+    return categoryItem;
+
+  }
+}
+</pre>
+</div>
+
+<p>
+Also, create a Hello World Handlder component using the below properties file.
+</P>
+
+<div class="panel">
+<pre style="font-family:comicsansms;font-size:15px;">
+C:\ATG\ATG11.0\CommerceReferenceStore\Store\Endeca\Assembler\src\config\atg\endeca\assembler\cartridge\handler\HelloWorld.properties
+
+$class=atg.projects.store.assembler.cartridge.handler.GymboreeCategoryHandler
+$scope=prototype
+</pre>
+</div>
+
+<br>
+<p>
+iv) A cartridge handler should be mapped to a corresponding Renderer (HelloWorldCatridgeRenderer). Ideally renderers are JSPs. Copy the below JSP renderer into the j2ee-apps\Storefront\store.war\cartridges\Hello-World folder.  Where Hello-World is a newly created folder. 
+</p>
+
+<br>
+
+<p>
+v) Finally map Cartridge to CatridgeHandler component.  
+</p>
+
+<div class="panel">
+<pre style="font-family:comicsansms;font-size:15px;">
+
+"CommerceReferenceStore\Store\Endeca\Assembler\src\config\atg\endeca\assembler\NucleusAssemblerFactory.properties"
+
+Hello-World=/atg/endeca/assembler/cartridge/handler/HelloWorld
+</pre>
+</div>
+
 
 <br>
 <p>Happy Coding !</p>
