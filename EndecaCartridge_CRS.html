@@ -51,7 +51,7 @@
 
 <div class="panel">
 <pre>
-<!--  
+
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentTemplate xmlns="http://endeca.com/schema/content-template/2008" type="HeaderContent">
   <Description>${template.description}</Description>
@@ -66,7 +66,7 @@
     <BasicContentItemEditor/>
   </EditorPanel>
 </ContentTemplate>
--->
+
 </pre>
 </div>
 
@@ -96,18 +96,22 @@ C:\ATG\ATG11.0\CommerceReferenceStore\Store\Endeca\Assembler folder as default. 
 
 <div class="panel">
 <pre>
-C:\Endeca\APPS\CRS\control\set_template.bat  
+C:\Endeca\APPS\CRS\control\set_template.bat
+
 (Assuming the default Endeca Apps install location)
 </pre>
 </div>
 
 <p>
 i) Cartridge Handler & ConentItem returned by the handler should be kept under the package atg.endeca.assembler.cartridge.handler. 
+</p>
+
+<p>
 ii) Create the HelloWorldContentItem.java with the below code 
 </p>
 
 <div class="panel">
-<pre style="font-family:comicsansms;font-size:15px;">
+<pre>
 package atg.projects.store.assembler.cartridge;
 
 import atg.repository.RepositoryItem;
@@ -137,7 +141,7 @@ iii) Create the HelloWorldCartridgeHandler.java with the below code.  Also creat
 </p>
 
 <div class="panel">
-<pre style="font-family:comicsansms;font-size:15px;">
+<pre>
 package atg.projects.store.assembler.cartridge.handler;
 
 import atg.core.util.StringUtils;
@@ -150,9 +154,11 @@ import com.endeca.infront.assembler.AbstractCartridgeHandler;
 
 public class HelloWorldCartridgeHandler extends AbstractCartridgeHandler {
  
-  public HelloWorldContentItem process(ContentItem pCartridgeConfig) throws CartridgeHandlerException {
+  public HelloWorldContentItem process(ContentItem pCartridgeConfig) 
+            throws CartridgeHandlerException {
 
-    HelloWorldContentItem helloWorldItem = new HelloWorldContentItem(pCartridgeConfig);
+    HelloWorldContentItem helloWorldItem = 
+                new HelloWorldContentItem(pCartridgeConfig);
     helloWorldItem.setWelcomeMessage("Hello World !");
     return categoryItem;
 
@@ -166,10 +172,12 @@ Also, create a Hello World Handlder component using the below properties file.
 </P>
 
 <div class="panel">
-<pre style="font-family:comicsansms;font-size:15px;">
-C:\ATG\ATG11.0\CommerceReferenceStore\Store\Endeca\Assembler\src\config\atg\endeca\assembler\cartridge\handler\HelloWorld.properties
+<pre>
+C:\ATG\ATG11.0\CommerceReferenceStore\Store\Endeca\Assembler\src\
+        config\atg\endeca\assembler\cartridge\handler\HelloWorld.properties
 
-$class=atg.projects.store.assembler.cartridge.handler.GymboreeCategoryHandler
+
+$class=atg.projects.store.assembler.cartridge.handler.HelloWorldCartridgeHandler
 $scope=prototype
 </pre>
 </div>
@@ -186,9 +194,10 @@ v) Finally map Cartridge to CatridgeHandler component.
 </p>
 
 <div class="panel">
-<pre style="font-family:comicsansms;font-size:15px;">
+<pre>
 
-"CommerceReferenceStore\Store\Endeca\Assembler\src\config\atg\endeca\assembler\NucleusAssemblerFactory.properties"
+CommerceReferenceStore\Store\Endeca\Assembler\src\config\atg\
+                endeca\assembler\NucleusAssemblerFactory.properties
 
 Hello-World=/atg/endeca/assembler/cartridge/handler/HelloWorld
 </pre>
@@ -215,9 +224,9 @@ Hello-World=/atg/endeca/assembler/cartridge/handler/HelloWorld
       </ul>
  
       <div class="panel">
-        <h5>Featured</h5>
-        <p>Arduino is an open-source electronics platform that can acknowledge and interact with its environment through a variety of sensor types.</p>
-        <a href="http://technoon.github.io/lessons/arduino.html">Read More →</a>
+        <h5>Check my mongoDB Tutorials</h5>
+        <p></p>
+        <a href="http://technoon.github.io/lessons/index.html">Read More →</a>
       </div>
  
     </aside>
