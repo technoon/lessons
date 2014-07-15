@@ -17,11 +17,16 @@
          <li><a href="in.linkedin.com/in/vrkrajesh/" class="small button">About me</a></li>
         </ul>
       </div>
+<<<<<<< HEAD
       <h1>Technoon <small>Tutorials <br>Node & MongoDB using Mongoose </small></h1>
+=======
+      <h1>Technoon <small>Tutorials <br> Creating Endeca Catridge - ATG CRS</small></h1>
+>>>>>>> cd46c41325047ead150a6697d24f4d67dec98eee
       <hr />
     </div>
   </div>
  
+<<<<<<< HEAD
   <!-- End Nav     -->
   <!-- Main Page Content and Sidebar -->
  
@@ -32,11 +37,24 @@
 <article>
  
 <h6>Written by <a href="#">Rajeshkumar Venkatesan</a> on Jan, 2014.</h6>
+=======
+  <!-- End Nav -->
+  <!-- Main Page Content and Sidebar -->
+ 
+<div class="row">
+
+<!-- Main Blog Content -->
+<div class="large-9 columns" role="content">
+ 
+<article>
+<h6>Written by <a href="#">Rajeshkumar Venkatesan</a> on July, 2014.</h6>
+>>>>>>> cd46c41325047ead150a6697d24f4d67dec98eee
 
 <br>
 
 <div class="row">
 <div class="large-6 columns">
+<<<<<<< HEAD
 <h4><a href="#">Node.js, Express, EJS, Mongoose & MongoDB</a></h4>
 <p>This tutorial requires basic knowledge in Node.js & MongoDB.  The 'mongoose' node module can be used to access the MongoDB from Node.js.  Express is a web application framework for Node.js, which provides the easy way to build web applications with multi pages.  Express comes with 'Jade', a templating engine. EJS is also a popular templating engine for Node.js. In this tutorial 'EJS' will be used as a templating engine.</p>
 </div>
@@ -70,11 +88,56 @@ res.send('Welcome to Technoons!');
 http.createServer(app).listen(3000, function() {
 console.log("Server is listening on port 3000"); 
 });
+=======
+<h4><a href="#">Preface</a></h4>
+<p>In this tutorial, we will see how to create a new endeca cartridge and use it in ATG CRS module.  This tutorial assumes the ATG & ATG CRS, Endeca MDEX, Endeca Platform services are installed and working good. </p>
+</div>
+
+<div class="large-6 columns">
+<img src=""/>
+</div>
+</div>
+
+<h4><a href="#">1. Creating Endeca Cartridge Template XML</a></h4>
+<p>Create a folder "Hello-World" under "C:\Endeca\APPS\CRS\config\cartridge_templates" and create the below template.xml file with the new cartridge definition. Note:  This cartridge a of type "HeaderContent".  Copy the thumbnail.png & locale folder from the other existing cartridges (e.g. HeaderBanner-ATGCategory).  Update the template description in the "Resources_en" file. </p>
+
+<div class="panel">
+<pre>
+<!--  
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentTemplate xmlns="http://endeca.com/schema/content-template/2008" type="HeaderContent">
+  <Description>${template.description}</Description>
+  <ThumbnailUrl>thumbnail.png</ThumbnailUrl>
+  <ContentItem>
+    <Name>Hello World</Name>
+    <Property name="welcomeMessage">
+        <String/>
+    </Property>
+  </ContentItem>
+  <EditorPanel>
+    <BasicContentItemEditor/>
+  </EditorPanel>
+</ContentTemplate>
+-->
 </pre>
 </div>
 
 <br>
 
+<h4><a href="#">2. Deploying the Cartridge templates to Endeca Workbench</a></h4>
+<p>To deploy the newly created cartridge template to Endeca authoring & live run the below control script.</p>
+
+<div class="panel">
+<pre>
+C:\Endeca\APPS\CRS\control\set_template.bat  
+(Assuming the default Endeca Apps install location)
+>>>>>>> cd46c41325047ead150a6697d24f4d67dec98eee
+</pre>
+</div>
+
+<br>
+
+<<<<<<< HEAD
 <p>Configure the 'express' by setting the essential parameters. Take a note that 'ejs' is the view engine here.</p>
 
 <div class="panel">
@@ -269,6 +332,124 @@ function renderResult(res, prds, msg) {
 <p>Happy Coding !</p>
 </article>
 </div>
+=======
+<h4><a href="#">3. Validate the successful creation of Cartridge</a></h4>
+<p>Login into Endeca workbench (http://localhost:8006/) and navigate to "content -> Web -> Home Pages -> Default Home Pages" and try adding the "HeaderContent" as "Hello-World" cartridge.  If you can see the "Hello-World" header content cartridge then it means the Step-1 & Step-2 above went well. </p>
+
+
+<br>
+
+<h4><a href="#">4. Creating the ATG Cartridge Components</a></h4>
+<p>Now the cartridge ATG components has to be created.  Follow the below steps.  The Endeca assembler source & config files are kept in the 
+C:\ATG\ATG11.0\CommerceReferenceStore\Store\Endeca\Assembler folder as default. </p>
+
+<div class="panel">
+<pre>
+C:\Endeca\APPS\CRS\control\set_template.bat  
+(Assuming the default Endeca Apps install location)
+</pre>
+</div>
+
+<p>
+i) Cartridge Handler & ConentItem returned by the handler should be kept under the package atg.endeca.assembler.cartridge.handler. 
+ii) Create the HelloWorldContentItem.java with the below code 
+</p>
+
+<div class="panel">
+<pre style="font-family:comicsansms;font-size:15px;">
+package atg.projects.store.assembler.cartridge;
+
+import atg.repository.RepositoryItem;
+import com.endeca.infront.assembler.BasicContentItem;
+import com.endeca.infront.assembler.ContentItem;
+
+public class HelloWorldContentItem extends BasicContentItem {
+  public static final String MSG_KEY = "welcomeMessage";
+
+  public HelloWorldContentItem(ContentItem pConfig) {
+    super(pConfig);
+  }
+
+  public String getWelcomeMessage() {
+    return getTypedProperty(MSG_KEY);
+  }
+
+  public void setWelcomeMessage(String pWelMsg) {
+    put(MSG_KEY, pWelMsg);
+  }
+}
+</pre>
+</div>
+
+<p>
+iii) Create the HelloWorldCartridgeHandler.java with the below code.  Also create the HelloWorldCartridgeHandler.properties (component) which refers the handler source.
+</p>
+
+<div class="panel">
+<pre style="font-family:comicsansms;font-size:15px;">
+package atg.projects.store.assembler.cartridge.handler;
+
+import atg.core.util.StringUtils;
+import atg.endeca.assembler.AssemblerTools;
+import atg.projects.store.assembler.cartridge.HelloWorldContentItem;
+import com.endeca.infront.assembler.BasicContentItem;
+import com.endeca.infront.assembler.CartridgeHandlerException;
+import com.endeca.infront.assembler.ContentItem;
+import com.endeca.infront.assembler.AbstractCartridgeHandler;
+
+public class HelloWorldCartridgeHandler extends AbstractCartridgeHandler {
+ 
+  public HelloWorldContentItem process(ContentItem pCartridgeConfig) throws CartridgeHandlerException {
+
+    HelloWorldContentItem helloWorldItem = new HelloWorldContentItem(pCartridgeConfig);
+    helloWorldItem.setWelcomeMessage("Hello World !");
+    return categoryItem;
+
+  }
+}
+</pre>
+</div>
+
+<p>
+Also, create a Hello World Handlder component using the below properties file.
+</P>
+
+<div class="panel">
+<pre style="font-family:comicsansms;font-size:15px;">
+C:\ATG\ATG11.0\CommerceReferenceStore\Store\Endeca\Assembler\src\config\atg\endeca\assembler\cartridge\handler\HelloWorld.properties
+
+$class=atg.projects.store.assembler.cartridge.handler.GymboreeCategoryHandler
+$scope=prototype
+</pre>
+</div>
+
+<br>
+<p>
+iv) A cartridge handler should be mapped to a corresponding Renderer (HelloWorldCatridgeRenderer). Ideally renderers are JSPs. Copy the below JSP renderer into the j2ee-apps\Storefront\store.war\cartridges\Hello-World folder.  Where Hello-World is a newly created folder. 
+</p>
+
+<br>
+
+<p>
+v) Finally map Cartridge to CatridgeHandler component.  
+</p>
+
+<div class="panel">
+<pre style="font-family:comicsansms;font-size:15px;">
+
+"CommerceReferenceStore\Store\Endeca\Assembler\src\config\atg\endeca\assembler\NucleusAssemblerFactory.properties"
+
+Hello-World=/atg/endeca/assembler/cartridge/handler/HelloWorld
+</pre>
+</div>
+
+
+<br>
+<p>Happy Coding !</p>
+</article>
+</div>
+
+>>>>>>> cd46c41325047ead150a6697d24f4d67dec98eee
 <!-- End Main Content -->
  
 <!-- Sidebar -->
