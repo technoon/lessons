@@ -53,7 +53,8 @@
 <pre>
 
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;ContentTemplate xmlns="http://endeca.com/schema/content-template/2008" type="HeaderContent"&gt;
+&lt;ContentTemplate xmlns="http://endeca.com/schema/content-template/2008" 
+                                              type="HeaderContent"&gt;
   &lt;Description&gt;${template.description}&lt;/Description&gt;
   &lt;ThumbnailUrl&gt;thumbnail.png&lt;/ThumbnailUrl&gt;
   &lt;ContentItem&gt;
@@ -259,7 +260,8 @@ C:\Endeca\APPS\CRS\control\promote_content.bat
 
 <h4><a href="#">7. Accessing the page through CRS</a></h4>
 <p>
-Write a simple JSP which uses the "InvokeAssembler" droplet to get the page configuration from Endeca MDEX.  
+Write a simple JSP which uses the "InvokeAssembler" droplet to get the page configuration from Endeca MDEX.  Use the below JSP code to create 
+a HelloWorld.jsp. Copy this JSP into the browse folder in "store.war".  You may need to create the ATGProduction.ear file with this newly added JSP. Otherwise, copy this JSP directly into the browse folder in ATGProduction.ear under Weblogic domain.
 </p>
 
 <div class="panel">
@@ -282,6 +284,9 @@ Write a simple JSP which uses the "InvokeAssembler" droplet to get the page conf
 </pre>
 </div>
 
+<br>
+
+<p>Access this JSP as "http://localhost:<port>/crs/storeus/browser/HelloWorld.jsp" </p>
 
 <br>
 <p>Happy Coding !</p>
