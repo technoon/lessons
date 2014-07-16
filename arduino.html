@@ -24,7 +24,6 @@
     </div>
   </div>
 
-
 <!-- Main Page Content and Sidebar -->
  
 <div class="row">
@@ -49,7 +48,7 @@ There are many other microcontrollers and microcontroller platforms available fo
 </div>
 
 
-<h4><a name="section2" class="anchor" href="#section2"><span class="octicon octicon-link"></span></a>PIN configuration in Ardunio Leonardo</h4>
+<h4><a href="#section2">PIN configuration in Ardunio Leonardo</a></h4>
 <image src="https://f.cloud.github.com/assets/6375258/1993275/746c8bf8-84d6-11e3-823d-b3298a2af375.PNG"/>
 <p>
 <table border=0>
@@ -71,39 +70,45 @@ There are many other microcontrollers and microcontroller platforms available fo
 
 <br>
 
-<h4><a name="section3" class="anchor" href="#section3"><span class="octicon octicon-link"></span></a>How to program an Arduino ?</h4>
+<h4><a href="#">How to program an Arduino ?</a></h4>
 <p>
 Arduino provides an software to write a sketch (software program using wiring language) and burn into the flash memory of the microcontroller board. There are quite few examples
 prepackaged in the sketch editor under the examples menu.  
 </p>
-<image src="https://f.cloud.github.com/assets/6375258/1992705/a72ed29e-84c7-11e3-9780-3289e8f2fdf4.PNG"/>
+
 <p>
+<image src="https://f.cloud.github.com/assets/6375258/1992705/a72ed29e-84c7-11e3-9780-3289e8f2fdf4.PNG"/>
+<br>
 Using these program sketches, variety of sensors can be controlled and the output from these sensors can also be read.  
 </p>
 
 <br>
 
-<h4><a name="section4" class="anchor" href="#section4"><span class="octicon octicon-link"></span></a>Reading a value from the Potentiometer (POT)</h4>
-<p>
-Let's see how can the output value from a potentiometer can be read and logged into serial monitor. <br>
-<font color="red">Required Accessories :  Arduino Uno / Leonardo, 10K POT, Bread board, 220 ohm resistor & Jumper wires </font><br><br>
-<font color="blue">Step 1:</font> Connect the Arduino board to the computer thru USB.<br>
-<font color="blue">Step 2:</font> Connect the potentiometer to the bread board.  Pot has 3 pins, ground, power & output.  Connect the ground pin to Arduino's ground pin, 
-power pin to 5V pin using 220 ohm resistor and output pin to the <font color="red">analog pin 2</font>. The wiring diagram is given below.<br>
-<font color="blue">Step 3:</font> Write a program sketch as below and upload it to Arduino board through USB<br>
+<h4><a href="#">Reading a value from the Potentiometer (POT)</a></h4>
+<div class="panel">
+<pre>
+Let's see how can the output value from a potentiometer can be read and logged into serial monitor.
+<font color="red">Required Accessories :  Arduino Uno / Leonardo, 10K POT, Bread board, 220 ohm resistor & Jumper wires </font>
+<font color="blue">Step 1:</font> Connect the Arduino board to the computer thru USB
+<font color="blue">Step 2:</font> Connect the potentiometer to the bread board.  Pot has 3 pins, ground, power & output.  Connect the ground pin to Arduino's ground pin, power pin to 5V pin using 220 ohm resistor and output pin to the <font color="red">analog pin 2</font>. The wiring diagram is given below
+<font color="blue">Step 3:</font> Write a program sketch as below and upload it to Arduino board through USB
 <font color="blue">Step 4:</font> Open the serial monitor from the menu and you will see the output values coming in from the POT.  Turn the pot knob to get different readings.
+</pre>
+</div>
+
 <br>
-<code>
+
+<p>
 Note: Using this incoming value from the POT, you can control the brightness of an LED or reduce the rotation 
 speed of a DC motor or control the direction of a SERVO motor. Options are plenty.
-</code>
 </p>
+
 
 <image src="http://technoon.github.io/lessons/images/Arduino_Wiring.PNG"/>
 
-<h4><a name="section5" class="anchor" href="#section5"><span class="octicon octicon-link"></span></a>Example code</h4>
+<h4><a href="#">Example code</a></h4>
 <p>
-<pre><code>
+<pre>
 /*
   Reads an analog input on pin 2, prints the result to the serial monitor.
 */
@@ -121,9 +126,8 @@ speed of a DC motor or control the direction of a SERVO motor. Options are plent
   Serial.println(sensorValue);
   delay(1);
 }
-</code></pre>
+</pre>
 <br>
-
 
 <br>
 <p>Happy Coding !</p>
