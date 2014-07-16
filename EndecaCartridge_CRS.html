@@ -2,6 +2,7 @@
 <!doctype html>
 <html class="no-js" lang="en">
   <head>
+    <meta name="keywords" content="Endeca, XM, Experience Manager, ATG, CRS, Commerce Reference Store, Cartridge, Template">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Technoon | Node & Mongo</title>
@@ -269,7 +270,8 @@ Write a simple JSP which uses the "InvokeAssembler" droplet to get the page conf
     &lt;dsp:droplet name="InvokeAssembler"&gt;
       &lt;dsp:param name="contentCollection" value="/content/Web/HelloWorld Pages"/&gt;
       &lt;dsp:oparam name="output"&gt;
-        &lt;dsp:getvalueof var="HelloContent" vartype="com.endeca.infront.assembler.ContentItem" param="contentItem" /&gt;
+        &lt;dsp:getvalueof var="HelloContent" 
+            vartype="com.endeca.infront.assembler.ContentItem" param="contentItem" /&gt;
       &lt;/dsp:oparam&gt;
     &lt;/dsp:droplet&gt;
   
@@ -303,7 +305,7 @@ Write a simple JSP which uses the "InvokeAssembler" droplet to get the page conf
       <div class="panel">
         <h5>Check MongoDB Tutorials</h5>
         <p></p>
-        <a href="http://technoon.github.io/lessons/index.html">Read More →</a>
+        <a href="http://technoon.github.io/lessons">Read More →</a>
       </div>
  
     </aside>
@@ -329,7 +331,18 @@ Write a simple JSP which uses the "InvokeAssembler" droplet to get the page conf
       </div>
     </div>
   </footer>
-    
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-47069620-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>  
  
   </body>
 </html>
