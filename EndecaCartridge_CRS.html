@@ -26,7 +26,6 @@
 
 
 <!-- Main Page Content and Sidebar -->
- 
 <div class="row">
 
 <!-- Main Blog Content -->
@@ -196,16 +195,15 @@ v) Finally map Cartridge to CatridgeHandler component.
 
 <div class="panel">
 <pre>
-
 CommerceReferenceStore\Store\Endeca\Assembler\src\config\atg\
-                endeca\assembler\NucleusAssemblerFactory.properties
+                  endeca\assembler\NucleusAssemblerFactory.properties
 
 Hello-World=/atg/endeca/assembler/cartridge/handler/HelloWorld
 </pre>
 </div>
 
 
-<h4><a href="#">5. Compiling the Cartridge Components</a></h4>
+<h4><a href="#">5. Compiling the ATG Cartridge Components</a></h4>
 <p>The default build.xml to compile the assembler java codes is already in the "C:\ATG\ATG11.0\CommerceReferenceStore\Store\Endeca\Assembler" folder.  
 Make sure you have the DYNAMO_HOME & DAS_ROOT environment variables set appropriately.</p>
 
@@ -231,7 +229,7 @@ Note: During the final EAR build, ATG runassembler will create a classes.jar & c
 </p>
 
 
-<h4><a href="#">6. Create a content page</a></h4>
+<h4><a href="#">6. Creating a template</a></h4>
 <p>
 i) Lets create a page which uses this newly created Hello-World HeaderContent cartridge. Create the "HelloWorld" page folder (make sure to change the Folder Type to 'Page') and then create a default landing page.  
 For this "Default HelloWorld Page" assign the existing "OneColumnPage" template by selecting from the list.  Refer the below picture. 
@@ -246,7 +244,7 @@ ii) Assign the "Hello-World" headercontent cartridge as the HeaderContent for th
 </p>
 
 
-<h4><a href="#">7. Deploy the newly created page configuration from Authoring to Live</a></h4>
+<h4><a href="#">7. Deploy template configuration from Authoring to Live</a></h4>
 <p>
 To deploy the newly created cartridge template to Endeca authoring & live run the below control script.
 </p>
@@ -258,7 +256,7 @@ C:\Endeca\APPS\CRS\control\promote_content.bat
 </div>
 
 
-<h4><a href="#">7. Accessing the page through CRS</a></h4>
+<h4><a href="#">8. Using the cartridge in JSP</a></h4>
 <p>
 Write a simple JSP which uses the "InvokeAssembler" droplet to get the page configuration from Endeca MDEX.  Use the below JSP code to create 
 a HelloWorld.jsp. Copy this JSP into the browse folder in "store.war".  You may need to create the ATGProduction.ear file with this newly added JSP. Otherwise, copy this JSP directly into the browse folder in ATGProduction.ear under Weblogic domain.
@@ -286,7 +284,9 @@ a HelloWorld.jsp. Copy this JSP into the browse folder in "store.war".  You may 
 
 <br>
 
-<p>Access this JSP as "http://localhost:<port>/crs/storeus/browser/HelloWorld.jsp" </p>
+<p>Access this JSP as "http://localhost:7003/crs/storeus/browse/HelloWorld.jsp"
+7003 is the http port of the running ATG CRS instance. 
+</p>
 
 <br>
 <p>Happy Coding !</p>
@@ -347,7 +347,7 @@ a HelloWorld.jsp. Copy this JSP into the browse folder in "store.war".  You may 
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-</script>  
+</script>
  
   </body>
 </html>
