@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html class="no-js" lang="en">
   <head>
@@ -13,17 +14,17 @@
     <div class="large-12 columns">
       <div class="nav-bar right">
        <ul class="button-group">
-         <li><a href="#" class="small button">Home</a></li>
-         <li><a href="in.linkedin.com/in/vrkrajesh/" class="small button">About me</a></li>
+         <li><a href="http://technoon.github.io/lessons/" class="small button">Home</a></li>
+         <li><a href="http://linkedin.com/in/vrkrajesh/" class="small button">About me</a></li>
         </ul>
       </div>
       <h1>Technoon <small>Tutorials <br> Creating Endeca Catridge - ATG CRS</small></h1>
       <hr />
     </div>
   </div>
- 
-  <!-- End Nav -->
-  <!-- Main Page Content and Sidebar -->
+
+
+<!-- Main Page Content and Sidebar -->
  
 <div class="row">
 
@@ -33,8 +34,6 @@
 <article>
 <h6>Written by <a href="#">Rajeshkumar Venkatesan</a> on July, 2014.</h6>
 
-<br>
-
 <div class="row">
 <div class="large-6 columns">
 <h4><a href="#">Preface</a></h4>
@@ -42,7 +41,7 @@
 </div>
 
 <div class="large-6 columns">
-<img src=""/>
+<image src="http://technoon.github.io/lessons/images/ATG_CRS_Endeca.png"/>
 </div>
 </div>
 
@@ -52,20 +51,20 @@
 <div class="panel">
 <pre>
 
-<?xml version="1.0" encoding="UTF-8"?>
-<ContentTemplate xmlns="http://endeca.com/schema/content-template/2008" type="HeaderContent">
-  <Description>${template.description}</Description>
-  <ThumbnailUrl>thumbnail.png</ThumbnailUrl>
-  <ContentItem>
-    <Name>Hello World</Name>
-    <Property name="welcomeMessage">
-        <String/>
-    </Property>
-  </ContentItem>
-  <EditorPanel>
-    <BasicContentItemEditor/>
-  </EditorPanel>
-</ContentTemplate>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;ContentTemplate xmlns="http://endeca.com/schema/content-template/2008" type="HeaderContent"&gt;
+  &lt;Description&gt;${template.description}&lt;/Description&gt;
+  &lt;ThumbnailUrl&gt;thumbnail.png&lt;/ThumbnailUrl&gt;
+  &lt;ContentItem&gt;
+    &lt;Name&gt;Hello World&lt;/Name&gt;
+    &lt;Property name="welcomeMessage"&gt;
+        &lt;String/&gt;
+    &lt;/Property&gt;
+  &lt;/ContentItem&gt;
+  &lt;EditorPanel&gt;
+    &lt;BasicContentItemEditor/&gt;
+  &lt;/EditorPanel&gt;
+&lt;/ContentTemplate&gt;
 
 </pre>
 </div>
@@ -204,6 +203,84 @@ Hello-World=/atg/endeca/assembler/cartridge/handler/HelloWorld
 </div>
 
 
+<h4><a href="#">5. Compiling the Cartridge Components</a></h4>
+<p>The default build.xml to compile the assembler java codes is already in the "C:\ATG\ATG11.0\CommerceReferenceStore\Store\Endeca\Assembler" folder.  
+Make sure you have the DYNAMO_HOME & DAS_ROOT environment variables set appropriately.</p>
+
+<div class="panel">
+<pre>
+DYNAMO_HOME=C:\ATG\ATG11.0\home
+DAS_ROOT=C:\ATG\ATG11.0\DAS
+</pre>
+</div>
+
+<p>
+Also, install the ANT and set the ANT_HOME environment variable as appropriate and run the build just by typing "ant" in the below folder location. 
+This will compile all the java class created through the previous section.</P>
+
+<div class="panel">
+<pre>
+C:\ATG\ATG11.0\CommerceReferenceStore\Store\Endeca\Assembler>ant
+</pre>
+</div>
+
+<p>
+Note: During the final EAR build, ATG runassembler will create a classes.jar & config.jar including the newly created class files. (Refer the MANIFEST.MF)
+</p>
+
+
+<h4><a href="#">6. Create a content page</a></h4>
+<p>
+i) Lets create a page which uses this newly created Hello-World HeaderContent cartridge. Create the "HelloWorld" page folder (make sure to change the Folder Type to 'Page') and then create a default landing page.  
+For this "Default HelloWorld Page" assign the existing "OneColumnPage" template by selecting from the list.  Refer the below picture. 
+</p>
+
+<p>
+<image src="http://technoon.github.io/lessons/images/Endeca_XM.png"/>
+</p>
+
+<p>
+ii) Assign the "Hello-World" headercontent cartridge as the HeaderContent for the "Default HelloWorld Page". You can also assign "Scrolling Products" cartridge as the MainContent, but it is optional you can leave this empty.
+</p>
+
+
+<h4><a href="#">7. Deploy the newly created page configuration from Authoring to Live</a></h4>
+<p>
+To deploy the newly created cartridge template to Endeca authoring & live run the below control script.
+</p>
+
+<div class="panel">
+<pre>
+C:\Endeca\APPS\CRS\control\promote_content.bat
+</pre>
+</div>
+
+
+<h4><a href="#">7. Accessing the page through CRS</a></h4>
+<p>
+Write a simple JSP which uses the "InvokeAssembler" droplet to get the page configuration from Endeca MDEX.  
+</p>
+
+<div class="panel">
+<pre>
+&lt;dsp:page&gt;
+    &lt;dsp:importbean bean="/atg/endeca/assembler/droplet/InvokeAssembler"/&gt;
+
+    &lt;dsp:droplet name="InvokeAssembler"&gt;
+      &lt;dsp:param name="contentCollection" value="/content/Web/HelloWorld Pages"/&gt;
+      &lt;dsp:oparam name="output"&gt;
+        &lt;dsp:getvalueof var="HelloContent" vartype="com.endeca.infront.assembler.ContentItem" param="contentItem" /&gt;
+      &lt;/dsp:oparam&gt;
+    &lt;/dsp:droplet&gt;
+  
+  &lt;c:if test="${not empty HelloContent}"&gt;
+    &lt;dsp:renderContentItem contentItem="${HelloContent}" /&gt;
+  &lt;/c:if&gt;
+&lt;/dsp:page&gt;
+</pre>
+</div>
+
+
 <br>
 <p>Happy Coding !</p>
 </article>
@@ -245,8 +322,8 @@ Hello-World=/atg/endeca/assembler/cartridge/handler/HelloWorld
         </div>
         <div class="large-6 columns">
           <ul class="inline-list right">
-            <li><a href="http://technoon.github.io/lessons">Home</a></li>
-            <li><a href="in.linkedin.com/in/vrkrajesh/">About me</a></li>
+               <li><a href="http://technoon.github.io/lessons/" class="small button">Home</a></li>
+               <li><a href="http://linkedin.com/in/vrkrajesh/" class="small button">About me</a></li>
           </ul>
         </div>
       </div>
