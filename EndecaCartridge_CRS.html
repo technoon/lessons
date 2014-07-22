@@ -50,7 +50,7 @@
 </p>
 
 <h4><a href="#">1. Creating Endeca Cartridge Template XML</a></h4>
-<p>Create a folder "Hello-World" under "C:\Endeca\APPS\CRS\config\cartridge_templates" and create the below template.xml file with the new cartridge definition. Note:  This cartridge a of type "HeaderContent".  Copy the thumbnail.png & locale folder from the other existing cartridges (e.g. HeaderBanner-ATGCategory).  Update the template description in the "Resources_en" file. </p>
+<p>Create a folder "Hello-World" under "C:\Endeca\APPS\CRS\config\cartridge_templates" and create the below template.xml file with the new cartridge definition. This cartridge is of type "HeaderContent".  Copy the thumbnail.png & locale folder from the other existing cartridges.  Update the template description in the "Resources_en" file under locale folder.</p>
 
 <div class="panel">
 <pre>
@@ -77,11 +77,11 @@
 <br>
 
 <h4><a href="#">2. Deploying the Cartridge templates to Endeca Workbench</a></h4>
-<p>To deploy the newly created cartridge template to Endeca authoring & live run the below control script.</p>
+<p>To deploy the newly created cartridge template to Endeca authoring & live, run the below control script.</p>
 
 <div class="panel">
 <pre>
-C:\Endeca\APPS\CRS\control\set_template.bat  
+C:\Endeca\APPS\CRS\control\set_template.bat
 (Assuming the default Endeca Apps install location)
 </pre>
 </div>
@@ -89,25 +89,17 @@ C:\Endeca\APPS\CRS\control\set_template.bat
 <br>
 
 <h4><a href="#">3. Validate the successful creation of Cartridge</a></h4>
-<p>Login into Endeca workbench (http://localhost:8006/) and navigate to "content -> Web -> Home Pages -> Default Home Pages" and try adding the "HeaderContent" as "Hello-World" cartridge.  If you can see the "Hello-World" header content cartridge then it means the Step-1 & Step-2 above went well. </p>
+<p>Login into Endeca workbench (http://localhost:8006/) and navigate to "content -> Web -> Home Pages -> Default Home Pages" and try adding the "HeaderContent" as "Hello-World" cartridge.  If you can search & add the "Hello-World" header content cartridge then it means the Step-1 & Step-2 above went well. </p>
 
 
 <br>
 
 <h4><a href="#">4. Creating the ATG Cartridge Components</a></h4>
-<p>Now the cartridge ATG components has to be created.  Follow the below steps.  The Endeca assembler source & config files are kept in the 
-C:\ATG\ATG11.0\CommerceReferenceStore\Store\Endeca\Assembler folder as default. </p>
-
-<div class="panel">
-<pre>
-C:\Endeca\APPS\CRS\control\set_template.bat
-
-(Assuming the default Endeca Apps install location)
-</pre>
-</div>
+<p>Now the ATG cartridge components have to be created. For the ATG-CRS implemention, the endeca assembler source & config files are kept under 
+<Your_ATG_Dir>\CommerceReferenceStore\Store\Endeca\Assembler folder by default. </p>
 
 <p>
-i) Cartridge Handler & ConentItem returned by the handler should be kept under the package atg.endeca.assembler.cartridge.handler. 
+i) Cartridge Handler & ConentItem returned by the handler should be under the package atg.endeca.assembler.cartridge.handler. 
 </p>
 
 <p>
@@ -172,7 +164,7 @@ public class HelloWorldCartridgeHandler extends AbstractCartridgeHandler {
 </div>
 
 <p>
-Also, create a Hello World Handlder component using the below properties file.
+Also, create a HelloWorld cartridge handlder component with the below properties file.
 </P>
 
 <div class="panel">
@@ -188,7 +180,11 @@ $scope=prototype
 
 <br>
 <p>
-iv) A cartridge handler should be mapped to a corresponding Renderer (HelloWorldCartridgeRenderer). Ideally renderers are JSPs. Copy the below JSP renderer into the j2ee-apps\Storefront\store.war\cartridges\Hello-World folder.  Where Hello-World is a newly created folder. 
+iv) A cartridge handler should be mapped to a renderer (HelloWorldCartridgeRenderer). The renderers use the contentItem object and renders the data.  Ideally renderers are JSP files. Copy the below JSP renderer into the j2ee-apps\Storefront\store.war\cartridges\Hello-World folder.  Where Hello-World is a newly created folder. 
+</p>
+
+<p>
+  JSP Pending....
 </p>
 
 <br>
@@ -233,7 +229,7 @@ Note: During the final EAR build, ATG runassembler will create a classes.jar & c
 </p>
 
 
-<h4><a href="#">6. Creating a template</a></h4>
+<h4><a href="#">6. Creating a page template</a></h4>
 <p>
 i) Lets create a page which uses this newly created Hello-World HeaderContent cartridge. Create the "HelloWorld" page folder (make sure to change the Folder Type to 'Page') and then create a default landing page.  
 For this "Default HelloWorld Page" assign the existing "OneColumnPage" template by selecting from the list.  Refer the below picture. 
