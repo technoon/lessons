@@ -183,7 +183,9 @@ $scope=prototype
 iv) A cartridge handler should be mapped to a renderer (HelloWorldCartridgeRenderer). The renderers use the contentItem object and renders the data.  Ideally renderers are JSP files. Copy the below JSP renderer into the j2ee-apps\Storefront\store.war\cartridges\Hello-World folder.  Where Hello-World is a newly created folder. 
 </p>
 
-<p>
+<br>
+<div class="panel">
+<pre>
 &lt;%-- Cartridge Renderer --%&gt;
 
 &lt;dsp:page&gt;
@@ -193,7 +195,8 @@ iv) A cartridge handler should be mapped to a renderer (HelloWorldCartridgeRende
       &lt;c:out value="${contentItem.welcomeMessage}" /&gt; 
   &lt;/h2&gt;
 &lt;/dsp:page&gt;
-</p>
+</pre>
+</div>
 
 <br>
 
