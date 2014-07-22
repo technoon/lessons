@@ -184,7 +184,15 @@ iv) A cartridge handler should be mapped to a renderer (HelloWorldCartridgeRende
 </p>
 
 <p>
-  JSP Pending....
+&lt;%-- Cartridge Renderer --%&gt;
+
+&lt;dsp:page&gt;
+  &lt;dsp:importbean bean="/OriginatingRequest" var="originatingRequest"/&gt;
+  &lt;dsp:getvalueof var="contentItem" vartype="com.endeca.infront.assembler.ContentItem" value="${originatingRequest.contentItem}"/&gt; 
+  &lt;h2 class="title"&gt;
+      &lt;c:out value="${contentItem.welcomeMessage}" /&gt; 
+  &lt;/h2&gt;
+&lt;/dsp:page&gt;
 </p>
 
 <br>
