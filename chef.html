@@ -1,0 +1,271 @@
+
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta name="keywords" content="chef, puppet, getchef, learnchef"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Technoon Tutorial - Chef</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <script src="js/vendor/modernizr.js"></script>
+  </head>
+  <body>
+
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="nav-bar right">
+       <ul class="button-group">
+         <li><a href="http://technoon.github.io/lessons/" class="small button">Home</a></li>
+         <li><a href="http://linkedin.com/in/vrkrajesh/" class="small button">About me</a></li>
+        </ul>
+      </div>
+      <h1>Technoon <small>Tutorials <br> Chef - Infrastructure as a code</small></h1>
+      <hr />
+    </div>
+  </div>
+
+<!-- Main Page Content and Sidebar -->
+ 
+<div class="row">
+
+<!-- Main Blog Content -->
+<div class="large-9 columns" role="content">
+ 
+<article>
+<h6>Written by <a href="#">Rajeshkumar Venkatesan</a> on Aug, 2014.</h6>
+
+<div class="row">
+  <div class="large-6 columns">
+  <h4><a href="#">Preface</a></h4>
+  <p>In this automation decade, we have seen many automation in software life cycle.  But chef brings in automation to the next level. 
+  The infrastructure automation.  With Chef, you can automate how you build, deploy, and manage your infrastructure. Your infrastructure becomes as versionable, testable, and repeatable as application code.  Here you go... IAAC (Infrastructure as a code).
+  </p>
+  </div>
+
+  <div class="large-6 columns">
+
+  </div>
+</div>
+
+
+<br>
+
+<h4><a href="#">About this tutorial</a></h4>
+<p>
+In this tutorial we will setup a
+1. Chef server
+2. Chef Dev Kit
+3. Chef Client
+4. Node (CentOS VM)
+</p>
+<br>
+
+
+<h4><a href="#">Chef Architecture</a></h4>
+<p>
+Here is the architecture of chef. </p>
+<br>
+
+<h4><a href="#">Elements of Chef</a></h4>
+<p>
+Resource - 
+Recipe - 
+Cookbooks - 
+Knife - 
+Chef Server
+Chef Client
+Nodes - 
+run_list - 
+</p>
+<br>
+
+<h4><a href="#">Setup the chef server</a></h4>
+<p>
+</p>
+<br>
+
+<h4><a href="#">Setup the Chef Dev Kit</a></h4>
+<p>
+</p>
+<br>
+
+<h4><a href="#">Setup the Node (VM) </a></h4>
+<p>
+</p>
+<br>
+
+
+<h4><a href="#">Bootstraping the Nodes</a></h4>
+<p>
+Bootstraping is the process through which, the following tasks are performed.
+1. Install Chef Client
+2. Name for the Node is set (e.g. In our case 'ChefTestNode')
+3. The Node details get registerd with the Chef Server
+</p>
+<br>
+
+<div class="panel">
+<pre>
+knife bootstrap <VM external Address> -x <Username> -P <password> -N ChefTestNode
+
+VM external address is the host name given by CloudShare. It looks like this 'uvo10t26kr3c72a8yeu.vm.cld.sr'
+Get the username & password from the Cloudshare VM credentials.
+
+After bootstraping, run the below command to check for the successful node registration with the chef server
+
+knife client list
+
+</pre>
+</div>
+<br>
+
+
+<!-- Sample Cookbook - Apache -->
+<h4><a href="#">Sample Cookbook - Apache</a></h4>
+<p>
+Using the knife utility a cookbook can be created.  The below command creates a cookbook 'apache'. 
+</p>
+
+<div class="panel">
+<pre>
+knife cookbook create apache
+</pre>
+</div>
+
+!!! include the image of apache folder here !!!
+<br>
+<p>
+Each cookbook contains a 'recipes' folder which holds the .rb files.  These files contains the scripts for resource policies.
+Edit the default.rb file under the 'recipes' folder with the below scripts.  The package statement will install the apache, service statement 
+will enable & start the apache server, template statement below creates a 'index.html' file under the '/var/www/html' folder with the source 
+index.html.erb.  Create this .erb (embedded ruby) file in the 'templates/default' folder under the 'apache' cookbook.
+</p>
+
+<div class="panel">
+<pre>
+package "httpd" do
+  action :install
+end
+
+service "httpd" do
+  action [:enable, :start]
+end
+
+template "/var/www/html/index.html" do
+  source "index.html.erb"
+  mode "0644"
+end
+</pre>
+</div>
+
+<br>
+
+<div class="panel">
+<pre>
+Content of the 'index.html.erb' is below. 
+
+<h1>Hello Chef! </h1>
+</pre>
+</div>
+
+<br>
+
+<!-- Deploying the Cookbook to Chef Server -->
+<h4><a href="#">Deploying the Cookbook to Chef Server</a></h4>
+<p>
+Now, upload the apache cookbook into chef server. After the upload create the run-list for the Node (CentOS VM). This run-list will contain the
+cookbooks for the Node which we created through the above step. 
+</p>
+<br>
+
+<div class="panel">
+<pre>
+knife cookbook upload apache 
+
+knife node run_list add ChefTestNode "recipe[apache]"
+</pre>
+</div>
+<br>
+
+
+<h4><a href="#">Running the Chef Client in Nodes</a></h4>
+<p>
+ssh into ChefTestNode VM and run the chef client. This will get the run-list from the TestNode from the chef server and execute the recipe 'apache'  
+</p>
+<br>
+<div class="panel">
+<pre>
+sudo chef-client
+</pre>
+</div>
+<br>
+
+<h4><a href="#">Accessing the sample html page</a></h4>
+<p>
+Open the browser and access the ChefTestNode e.g. uvo1m2po3z567x4rytt.vm.cld.sr  
+</p>  
+
+<p>Happy Coding !</p>
+</article>
+</div>
+
+<!-- End Main Content -->
+
+
+
+<!-- Sidebar -->
+    <aside class="large-3 columns">
+ 
+      <h5>Rajesh's Writings : </h5>
+      <ul class="side-nav">
+        <li><a href="http://technoon.github.io/lessons/mongodb-nodejs">Node.js & MongoDB</a></li>
+        <li><a href="http://technoon.github.io/lessons/arduino">Arduino Microcontroller</a></li>
+        <li><a href="http://technoon.github.io/lessons/Endeca-Cartridge-ATG-CRS">ATG-CRS Endeca Cartridge</a></li>       
+        <li><a href="#">Knockout JS</a></li>
+        <li><a href="#">Rasberry Pi</a></li>
+      </ul>
+ 
+      <div class="panel">
+        <h5>Check ATG & Endeca Tutorials</h5>
+        <p></p>
+        <a href="http://technoon.github.io/lessons/EndecaCartridge_CRS">Read More →</a>
+      </div>
+ 
+    </aside>
+ 
+    <!-- End Sidebar -->
+  </div>
+ 
+  <!-- End Main Content and Sidebar -->
+  <!-- Footer -->
+  <footer class="row">
+    <div class="large-12 columns">
+      <hr />
+      <div class="row">
+        <div class="large-6 columns">
+          <p>© Rajeshkumar Venkatesan</p>
+        </div>
+        <div class="large-6 columns">
+          <ul class="inline-list right">
+               <li><a href="http://technoon.github.io/lessons">Home</a></li>
+               <li><a href="http://linkedin.com/in/vrkrajesh">About me</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-47069620-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>    
+ 
+  </body>
+</html>
