@@ -52,35 +52,49 @@
 
 <h4><a href="#">About this tutorial</a></h4>
 <p>
-In this tutorial we will setup a
-1. Chef server
-2. Chef Dev Kit
-3. Chef Client
-4. Node (CentOS VM)
+In this tutorial we will setup a <br>
+1. Chef server <br>
+2. Chef Dev Kit <br>
+3. Chef Client <br>
+4. Node (CentOS VM) <br>
 </p>
 <br>
 
 
 <h4><a href="#">Chef Architecture</a></h4>
 <p>
-Here is the architecture of chef. </p>
+Here is the architecture of Chef. </p>
 <br>
 
 <h4><a href="#">Elements of Chef</a></h4>
 <p>
-Resource - 
-Recipe - 
-Cookbooks - 
-Knife - 
-Chef Server
-Chef Client
-Nodes - 
-run_list - 
+  Resource - Represents a piece of the system and its desired state. <br>
+    e.g. A package that should be installed ; a file which should be created
+  <br>  
+  Recipe - A Configuration file which describe resoures and their desired state. 
+  <br>
+    e.g. Install & start the software components
+  <br>  
+  Cookbooks - Fundation unit of configuration which defines a particular scenario and contains recipes, templates, files to 
+  support that scenario. A scenario here could be 'Installing apache server'. 
+  <br>
+  Nodes - Represents a server within your infrastructure. Could be physical / virtual / cloud instances. Chef client application will run on 
+  the nodes. 
+  <br>
+  run_list - The list of recipes which has to be executed for the given node. 
+  <br>
+  Chef Server - A centralised server which manages node configuration, cookbooks & run-list for nodes. 
+  <br>
+  Chef Client - A process which pull the chef configuration for each node from the chef server 
+  <br>
+  Knife - Utility to interact with chef server
+  <br>
 </p>
 <br>
 
-<h4><a href="#">Setup the chef server</a></h4>
+<h4><a href="#">Setup the Chef server</a></h4>
 <p>
+
 </p>
 <br>
 
@@ -89,7 +103,7 @@ run_list -
 </p>
 <br>
 
-<h4><a href="#">Setup the Node (VM) </a></h4>
+<h4><a href="#">Setup the Node (VM)</a></h4>
 <p>
 </p>
 <br>
@@ -97,10 +111,10 @@ run_list -
 
 <h4><a href="#">Bootstraping the Nodes</a></h4>
 <p>
-Bootstraping is the process through which, the following tasks are performed.
-1. Install Chef Client
-2. Name for the Node is set (e.g. In our case 'ChefTestNode')
-3. The Node details get registerd with the Chef Server
+Bootstraping is the process through which, the following tasks are performed. <br>
+1. Install Chef Client<br>
+2. Name for the Node is set (e.g. In our case 'ChefTestNode')<br>
+3. The Node details get registerd with the Chef Server<br>
 </p>
 <br>
 
@@ -163,7 +177,7 @@ end
 <pre>
 Content of the 'index.html.erb' is below. 
 
-<code><h1>Hello Chef! </h1></code>
+&lt;h1&gt;Hello Chef! &lt;/h1&gt;
 </pre>
 </div>
 
