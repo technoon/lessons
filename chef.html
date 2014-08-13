@@ -56,7 +56,7 @@ In this tutorial we will setup a <br>
 1. Chef server <br>
 2. Chef Dev Kit <br>
 3. Chef Client <br>
-4. Node (CentOS VM) <br>
+4. Node (CloudShare.com CentOS VM) <br>
 </p>
 <br>
 
@@ -70,40 +70,53 @@ Here is the architecture of Chef. </p>
 <p>
   Resource - Represents a piece of the system and its desired state. <br>
     e.g. A package that should be installed ; a file which should be created
-  <br>  
+  <br><br>  
   Recipe - A Configuration file which describe resoures and their desired state. 
   <br>
     e.g. Install & start the software components
-  <br>  
+  <br><br> 
   Cookbooks - Fundation unit of configuration which defines a particular scenario and contains recipes, templates, files to 
   support that scenario. A scenario here could be 'Installing apache server'. 
-  <br>
+  <br><br>
   Nodes - Represents a server within your infrastructure. Could be physical / virtual / cloud instances. Chef client application will run on 
   the nodes. 
-  <br>
+  <br><br>
   run_list - The list of recipes which has to be executed for the given node. 
-  <br>
+  <br><br>
   Chef Server - A centralised server which manages node configuration, cookbooks & run-list for nodes. 
-  <br>
+  <br><br>
   Chef Client - A process which pull the chef configuration for each node from the chef server 
-  <br>
+  <br><br>
   Knife - Utility to interact with chef server
-  <br>
+  <br><br>
 </p>
 <br>
 
-<h4><a href="#">Setup the Chef server</a></h4>
+<h4><a href="#">Setup the Chef server & Dev Kit</a></h4>
 <p>
+Register getchef.com  
+Create Organisation 
+After creating the organisation, download the starter kit. 
+
 
 </p>
 <br>
 
-<h4><a href="#">Setup the Chef Dev Kit</a></h4>
+<h4><a href="#">Setup the Chef Client</a></h4>
 <p>
+http://www.getchef.com/chef/install
+This gives the utility 'Knife'
 </p>
 <br>
 
-<h4><a href="#">Setup the Node (VM)</a></h4>
+<h4><a href="#">Knife.rb Explained</a></h4>
+<p>
+ Knife is using the 'chef_server_url' & credentials to connect with chef server.  
+</p>
+<br>
+
+
+<h4><a href="#">Setup the Node (VM) & SSH</a></h4>
 <p>
 </p>
 <br>
@@ -127,7 +140,7 @@ Get the username & password from the Cloudshare VM credentials.
 
 After bootstraping, run the below command to check for the successful node registration with the chef server
 
-knife client list
+knife client list --- NOT CORRECT
 </pre>
 </div>
 <br>
