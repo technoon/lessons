@@ -66,55 +66,66 @@ In this tutorial we will setup a <br>
 Here is the architecture of Chef. </p>
 <br>
 
+<div class="large-6 columns">
+<image src="http://technoon.github.io/lessons/images/chef.png"/>
+</div>
+
+<br>
+
 <h4><a href="#">Elements of Chef</a></h4>
 <p>
-  Resource - Represents a piece of the system and its desired state. <br>
-    e.g. A package that should be installed ; a file which should be created
-  <br><br>  
-  Recipe - A Configuration file which describe resoures and their desired state. 
-  <br>
-    e.g. Install & start the software components
-  <br><br> 
-  Cookbooks - Fundation unit of configuration which defines a particular scenario and contains recipes, templates, files to 
+  <b>Resource</b> - Represents a piece of the system and its desired state. 
+  <br>e.g. A package that should be installed ; a file which should be created
+  <br>  
+  <b>Recipe</b> - A Configuration file which describe resoures and their desired state. 
+  <br>e.g. Install & start the software components
+  <br> 
+  <b>Cookbooks</b> - Fundation unit of configuration which defines a particular scenario and contains recipes, templates, files to 
   support that scenario. A scenario here could be 'Installing apache server'. 
-  <br><br>
-  Nodes - Represents a server within your infrastructure. Could be physical / virtual / cloud instances. Chef client application will run on 
+  <br>
+  <b>Nodes</b> - Represents a server within your infrastructure. Could be physical / virtual / cloud instances. Chef client application will run on 
   the nodes. 
-  <br><br>
-  run_list - The list of recipes which has to be executed for the given node. 
-  <br><br>
-  Chef Server - A centralised server which manages node configuration, cookbooks & run-list for nodes. 
-  <br><br>
-  Chef Client - A process which pull the chef configuration for each node from the chef server 
-  <br><br>
+  <br>
+  <b>Run List</b> - The list of recipes which has to be executed for the given node. 
+  <br>
+  <b>Chef Server</b> - A centralised server which manages node configuration, cookbooks & run-list for nodes. 
+  <br>
+  <b>Chef Client</b> - A process which pull the chef configuration for each node from the chef server 
+  <br>
   Knife - Utility to interact with chef server
-  <br><br>
+  <br>
 </p>
 <br>
 
-<h4><a href="#">Setup the Chef server & Dev Kit</a></h4>
+<h4><a href="#">Setup the Hosted Chef server & Dev Kit</a></h4>
 <p>
-Register getchef.com  
-Create Organisation 
-After creating the organisation, download the starter kit. 
-
-
+For this tutorial we are goinng to use the 'Hosted Chef' option, which means the chef server will be hosted in the getchef.com, we don't need to install the chef server locally / on premise. 
+1. Go to getchef.com and click 'GetChef' link and select 'Hosted Chef'
+2. Start the free trial by filling the form and get started
+3. Create an Organisation
+4. After creating the organisation, download the starter kit. Extract the starter kit, this will create a folder 'Chec-Repo'.
+5. This chef-repo folder contains the subfolders for cookbooks, recipes, templates & other settings
 </p>
 <br>
 
 <h4><a href="#">Setup the Chef Client</a></h4>
 <p>
-http://www.getchef.com/chef/install
-This gives the utility 'Knife'
+Download the Chef client at "http://www.getchef.com/chef/install".  Select & download the client as per your operating system and install the 
+client. This installation gives the utility called 'Knife'. This utitlity is used to interact with the Chef server. 
+The .chef folder under the chef-repo folder contains the knife.rb file. This file contains the configurations about Chef server URL
+<i>e.g chef_server_url  "https://api.opscode.com/organizations/<your_org_name>" </i>
+<br>
+Open the terminal or command prompt and go to 'chef-repo' folder and run the below commmand to validate the connectivity to the chef server.
+The client list should give the "validation_client_name" in the knife.rb file. 
 </p>
 <br>
-
-<h4><a href="#">Knife.rb Explained</a></h4>
-<p>
- Knife is using the 'chef_server_url' & credentials to connect with chef server.  
-</p>
+<div class="panel">
+<pre>
+knife --version
+knife client list
+</pre
+<div>
 <br>
-
 
 <h4><a href="#">Setup the Node (VM) & SSH</a></h4>
 <p>
