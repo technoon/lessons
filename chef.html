@@ -127,7 +127,7 @@ knife client list
 <div>
 <br>
 
-<h4><a href="#">Setup the Node (VM) & SSH</a></h4>
+<h4><a href="#">Setup the Node (VM)</a></h4>
 <p>
 </p>
 <br>
@@ -139,6 +139,8 @@ Bootstraping is the process through which, the following tasks are performed. <b
 1. Install Chef Client<br>
 2. Name for the Node is set (e.g. In our case 'ChefTestNode')<br>
 3. The Node details get registerd with the Chef Server<br>
+VM external address is the host name given by CloudShare. It looks like this 'uvo10t26kr3c72a8yeu.vm.cld.sr'
+Get the username & password from the Cloudshare VM credentials.
 </p>
 <br>
 
@@ -146,12 +148,9 @@ Bootstraping is the process through which, the following tasks are performed. <b
 <pre>
 knife bootstrap <VM external Address> -x <Username> -P <password> -N ChefTestNode
 
-VM external address is the host name given by CloudShare. It looks like this 'uvo10t26kr3c72a8yeu.vm.cld.sr'
-Get the username & password from the Cloudshare VM credentials.
+Run the below command to validate the successful bootstrap.
 
-After bootstraping, run the below command to check for the successful node registration with the chef server
-
-knife client list --- NOT CORRECT
+knife node list
 </pre>
 </div>
 <br>
