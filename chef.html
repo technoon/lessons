@@ -59,18 +59,18 @@ In this tutorial we will setup a <br>
 </p>
 <br>
 
-
 <h4><a href="#">Chef Architecture</a></h4>
 <p>
 Here is the architecture of Chef. 
 </p>
 <br>
+<p>
 <div class="large-12 columns">
 <image src="http://technoon.github.io/lessons/images/chef.png"/>
 </div>
+</p>
 
-<br><br><br>
-
+<br>
 <h4><a href="#">Elements of Chef</a></h4>
 <p>
   <b>Resource</b> - Represents a piece of the system and its desired state. 
@@ -159,7 +159,7 @@ Get the username & password from the Cloudshare VM credentials.</i>
 knife bootstrap <VM external Address> -x <Username> -P <password> -N ChefTestNode
 
 <i>Run the below command to validate the successful bootstrap. This should give <br>
-the nodes registered with chef server</i>
+the nodes registered with chef server.</i>
 
 knife node list
 </pre>
@@ -188,11 +188,12 @@ knife cookbook create apache
 <div class="large-6 columns">
 <p>
 Each cookbook contains a 'recipes' folder which holds the .rb files.  These files contains the scripts for resource policies.
-Edit the default.rb file under the 'recipes' folder with the below scripts. <br>
+Edit the default.rb file under the 'recipes' folder with the below scripts. </br></br>
 The package statement will install the apache, service statement will enable & start the apache server, template statement below creates a 'index.html' file under the '/var/www/html' folder with the source index.html.erb.  Create this .erb (embedded ruby) file in the 'templates/default' folder under the 'apache' cookbook.
 </p>
 </div>
 </div>
+<br>
 
 <div class="panel">
 <pre>
@@ -248,6 +249,8 @@ ssh into ChefTestNode VM and run the chef client. This will get the run-list fro
 <br>
 <div class="panel">
 <pre>
+ssh root@<your_node_name>
+
 sudo chef-client
 </pre>
 </div>
