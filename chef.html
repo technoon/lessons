@@ -47,7 +47,6 @@
   </div>
 </div>
 
-
 <br>
 
 <h4><a href="#">About this tutorial</a></h4>
@@ -70,7 +69,7 @@ Here is the architecture of Chef.
 <image src="http://technoon.github.io/lessons/images/chef.png"/>
 </div>
 
-<br><br>
+<br><br><br>
 
 <h4><a href="#">Elements of Chef</a></h4>
 <p>
@@ -130,11 +129,18 @@ knife client list
 <h4><a href="#">Setup the Node (VM)</a></h4>
 <p>
 Cloudshare (partner of Chef org) gives a hosted node VM for testing the chef. This is trial VM and after few days it gets recycled. 
-
-
+1. Access the URL <i>"http://opscode-cheflab.herokuapp.com/labs/learnchef/centos/attend"</i> and register with cloudshare
+2. After registration click on the button 'Start Using Thish Environment'
+3. Cloudshare will provision a 'CentOS' VM
+4. Collect the details about the node (External address, username & password)
 </p>
 <br>
 
+<div class="large-12 columns">
+  <image src="http://technoon.github.io/lessons/images/chef-node.png"/>
+</div>
+
+<br><br>
 
 <h4><a href="#">Bootstraping the Nodes</a></h4>
 <p>
@@ -152,7 +158,8 @@ Get the username & password from the Cloudshare VM credentials.</i>
 <pre>
 knife bootstrap <VM external Address> -x <Username> -P <password> -N ChefTestNode
 
-<i>Run the below command to validate the successful bootstrap.</i>
+<i>Run the below command to validate the successful bootstrap. This should give <br>
+the nodes registered with chef server</i>
 
 knife node list
 </pre>
@@ -181,14 +188,11 @@ knife cookbook create apache
 <div class="large-6 columns">
 <p>
 Each cookbook contains a 'recipes' folder which holds the .rb files.  These files contains the scripts for resource policies.
-Edit the default.rb file under the 'recipes' folder with the below scripts.  
-</p>
-</div>
-</div>
-
-<p>
+Edit the default.rb file under the 'recipes' folder with the below scripts. <br>
 The package statement will install the apache, service statement will enable & start the apache server, template statement below creates a 'index.html' file under the '/var/www/html' folder with the source index.html.erb.  Create this .erb (embedded ruby) file in the 'templates/default' folder under the 'apache' cookbook.
 </p>
+</div>
+</div>
 
 <div class="panel">
 <pre>
