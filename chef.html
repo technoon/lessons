@@ -63,10 +63,10 @@ In this tutorial we will setup a <br>
 
 <h4><a href="#">Chef Architecture</a></h4>
 <p>
-Here is the architecture of Chef. </p>
+Here is the architecture of Chef. 
+</p>
 <br>
-
-<div class="large-6 columns">
+<div class="large-12 columns">
 <image src="http://technoon.github.io/lessons/images/chef.png"/>
 </div>
 
@@ -100,30 +100,30 @@ Here is the architecture of Chef. </p>
 <h4><a href="#">Setup the Hosted Chef server & Dev Kit</a></h4>
 <p>
 For this tutorial we are goinng to use the 'Hosted Chef' option, which means the chef server will be hosted in the getchef.com, we don't need to install the chef server locally / on premise. 
-1. Go to getchef.com and click 'GetChef' link and select 'Hosted Chef'
-2. Start the free trial by filling the form and get started
-3. Create an Organisation
-4. After creating the organisation, download the starter kit. Extract the starter kit, this will create a folder 'Chec-Repo'.
-5. This chef-repo folder contains the subfolders for cookbooks, recipes, templates & other settings
+1. Go to getchef.com and click 'GetChef' link and select 'Hosted Chef'<br>
+2. Start the free trial by filling the form and get started<br>
+3. Create an Organisation<br>
+4. After creating the organisation, download the starter kit. Extract the starter kit, this will create a folder 'Chec-Repo'<br>
+5. This chef-repo folder contains the subfolders for cookbooks, recipes, templates & other settings<br>
 </p>
 <br>
 
 <h4><a href="#">Setup the Chef Client</a></h4>
 <p>
-Download the Chef client at "http://www.getchef.com/chef/install".  Select & download the client as per your operating system and install the 
-client. This installation gives the utility called 'Knife'. This utitlity is used to interact with the Chef server. 
+Download the Chef client at <i>"http://www.getchef.com/chef/install"</i>.  Select & download the client as per your operating system and install the 
+client. This installation gives the utility called 'Knife'. This utitlity is used to interact with the Chef server. <br>
 The .chef folder under the chef-repo folder contains the knife.rb file. This file contains the configurations about Chef server URL
-<i>e.g chef_server_url  "https://api.opscode.com/organizations/<your_org_name>" </i>
+<br><i>e.g chef_server_url  "https://api.opscode.com/organizations/<your_org_name>" </i>
 <br>
 Open the terminal or command prompt and go to 'chef-repo' folder and run the below commmand to validate the connectivity to the chef server.
-The client list should give the "validation_client_name" in the knife.rb file. 
+The client list should give the <i>"validation_client_name"</i> in the knife.rb file. 
 </p>
 <br>
 <div class="panel">
 <pre>
 knife --version
 knife client list
-</pre
+</pre>
 <div>
 <br>
 
