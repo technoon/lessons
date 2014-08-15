@@ -35,7 +35,7 @@
 <h6>Written by <a href="#">Rajeshkumar Venkatesan</a> on Aug, 2014.</h6>
 
 <div class="row">
-  <div class="large-6 columns">
+  <div class="large-12 columns">
   <h4><a href="#">Preface</a></h4>
   <p>In this automation decade, we have seen many automation in software life cycle.  But chef brings in automation to the next level. 
   The infrastructure automation.  With Chef, you can automate how you build, deploy, and manage your infrastructure. Your infrastructure becomes as versionable, testable, and repeatable as application code.  Here you go... IAAC (Infrastructure as a code).
@@ -124,11 +124,14 @@ The client list should give the <i>"validation_client_name"</i> in the knife.rb 
 knife --version
 knife client list
 </pre>
-<div>
+</div>
 <br>
 
 <h4><a href="#">Setup the Node (VM)</a></h4>
 <p>
+Cloudshare (partner of Chef org) gives a hosted node VM for testing the chef. This is trial VM and after few days it gets recycled. 
+
+
 </p>
 <br>
 
@@ -136,11 +139,12 @@ knife client list
 <h4><a href="#">Bootstraping the Nodes</a></h4>
 <p>
 Bootstraping is the process through which, the following tasks are performed. <br>
-1. Install Chef Client<br>
-2. Name for the Node is set (e.g. In our case 'ChefTestNode')<br>
-3. The Node details get registerd with the Chef Server<br>
-VM external address is the host name given by CloudShare. It looks like this 'uvo10t26kr3c72a8yeu.vm.cld.sr'
-Get the username & password from the Cloudshare VM credentials.
+1. Installation of Chef Client in the nodes<br>
+2. Declaration of a name for the Node (e.g. In our case 'ChefTestNode')<br>
+3. The Node details get registerd with the remote Chef Server<br><br>
+
+<i>VM external address is the host name given by CloudShare. It looks like this 'uvo10t26kr3c72a8yeu.vm.cld.sr'
+Get the username & password from the Cloudshare VM credentials.</i>
 </p>
 <br>
 
@@ -148,7 +152,7 @@ Get the username & password from the Cloudshare VM credentials.
 <pre>
 knife bootstrap <VM external Address> -x <Username> -P <password> -N ChefTestNode
 
-Run the below command to validate the successful bootstrap.
+<i>Run the below command to validate the successful bootstrap.</i>
 
 knife node list
 </pre>
