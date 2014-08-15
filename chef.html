@@ -70,7 +70,7 @@ Here is the architecture of Chef.
 <image src="http://technoon.github.io/lessons/images/chef.png"/>
 </div>
 
-<br>
+<br><br>
 
 <h4><a href="#">Elements of Chef</a></h4>
 <p>
@@ -99,7 +99,7 @@ Here is the architecture of Chef.
 
 <h4><a href="#">Setup the Hosted Chef server & Dev Kit</a></h4>
 <p>
-For this tutorial we are goinng to use the 'Hosted Chef' option, which means the chef server will be hosted in the getchef.com, we don't need to install the chef server locally / on premise. 
+For this tutorial we are goinng to use the 'Hosted Chef' option, which means the chef server will be hosted in the getchef.com, we don't need to install the chef server locally / on premise. <br> 
 1. Go to getchef.com and click 'GetChef' link and select 'Hosted Chef'<br>
 2. Start the free trial by filling the form and get started<br>
 3. Create an Organisation<br>
@@ -112,8 +112,8 @@ For this tutorial we are goinng to use the 'Hosted Chef' option, which means the
 <p>
 Download the Chef client at <i>"http://www.getchef.com/chef/install"</i>.  Select & download the client as per your operating system and install the 
 client. This installation gives the utility called 'Knife'. This utitlity is used to interact with the Chef server. <br>
-The .chef folder under the chef-repo folder contains the knife.rb file. This file contains the configurations about Chef server URL
-<br><i>e.g chef_server_url  "https://api.opscode.com/organizations/<your_org_name>" </i>
+The <i>.chef></i> folder under the chef-repo folder contains the knife.rb file. This file contains the configurations about Chef server URL
+<br><i>e.g chef_server_url  "https://api.opscode.com/organizations/<your_org_name>"</i>
 <br>
 Open the terminal or command prompt and go to 'chef-repo' folder and run the below commmand to validate the connectivity to the chef server.
 The client list should give the <i>"validation_client_name"</i> in the knife.rb file. 
@@ -172,13 +172,22 @@ knife cookbook create apache
 </pre>
 </div>
 
-!!! include the image of apache folder here !!!
 <br>
+<div class="row">
+<div class="large-6 columns">
+  <image src="http://technoon.github.io/lessons/images/chef-repo-folder.png"/>
+</div>
+
+<div class="large-6 columns">
 <p>
 Each cookbook contains a 'recipes' folder which holds the .rb files.  These files contains the scripts for resource policies.
-Edit the default.rb file under the 'recipes' folder with the below scripts.  The package statement will install the apache, service statement 
-will enable & start the apache server, template statement below creates a 'index.html' file under the '/var/www/html' folder with the source 
-index.html.erb.  Create this .erb (embedded ruby) file in the 'templates/default' folder under the 'apache' cookbook.
+Edit the default.rb file under the 'recipes' folder with the below scripts.  
+</p>
+</div>
+</div>
+
+<p>
+The package statement will install the apache, service statement will enable & start the apache server, template statement below creates a 'index.html' file under the '/var/www/html' folder with the source index.html.erb.  Create this .erb (embedded ruby) file in the 'templates/default' folder under the 'apache' cookbook.
 </p>
 
 <div class="panel">
