@@ -241,13 +241,15 @@ knife node run_list add ChefTestNode "recipe[apache]"
 
 <h4><a href="#">Running the Chef Client in Nodes</a></h4>
 <p>
-ssh into ChefTestNode VM and run the chef client. This will get the run-list from the chef server and execute the recipe 'apache'.   
+SSH into ChefTestNode VM and run the chef client. This will get the run-list from the chef server and execute the recipe 'apache'.   
 </p>
 <br>
 <div class="large-12 columns">
   <image src="http://technoon.github.io/lessons/images/run-list.png"/>
 </div>
 <br>
+
+<p>
 <div class="panel">
 <pre>
 ssh root@&lt;your_node_name&gt;
@@ -255,6 +257,7 @@ ssh root@&lt;your_node_name&gt;
 sudo chef-client
 </pre>
 </div>
+</p>
 <br>
 
 <h4><a href="#">Accessing the sample html page</a></h4>
