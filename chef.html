@@ -41,10 +41,6 @@
   The infrastructure automation.  With Chef, you can automate how you build, deploy, and manage your infrastructure. Your infrastructure becomes as versionable, testable, and repeatable as application code.  Here you go... IAAC (Infrastructure as a code).
   </p>
   </div>
-
-  <div class="large-6 columns">
-
-  </div>
 </div>
 
 <br>
@@ -110,7 +106,7 @@ For this tutorial we are goinng to use the 'Hosted Chef' option, which means the
 2. Select & download the client as per your operating system and install the client. This installation gives the utility called 'Knife'. This utitlity is used to interact with the Chef server<br>
 3. The ".chef" folder under the "chef-repo" folder contains the knife.rb file. This file contains the Chef server URL which references the organisation you just created<br>
 <i>e.g. chef_server_url  "https://api.opscode.com/organizations/<your_org_name>"</i>
-<br><br>
+<br>
 4. Open the terminal or command prompt and go to 'chef-repo' folder and run the below commmand to validate the connectivity to the chef server.
 The client list should give the <i>"validation_client_name"</i> as mentioned in the knife.rb
 </p>
@@ -137,7 +133,7 @@ Cloudshare (partner of Chef org) gives a hosted node VM for testing the chef. Th
   <image src="http://technoon.github.io/lessons/images/chef-node.png"/>
 </div>
 
-<br><br>
+<br>
 
 <h4><a href="#">Bootstraping the Nodes</a></h4>
 <p>
@@ -153,10 +149,10 @@ Get the username & password from the Cloudshare VM credentials.</i>
 
 <div class="panel">
 <pre>
-knife bootstrap <VM external Address> -x <Username> -P <password> -N ChefTestNode
+knife bootstrap &lt;VM external Address&gt; -x root -P &lt;password&gt; -N ChefTestNode
 
-<i>Run the below command to validate the successful bootstrap. This should give <br>
-the nodes registered with chef server.</i>
+<i>Run the below command to validate the successful bootstrap.
+This will get the list of the nodes already registered with chef server.</i>
 
 knife node list
 </pre>
@@ -241,12 +237,9 @@ knife node run_list add ChefTestNode "recipe[apache]"
 
 <h4><a href="#">Running the Chef Client in Nodes</a></h4>
 <p>
-SSH into ChefTestNode VM and run the chef client. This will get the run-list from the chef server and execute the recipe 'apache'.   
+SSH into ChefTestNode and run the chef client. This will get the run-list from the chef server and execute the recipe 'apache'.   
 </p>
-<br>
-<div class="large-12 columns">
-  <image src="http://technoon.github.io/lessons/images/run-list.png"/>
-</div>
+
 <br>
 <div class="panel">
 <pre>
@@ -254,6 +247,10 @@ ssh root@&lt;your_node_name&gt;
 
 sudo chef-client
 </pre>
+</div>
+<br>
+<div class="large-12 columns">
+  <image src="http://technoon.github.io/lessons/images/run-list.png"/>
 </div>
 <br>
 
