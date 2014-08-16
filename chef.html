@@ -93,7 +93,7 @@ Here is the architecture of Chef.
 </p>
 <br>
 
-<h4><a href="#">Setup the Hosted Chef server & Dev Kit</a></h4>
+<h4><a href="#">Settingup the Hosted Chef server & Dev Kit</a></h4>
 <p>
 For this tutorial we are goinng to use the 'Hosted Chef' option, which means the chef server will be hosted in the getchef.com, we don't need to install the chef server locally / on premise. <br> 
 1. Go to getchef.com and click 'GetChef' link and select 'Hosted Chef'<br>
@@ -104,26 +104,26 @@ For this tutorial we are goinng to use the 'Hosted Chef' option, which means the
 </p>
 <br>
 
-<h4><a href="#">Setup the Chef Client</a></h4>
+<h4><a href="#">Settingup the Chef Client</a></h4>
 <p>
-Download the Chef client at <i>"http://www.getchef.com/chef/install"</i>.  Select & download the client as per your operating system and install the 
-client. This installation gives the utility called 'Knife'. This utitlity is used to interact with the Chef server. <br>
-The <i>.chef></i> folder under the chef-repo folder contains the knife.rb file. This file contains the configurations about Chef server URL
-<br><i>e.g chef_server_url  "https://api.opscode.com/organizations/<your_org_name>"</i>
-<br>
-Open the terminal or command prompt and go to 'chef-repo' folder and run the below commmand to validate the connectivity to the chef server.
-The client list should give the <i>"validation_client_name"</i> in the knife.rb file. 
+1. Download the Chef client at <i>"http://www.getchef.com/chef/install"</i> <br>
+2. Select & download the client as per your operating system and install the client. This installation gives the utility called 'Knife'. This utitlity is used to interact with the Chef server<br>
+3. The ".chef" folder under the "chef-repo" folder contains the knife.rb file. This file contains the Chef server URL which references the organisation you just created<br>
+<i>e.g. chef_server_url  "https://api.opscode.com/organizations/<your_org_name>"</i>
+<br><br>
+4. Open the terminal or command prompt and go to 'chef-repo' folder and run the below commmand to validate the connectivity to the chef server.
+The client list should give the <i>"validation_client_name"</i> as mentioned in the knife.rb
 </p>
-<br>
 <div class="panel">
 <pre>
 knife --version
+
 knife client list
 </pre>
 </div>
 <br>
 
-<h4><a href="#">Setup the Node (VM)</a></h4>
+<h4><a href="#">Settingup a Node</a></h4>
 <p>
 Cloudshare (partner of Chef org) gives a hosted node VM for testing the chef. This is trial VM and after few days it gets recycled. <br>
 1. Access the URL <i>"http://opscode-cheflab.herokuapp.com/labs/learnchef/centos/attend"</i> and register with cloudshare<br>
@@ -224,8 +224,8 @@ Content of the 'index.html.erb' is below.
 <!-- Deploying the Cookbook to Chef Server -->
 <h4><a href="#">Deploying the Cookbook to Chef Server</a></h4>
 <p>
-Now, upload the apache cookbook into chef server. After the upload create the run-list for the Node (CentOS VM). This run-list will contain the
-cookbooks for the Node which we created through the above step. 
+Now, upload the apache cookbook into chef server. After the upload create a run-list for the node to include the newly created apache cookbook. 
+This information gets attached to appropriate node object in the chef server.  So that when the chef client running in the node contacts the chef server, it will hand over this run-list to the chef client to run in the node. 
 </p>
 <br>
 
@@ -241,8 +241,12 @@ knife node run_list add ChefTestNode "recipe[apache]"
 
 <h4><a href="#">Running the Chef Client in Nodes</a></h4>
 <p>
-ssh into ChefTestNode VM and run the chef client. This will get the run-list from the TestNode from the chef server and execute the recipe 'apache'  
+ssh into ChefTestNode VM and run the chef client. This will get the run-list from the chef server and execute the recipe 'apache'.   
 </p>
+<br>
+<div class="large-12 columns">
+  <image src="http://technoon.github.io/lessons/images/run-list.png"/>
+</div>
 <br>
 <div class="panel">
 <pre>
