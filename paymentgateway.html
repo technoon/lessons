@@ -1,0 +1,238 @@
+
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta name="keywords" content="payment gateway, tokenization, P2PE, Point to point encryption, POS, fraud"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Technoon Tutorial - Payment Gateway</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <script src="js/vendor/modernizr.js"></script>
+  </head>
+  <body>
+
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="nav-bar right">
+       <ul class="button-group">
+         <li><a href="http://technoon.github.io/lessons/" class="small button">Home</a></li>
+         <li><a href="http://linkedin.com/in/vrkrajesh/" class="small button">About me</a></li>
+        </ul>
+      </div>
+      <h1>Technoon <small>Tutorials <br> Selecting a Payment Gateway</small></h1>
+      <hr />
+    </div>
+  </div>
+
+<!-- Main Page Content and Sidebar -->
+ 
+<div class="row">
+
+<!-- Main Blog Content -->
+<div class="large-9 columns" role="content">
+ 
+<article>
+<h6>Written by <a href="#">Rajesh V</a> on Sep 2014</h6>
+
+<div class="row">
+<h4><a href="#">1. Preface</a></h4>
+<p>
+As both eCommerce & Retail business are growing to meet the demand, 
+the need to upgrade the payment solution is inevitable. A cost effective solution 
+with faster throughput and high availability is what every merchant looking for. 
+Here are some of the key considerations which influences the selection of a 
+payment provider. This document assumes you are familiar with the payment 
+technology & terms.
+</p>
+</div>
+<br>
+
+<div class="row">
+<h4><a href="#">2. PCI Compliance</a></h4>
+<p>
+- A payment provider should support PCI DSS compliance. <br>
+- Look for the provider who not only supports the PCI DSS but also assists the 
+merchants in arriving at the architecture which eliminates the need for PCI DSS 
+requirements in your local environment <br>
+- The provider should minimize the risk involved in transporting and 
+maintaining card data, reducing the scope and cost of your PCI compliance <br>
+</p>
+</div>
+<br>
+
+<div class="row">
+<h4><a href="#">3. P2PE & Tokenization</a></h4>
+<p>
+- The provider should support both P2PE & Tokenization. P2PE is mostly used in 
+the POS terminal at brick & mortar stores <br>
+- The provider should tokenize the card data but at the same time preserve the 
+last 4 digit of the card number in the token. Some providers will preserve the first 
+6 digits as well<br>
+- Also make sure the provider has a tool / API to support de-Tokenization. This 
+might be required for your customer service operations, but it is optional<br>
+- The tokens generated should be merchant/brand specific and should fail the mod 10 <br>
+</p>
+</div>
+<br>
+
+
+<div class="row">
+<h4><a href="#">4. Point of Sale (POS)</a></h4>
+<p>
+
+- If your business is having brick & mortar stores, then consider the players who 
+support the POS based payment transactions<br>
+- Point to Point Encryption (P2PE) is a must to have for the transactions happening 
+at the store. The card data should not be transmitted between the pin pad & the 
+POS terminal or payment gateway in clear. The card data should be encrypted 
+using the cryptographic algorithms<br>
+- As the EMV and Chip & Pin based payment cards are more common, look for the 
+provider who supports these kinds of cards & transactions<br>
+- Also based on the payment terminals used in the stores (e.g. Verifone, Equinox) 
+make sure the payment provider is in the partner list of the payment terminal 
+supplier. This save lots of effort during upgrades of terminals and ease the P2PE<br>
+- The provider should support more than one encryption technique as different 
+payment terminal demands different encryption techniques<br>
+</p>
+</div>
+<br>
+
+
+
+<div class="row">
+<h4><a href="#">5. Ecommerce</a></h4>
+<p>
+- There is couple of ways of capturing the payments in eCommerce sites <br>
+<code>
+1. Hosted payment page by the payment provider (inline frame or separate 
+payment page)
+2. Payment page hosted by the merchant (Your .com site) and http post of 
+data to payment provider
+<code><br>
+Both the options work fine, but you select the option which gives better customer 
+experience for your brand<br>
+- Many providers allow merchants to customize the hosted payment page on their 
+gateway. Look for the features to include logo, change theme as per your style 
+(.CSS) and include or exclude the payment form fields in the hosted payment page<br>
+- ECommerce transactions are card not present transactions and require fraud 
+check. Ask your provider do they support fraud check during authorization. It is 
+definitely a value add and reduces charge back cost<br>
+</p>
+</div>
+<br>
+
+
+<div class="row">
+<h4><a href="#">6. Fraud Assist</a></h4>
+<p>
+- Many providers have a white label or proprietary solution for fraud validation<br>
+- As the payment frauds are on the increasing scale, considering the payment 
+provider who supports the fraud check is definitely a plus<br>
+- If you prefer to go with the direct integration with fraud provider (not through a 
+payment provider) then make a note, that the payment tokens (generated by 
+payment processor) could not be de-tokenized by the independent fraud service 
+provider. So the fraud check on the card number cannot be done. This is one of 
+the bottlenecks in going with the independent fraud service provider<br>
+- The fraud interface should provision for fraud filters like device, ip-address, 
+geolocation, linking of previous data and supports the custom fraud rules<br>
+</p>
+</div>
+<br>
+
+
+<div class="row">
+<h4><a href="#">7. Pricing</a></h4>
+<p>
+Last but not least, look at the pricing model very carefully. There may be some 
+fine prints. <br>
+- Providers might charge the merchants for each of the transactions, the 
+transactions of type Authorization / Tokenization / Settlement / Reversals / 
+Chargeback / etc.,) <br>
+- Some providers won't charge for tokenization every time you do the 
+authorization service call for the already registered card members, while some 
+others do charge for tokenization for each authorization call <br>
+</p>
+</div>
+<br>
+
+
+<div class="row">
+<h4><a href="#">8. Miscellaneous</a></h4>
+<p>
+
+- If you have international business make sure the provider support international 
+transactions and assist with fraud checks<br>
+- Check on the features of the reporting / admin tool of the payment providers. It 
+should be having the OOTB reports what you are looking for and allow the 
+merchants to customize the reports<br>
+- The provider should have a batch interface to authorize, tokenize & settle the 
+payment transactions. This will be handy during the initial phases<br>
+- Get the performance & benchmarks numbers from the provider and make sure 
+it is within your SLA<br>
+
+</p>
+</div>
+<br>
+
+</article>
+</div>
+
+<!-- End Main Content -->
+ 
+<!-- Sidebar -->
+    <aside class="large-3 columns">
+ 
+      <h5>Rajesh's Writings : </h5>
+      <ul class="side-nav">
+        <li><a href="http://technoon.github.io/lessons/mongodb-nodejs">Node.js & MongoDB</a></li>
+        <li><a href="http://technoon.github.io/lessons/arduino">Arduino Microcontroller</a></li>
+        <li><a href="http://technoon.github.io/lessons/Endeca-Cartridge-ATG-CRS">ATG-CRS Endeca Cartridge</a></li>
+        <li><a href="http://technoon.github.io/lessons/chef">Chef</a></li>    
+        <li><a href="#">Angular.js</a></li>
+        <li><a href="http://technoon.github.io/lessons/paymentgateway">Selecting Payment Gateway</a></li>
+      </ul>
+ 
+      <div class="panel">
+        <h5>Check the Chef Tutorials</h5>
+        <p></p>
+        <a href="http://technoon.github.io/lessons/chef">Read More →</a>
+      </div>
+ 
+    </aside>
+ 
+    <!-- End Sidebar -->
+  </div>
+ 
+  <!-- End Main Content and Sidebar -->
+  <!-- Footer -->
+  <footer class="row">
+    <div class="large-12 columns">
+      <hr />
+      <div class="row">
+        <div class="large-6 columns">
+          <p>© Rajeshkumar Venkatesan</p>
+        </div>
+        <div class="large-6 columns">
+          <ul class="inline-list right">
+               <li><a href="http://technoon.github.io/lessons">Home</a></li>
+               <li><a href="http://linkedin.com/in/vrkrajesh">About me</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-47069620-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>    
+ 
+  </body>
+</html>
