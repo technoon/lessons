@@ -34,7 +34,6 @@
 <article>
 <h6>Written by <a href="#">Rajesh V</a> on Sep 2014</h6>
 
-<div class="row">
 <h4><a href="#">1. Preface</a></h4>
 <p>
 As both eCommerce & Retail business are growing to meet the demand, 
@@ -44,10 +43,8 @@ Here are some of the key considerations which influences the selection of a
 payment provider. This document assumes you are familiar with the payment 
 technology & terms.
 </p>
-</div>
 <br>
 
-<div class="row">
 <h4><a href="#">2. PCI Compliance</a></h4>
 <p>
 - A payment provider should support PCI DSS compliance. <br>
@@ -57,10 +54,9 @@ requirements in your local environment <br>
 - The provider should minimize the risk involved in transporting and 
 maintaining card data, reducing the scope and cost of your PCI compliance <br>
 </p>
-</div>
 <br>
 
-<div class="row">
+
 <h4><a href="#">3. P2PE & Tokenization</a></h4>
 <p>
 - The provider should support both P2PE & Tokenization. P2PE is mostly used in 
@@ -72,7 +68,6 @@ last 4 digit of the card number in the token. Some providers will preserve the f
 might be required for your customer service operations, but it is optional<br>
 - The tokens generated should be merchant/brand specific and should fail the mod 10 <br>
 </p>
-</div>
 <br>
 
 <div class="row">
@@ -80,10 +75,9 @@ might be required for your customer service operations, but it is optional<br>
 </div>
 <br>
 
-<div class="row">
+
 <h4><a href="#">4. Point of Sale (POS)</a></h4>
 <p>
-
 - If your business is having brick & mortar stores, then consider the players who 
 support the POS based payment transactions<br>
 - Point to Point Encryption (P2PE) is a must to have for the transactions happening 
@@ -98,22 +92,25 @@ supplier. This save lots of effort during upgrades of terminals and ease the P2P
 - The provider should support more than one encryption technique as different 
 payment terminal demands different encryption techniques<br>
 </p>
-</div>
 <br>
 
 
 
-<div class="row">
 <h4><a href="#">5. Ecommerce</a></h4>
 <p>
 - There is couple of ways of capturing the payments in eCommerce sites <br>
-</p> <br>
+</p>
+
+<div class="panel">
 <pre>
   1. Hosted payment page by the payment provider (inline frame or separate 
 payment page)
   2. Payment page hosted by the merchant (Your .com site) and http post of 
 data to payment provider
-</pre><br>
+</pre>
+</div>
+
+<br>
 <p>
 Both the options work fine, but you select the option which gives better customer 
 experience for your brand<br>
@@ -124,11 +121,9 @@ gateway. Look for the features to include logo, change theme as per your style
 check. Ask your provider do they support fraud check during authorization. It is 
 definitely a value add and reduces charge back cost<br>
 </p>
-</div>
 <br>
 
 
-<div class="row">
 <h4><a href="#">6. Fraud Assist</a></h4>
 <p>
 - Many providers have a white label or proprietary solution for fraud validation<br>
@@ -142,11 +137,9 @@ the bottlenecks in going with the independent fraud service provider<br>
 - The fraud interface should provision for fraud filters like device, ip-address, 
 geolocation, linking of previous data and supports the custom fraud rules<br>
 </p>
-</div>
 <br>
 
 
-<div class="row">
 <h4><a href="#">7. Pricing</a></h4>
 <p>
 Last but not least, look at the pricing model very carefully. There may be some 
@@ -158,14 +151,11 @@ Chargeback / etc.,) <br>
 authorization service call for the already registered card members, while some 
 others do charge for tokenization for each authorization call <br>
 </p>
-</div>
 <br>
 
 
-<div class="row">
 <h4><a href="#">8. Miscellaneous</a></h4>
 <p>
-
 - If you have international business make sure the provider support international 
 transactions and assist with fraud checks<br>
 - Check on the features of the reporting / admin tool of the payment providers. It 
@@ -175,7 +165,6 @@ merchants to customize the reports<br>
 payment transactions. This will be handy during the initial phases<br>
 - Get the performance & benchmarks numbers from the provider and make sure 
 it is within your SLA<br>
-
 </p>
 </div>
 <br>
