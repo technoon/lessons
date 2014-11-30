@@ -42,9 +42,10 @@ Retailers report higher customer satisfaction & conversions by showing customer 
 There are plenty of personalization software tools available in the market which primarily bring in set of 
 recommendated items for a given product or a shopping cart. 
 <br>
-<div class="panel">	
+<div class="panel">
 <pre>
-e.g:  
+e.g: 
+
 Customer who bought also bought
 After viewed by
 Accessories
@@ -62,16 +63,15 @@ product into the cart.  Shouldn't it be planted when the customer is searching f
 <p>
 Here is the thought process, how about we personalize the product we show to the customer is 
 based on the below behaviours. 
-
+<div class="panel">
 <pre>
-<code>	
- What products the customer is searching for?
- What categories the customer is browsing ?
- What refinements / facets the customer is using ?  e.g.  Price range between Rs.100 - Rs.200
- What products the customer viewing ? 
- etc.,
-</code> 
+What products the customer is searching for?
+What categories the customer is browsing ?
+What refinements / facets the customer is using ?  e.g.  Price range between Rs.100 - Rs.200
+What products the customer viewing ? 
+etc.,
 </pre>
+</div>
 </p>
 </br>
 
@@ -94,11 +94,13 @@ these category in the next query to the search engine and boost the products tha
 e.g.  
 A customer who wants to buy a Laptop may be interested in browsing the 'computer & laptop' department. 
 So when the customer searches for a 'Laptop', refine and boost the results from these departments.
+<div class="panel">
 <pre>
- st = 15 inch laptop
- q = {!boost b=$b v=$st}
- b = query(category:last_clicked)
+st = 15 inch laptop
+q = {!boost b=$b v=$st}
+b = query(category:last_clicked)
 </pre>
+</div>
 </p>
 </br>
 
