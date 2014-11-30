@@ -1,0 +1,183 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta name="keywords" content="ATG, CRS, Endeca, Cartridge, New Cartridge, Experience Manager, XM, Endeca XM, Node, Node.js, MongoDB, Mongo, Mongoose, EJS, Express"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Technoon | Node & Mongo</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <script src="js/vendor/modernizr.js"></script>
+  </head>
+  <body>
+
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="nav-bar right">
+       <ul class="button-group">
+         <li><a href="#" class="small button">Home</a></li>
+         <li><a href="http://linkedin.com/in/vrkrajesh/" class="small button">About me</a></li>
+        </ul>
+      </div>
+      <h1>Technoon <small>Tutorials <br> Personalization with Search Engines </small></h1>
+      <hr />
+    </div>
+  </div>
+ 
+<!-- End Nav -->
+
+<!-- Main Page Content and Sidebar -->
+
+<div class="row">
+
+<!-- Main Blog Content -->
+<div class="large-9 columns" role="content">
+ 
+<article>
+<h6>Written by <a href="#">Rajesh V</a> on Nov 2014</h6>
+
+<h4><a href="#">Preface</a></h4>
+<p>
+Product recommendations & product boosting are the big contributers in the eCommerce personalization space.  
+Retailers report higher customer satisfaction & conversions by showing customer with their products of interest.  
+There are plenty of personalization software tools available in the market which primarily bring in set of 
+recommendated items for a given product or a shopping cart. 
+<br>
+<pre>
+e.g. 
+	Customer who bought also bought
+	After viewed by
+	Accessories
+</pre>
+
+But, the recommendation should not only come when the user is viewing a final product or after adding a 
+product into the cart.  Shouldn't it be planted when the customer is searching for a product ?	
+
+</p>
+</br>
+
+
+
+<h4><a href="#">Proposed Personalization</a></h4>
+<p>
+Here is the thought process, how about we personalize the product we show to the customer is 
+based on the below behaviours. 
+
+<pre>
+ What products the customer is searching for?
+ What categories the customer is browsing ?
+ What refinements / facets the customer is using ?  e.g.  Price range between Rs.100 - Rs.200
+ What products the customer viewing ? 
+ etc.,
+</pre>
+</p>
+</br>
+
+
+
+<h4><a href="#">Search Engines</a></h4>
+<p>
+The horses to do this job are there in your backyard. Yes, the search engines in your ecosystem 
+could help to do these kind of personalization.  Search engines doesn't have the domain 
+knowledge, you need ask the right questions to get the right results from these engines.   
+For the rest of the discussion, we will use Solr as the search engine.
+</p>
+</br>
+
+
+<h4><a href="#">Based to Category Selection</a></h4>
+<p>
+When a customer is browsing and keep coming to a particular type of categories, then we can include 
+these category in the next query to the search engine and boost the products that belongs to these categories. <br> 
+e.g.  
+A customer who wants to buy a Laptop may be interested in browsing the 'computer & laptop' department. 
+So when the customer searches for a 'Laptop', refine and boost the results from these departments.
+<pre>
+ st = 15 inch laptop
+ q = {!boost b=$b v=$st}
+ b = query(category:last_clicked)
+</pre>
+</p>
+</br>
+
+<h4><a href="#">Based on the facet customer selected</a></h4>
+<p>
+If the customer interested in certain refinements of products in the current session, then you can 
+include these facets / refinements as part of your next query to the search engine. <br>
+e.g.  
+Customer selects the Intel I3 processor or a the 5 star ranked items as the search filter options.  
+You could be sure that the customer is looking for a laptop having a 5 star rating with intel i3 processor.  
+So, during the next keyword search, boost the products with these characteristics. 
+</p>
+</br>
+
+
+<h4><a href="#">Based on the Product viewed</a></h4>
+<p>
+
+	
+</p>
+</br>
+
+</article>
+</div>
+
+<!-- End Main Content -->
+ 
+<!-- Sidebar -->
+    <aside class="large-3 columns">
+ 
+      <h5>Rajesh's Writings : </h5>
+      <ul class="side-nav">
+        <li><a href="http://technoon.github.io/lessons/mongodb-nodejs">Node.js & MongoDB</a></li>
+        <li><a href="http://technoon.github.io/lessons/arduino">Arduino Microcontroller</a></li>
+        <li><a href="http://technoon.github.io/lessons/Endeca-Cartridge-ATG-CRS">ATG-CRS Endeca Cartridge</a></li>
+        <li><a href="http://technoon.github.io/lessons/chef">Chef</a></li>    
+        <li><a href="#">Angular.js</a></li>
+        <li><a href="http://technoon.github.io/lessons/paymentgateway">Selecting Payment Gateway</a></li>
+        <li><a href="http://technoon.github.io/lessons/personalization">Personalization with Search Engines</a></li>
+      </ul>
+ 
+      <div class="panel">
+        <h5>Check the Chef Tutorials</h5>
+        <p></p>
+        <a href="http://technoon.github.io/lessons/chef">Read More →</a>
+      </div>
+ 
+    </aside>
+ 
+    <!-- End Sidebar -->
+  </div>
+ 
+  <!-- End Main Content and Sidebar -->
+  <!-- Footer -->
+  <footer class="row">
+    <div class="large-12 columns">
+      <hr />
+      <div class="row">
+        <div class="large-6 columns">
+          <p>© Rajeshkumar Venkatesan</p>
+        </div>
+        <div class="large-6 columns">
+          <ul class="inline-list right">
+               <li><a href="http://technoon.github.io/lessons">Home</a></li>
+               <li><a href="http://linkedin.com/in/vrkrajesh">About me</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-47069620-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>    
+ 
+  </body>
+</html>
