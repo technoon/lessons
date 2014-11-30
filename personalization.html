@@ -53,7 +53,8 @@ Accessories
 </div>
 
 But, the recommendations should not only come when the user is viewing a final product or after adding a 
-product into the cart.  Shouldn't it be planted when the customer is searching for a product?	
+product into the cart.  Shouldn't these recommended products be planted when the customer is searching 
+for the products ?	
 
 </p>
 </br>
@@ -65,16 +66,15 @@ Here is the thought process, how about we personalize the product we show to the
 based on the below behaviours. 
 <div class="panel">
 <pre>
-What products the customer is searching for?
+What products the customer is searching for ?
 What categories the customer is browsing ?
-What refinements / facets the customer is using ?  e.g.  Price range between Rs.100 - Rs.200
+What refinements / facets the customer is using ? 
 What products the customer viewing ? 
 etc.,
 </pre>
 </div>
 </p>
 </br>
-
 
 
 <h4><a href="#">Search Engines</a></h4>
@@ -106,7 +106,7 @@ b = query(category:last_clicked)
 
 <h4><a href="#">Based on the facet customer selected</a></h4>
 <p>
-If the customer interested in certain refinements of products in the current session, then you can 
+If the customers are interested in certain refinements of products in the current session, then you can 
 include these facets / refinements as part of your next query to the search engine. <br>
 e.g.  
 Customer selects the Intel I3 processor or a the 5 star ranked items as the search filter options.  
@@ -118,8 +118,24 @@ So, during the next keyword search, boost the products with these characteristic
 
 <h4><a href="#">Based on the Product viewed</a></h4>
 <p>
+If the customers are looking frequently at the details of products of particular type 
+e.g. Laptops with 8GB Memory, Laptops with 2.4 GHZ or particular Brand of laptops, etc., 
+With these behaviour, you can bring in more refined search results from the search engine and show the Laptops which the customer might be interested in to buy.  
+<br>
+These parameterized queries are supported by Solr with the help of functional queries.
 
+<div class="panel">
+<pre>
+st = Laptop
+q = {!boost b=$b v=$st}
+b = prod(sum(1, query($pref)), $diff)
+pref = mfg:Apple
+diff = avg_user_ratings
+</pre>
+</div>
 
+Where POW, SUM, PROD are query functions in Solr. Refer <a href="https://cwiki.apache.org/confluence/display/solr/Function+Queries">
+Solr Functional Queries </a> for more information.
 </p>
 </br>
 
@@ -139,7 +155,7 @@ So, during the next keyword search, boost the products with these characteristic
         <li><a href="http://technoon.github.io/lessons/chef">Chef</a></li>    
         <li><a href="#">Angular.js</a></li>
         <li><a href="http://technoon.github.io/lessons/paymentgateway">Selecting Payment Gateway</a></li>
-        <li><a href="http://technoon.github.io/lessons/personalization">Personalization with Search Engines</a></li>
+        <li><a href="http://technoon.github.io/lessons/personalization">Personalization with Search</a></li>
       </ul>
  
       <div class="panel">
