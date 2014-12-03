@@ -7,7 +7,7 @@
     <title>Technoon | Node & Mongo</title>
     <link rel="stylesheet" href="css/foundation.css" />
     <script src="js/vendor/modernizr.js"></script>
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Raleway">    
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Raleway&effect=google-font">    
   </head>
   <body>
 
@@ -25,7 +25,6 @@
   </div>
  
 <!-- End Nav -->
-
 <!-- Main Page Content and Sidebar -->
 
 <div class="row">
@@ -36,22 +35,19 @@
 <article>
 <h6>Written by <a href="#">Rajesh V</a> on Nov 2014</h6>
 
-<h4><a href="#">Preface</a></h4>
+<h4><a href="#"><div class="font-effect-google-font">Preface</div></a></h4>
 <p>
 Product recommendations & product boosting are the big contributers in the eCommerce personalization space.  
 Retailers report higher customer satisfaction & conversions by showing customer with their products of interest.  
 There are plenty of personalization software tools available in the market which primarily bring in set of 
 recommendated items for a given product or a shopping cart. 
-<br>
+</br>
 <div class="panel" style="font-family: 'Raleway', serif; font-size: 20px;" >
-<p>
 e.g: <br>
-Customer who bought also bought <br>
-After viewed by <br>
-Accessories <br>
-</p>
+Customer who bought also bought </br>
+After viewed by </br>
+Accessories </br>
 </div>
-
 But, the recommendations should not only come when the user is viewing a final product or after adding a 
 product into the cart.  Shouldn't these recommended products be planted when the customer is searching 
 for the products ?	
@@ -64,14 +60,12 @@ for the products ?
 <p>
 Here is the thought process, how about we personalize the product we show to the customer is 
 based on the below behaviours. 
-<div class="panel">
-<pre>
-What products the customer is searching for ?
-What categories the customer is browsing ?
-What refinements / facets the customer is using ? 
-What products the customer viewing ? 
-etc.,
-</pre>
+<div class="panel" style="font-family: 'Raleway', serif; font-size: 20px;" >
+What products the customer is searching for ? </br>
+What categories the customer is browsing ? </br>
+What refinements / facets the customer is using ? </br>
+What products the customer viewing ? </br>
+etc.,</br>
 </div>
 </p>
 </br>
@@ -94,12 +88,10 @@ these category in the next query to the search engine and boost the products tha
 e.g.  
 A customer who wants to buy a Laptop may be interested in browsing the 'computer & laptop' department. 
 So when the customer searches for a 'Laptop', refine and boost the results from these departments.
-<div class="panel">
-<pre>
-st = 15 inch laptop
-q = {!boost b=$b v=$st}
-b = query(category:last_clicked)
-</pre>
+<div class="panel" style="font-family: 'Raleway', serif; font-size: 20px;" >
+st = 15 inch laptop </br>
+q = {!boost b=$b v=$st} </br>
+b = query(category:last_clicked)</br>
 </div>
 </p>
 </br>
@@ -121,16 +113,15 @@ So, during the next keyword search, boost the products with these characteristic
 If the customers are looking frequently at the details of products of particular type 
 e.g. Laptops with 8GB Memory, Laptops with 2.4 GHZ or particular Brand of laptops, etc., 
 With these behaviour, you can bring in more refined search results from the search engine and show the Laptops which the customer might be interested in to buy.  
-<br>
+</br>
 These parameterized queries are supported by Solr with the help of functional queries.
 
-<div class="panel">
-<pre>
-st = Laptop
-q = {!boost b=$b v=$st}
-b = prod(sum(1, query($pref)), $diff)
-pref = mfg:Apple
-diff = avg_user_ratings
+<div class="panel" style="font-family: 'Raleway', serif; font-size: 18px;" >
+st = Laptop </br>
+q = {!boost b=$b v=$st} </br>
+b = prod(sum(1, query($pref)), $diff) </br>
+pref = mfg:Apple </br>
+diff = avg_user_ratings </br>
 </pre>
 </div>
 
