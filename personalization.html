@@ -34,10 +34,10 @@
 <br>
 <h4><a href="#"><div class="">Preface</div></a></h4>
 <p>
-Product recommendations & product boosting are the big contributers in the eCommerce personalization space.  
-Retailers report higher customer satisfaction & conversions by showing customer with their products of interest.  
-There are plenty of personalization software tools available in the market which primarily bring in set of 
-recommendated items for a given product or a shopping cart. 
+Product recommendations & product boosting are the big contributors in the eCommerce personalization space.  
+Retailers report higher customer satisfaction & conversions by showing the customer with their products of interest.
+There are plenty of personalization of-the-shelf tools available in the market which primarily bring in the 
+recommendated items for a given product & customer history of purchases.
 </p>
 <div class="panel" style="font-family: 'Raleway', serif; font-size: 14px;" >
 e.g: <br>
@@ -48,32 +48,30 @@ Accessories</br>
 <p>
 But, the recommendations should not only come when the user is viewing a final product or after adding a 
 product into the cart.  Shouldn't these recommended products be planted when the customer is searching 
-for the products ?	
+for the product itself ?	
 </p>
 </br>
 
-
 <h4><a href="#">Proposed Personalization</a></h4>
 <p>
-Here is the thought process, how about we personalize the product we show to the customer is 
-based on the below behaviours. 
+How about we personalize the product we show to the customer is based on the customer's interaction with your site ?
 </p>
 <div class="panel" style="font-family: 'Raleway', serif; font-size: 14px;" >
 What products the customer is searching for ? </br>
 What categories the customer is browsing ? </br>
 What refinements / facets the customer is using ? </br>
 What products the customer viewing ? </br>
+What keywords the customer is using for search ? </br>
 etc.,</br>
 </div>
 </br>
 
-
 <h4><a href="#">Search Engines</a></h4>
 <p>
-The horses to do this job are there in your backyard. Yes, the search engines in your ecosystem 
+The work horses to do this work are there in your ecosystem backyard. Yes, the search engines in your ecosystem 
 could help to do these kind of personalization.  Search engines doesn't have the domain 
 knowledge, you need ask the right questions to get the right results from these engines.   
-For the rest of the discussion, we will use Solr as the search engine.
+For the rest of the discussion, we will refer Solr as the search engine.
 </p>
 </br>
 
@@ -93,10 +91,10 @@ b = query(category:last_clicked)</br>
 </div>
 </br>
 
-<h4><a href="#">Based on the facet customer selected</a></h4>
+<h4><a href="#">Based on the facet customer selects</a></h4>
 <p>
 If the customers are interested in certain refinements of products in the current session, then you can 
-include these facets / refinements as part of your next query to the search engine. <br>
+include these facets / refinements as part of your next keyword search from the very same customer. <br>
 e.g.  
 Customer selects the Intel I3 processor or a the 5 star ranked items as the search filter options.  
 You could be sure that the customer is looking for a laptop having a 5 star rating with intel i3 processor.  
@@ -109,7 +107,7 @@ So, during the next keyword search, boost the products with these characteristic
 <p>
 If the customers are looking frequently at the details of products of particular type 
 e.g. Laptops with 8GB Memory, Laptops with 2.4 GHZ or particular Brand of laptops, etc., 
-With these behaviour, you can bring in more refined search results from the search engine and show the Laptops which the customer might be interested in to buy.  
+With these behaviour, you can bring in more refined search results from the search engine and show the Laptops which the customer might be interested to buy.  
 </br>
 These parameterized queries are supported by Solr with the help of functional queries.
 </p>
