@@ -41,17 +41,17 @@ Product recommendations & product boosting are the big contributers in the eComm
 Retailers report higher customer satisfaction & conversions by showing customer with their products of interest.  
 There are plenty of personalization software tools available in the market which primarily bring in set of 
 recommendated items for a given product or a shopping cart. 
-</br>
+</p>
 <div class="panel" style="font-family: 'Raleway', serif; font-size: 14px;" >
 e.g: <br>
 Customer who bought also bought </br>
-After viewed by </br>
-Accessories </br>
+Also viewed by others</br>
+Accessories</br>
 </div>
+<p>
 But, the recommendations should not only come when the user is viewing a final product or after adding a 
 product into the cart.  Shouldn't these recommended products be planted when the customer is searching 
 for the products ?	
-
 </p>
 </br>
 
@@ -60,6 +60,7 @@ for the products ?
 <p>
 Here is the thought process, how about we personalize the product we show to the customer is 
 based on the below behaviours. 
+</p>
 <div class="panel" style="font-family: 'Raleway', serif; font-size: 14px;" >
 What products the customer is searching for ? </br>
 What categories the customer is browsing ? </br>
@@ -67,7 +68,6 @@ What refinements / facets the customer is using ? </br>
 What products the customer viewing ? </br>
 etc.,</br>
 </div>
-</p>
 </br>
 
 
@@ -88,12 +88,12 @@ these category in the next query to the search engine and boost the products tha
 e.g.  
 A customer who wants to buy a Laptop may be interested in browsing the 'computer & laptop' department. 
 So when the customer searches for a 'Laptop', refine and boost the results from these departments.
+</p>
 <div class="panel" style="font-family: 'Raleway', serif; font-size: 14px;" >
 st = 15 inch laptop </br>
 q = {!boost b=$b v=$st} </br>
 b = query(category:last_clicked)</br>
 </div>
-</p>
 </br>
 
 <h4><a href="#">Based on the facet customer selected</a></h4>
@@ -115,6 +115,7 @@ e.g. Laptops with 8GB Memory, Laptops with 2.4 GHZ or particular Brand of laptop
 With these behaviour, you can bring in more refined search results from the search engine and show the Laptops which the customer might be interested in to buy.  
 </br>
 These parameterized queries are supported by Solr with the help of functional queries.
+</p>
 <div class="panel" style="font-family: 'Raleway', serif; font-size: 14px;" >
 st = Laptop </br>
 q = {!boost b=$b v=$st} </br>
@@ -122,6 +123,7 @@ b = prod(sum(1, query($pref)), $diff) </br>
 pref = mfg:Apple </br>
 diff = avg_user_ratings </br>
 </div>
+<p>
 Where POW, SUM, PROD are query functions in Solr. Refer <a href="https://cwiki.apache.org/confluence/display/solr/Function+Queries">
 Solr Functional Queries </a> for more information.
 </p>
